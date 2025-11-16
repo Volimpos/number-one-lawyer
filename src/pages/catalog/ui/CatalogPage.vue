@@ -36,12 +36,12 @@ await useAsyncData<ProductsPage>("catalog", async () => {
     page: Number(route.query.page) || 1,
   });
 
-  return {
-    items: productStore.products,
-    page: productStore.page,
-    total: productStore.total,
-    error: productStore.error,
-  };
+  // return {
+  //   items: productStore.products,
+  //   page: productStore.page,
+  //   total: productStore.total,
+  //   error: productStore.error,
+  // };
 });
 
 const products = computed(() => productStore.products);
