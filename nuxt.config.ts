@@ -11,34 +11,12 @@ export default defineNuxtConfig({
     },
   },
   ssr: false,
-  nitro: {
-    prerender: {
-      ignore: [
-        "/+7 (999) 082-74-88",
-        "/product/+7 (999) 082-74-88",
-        "/catalog/+7 (999) 082-74-88",
-      ],
-      crawlLinks: false, // Отключите автоматический краулинг ссылок
-    },
-  },
   alias: {
     "@": "./src",
   },
   dir: {
     pages: "src/app/routes",
     layouts: "src/app/layouts",
-  },
-  primevue: {
-    autoImport: false,
-    options: {
-      theme: {
-        preset: Aura,
-        options: {
-          prefix: "p",
-          cssLayer: true,
-        },
-      },
-    },
   },
   fonts: {
     families: [
