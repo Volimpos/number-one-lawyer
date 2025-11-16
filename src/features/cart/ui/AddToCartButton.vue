@@ -7,6 +7,7 @@ import { Button } from "~/src/shared/ui/button";
 import { useCart } from "~/src/features/cart/model/store";
 import type { Product, ProductSize } from "~/src/entities/product";
 import { useToast } from "~/src/shared/model/toast/store";
+
 const cartStore = useCart();
 const { addProduct } = cartStore;
 const toast = useToast();
