@@ -10,6 +10,16 @@ export default defineNuxtConfig({
       title: "Магазин украшений с характером | TAOLE",
     },
   },
+  nitro: {
+    prerender: {
+      ignore: [
+        "/+7 (999) 082-74-88",
+        "/product/+7 (999) 082-74-88",
+        "/catalog/+7 (999) 082-74-88",
+      ],
+      crawlLinks: false, // Отключите автоматический краулинг ссылок
+    },
+  },
   alias: {
     "@": "./src",
   },
