@@ -52,7 +52,7 @@
             <LinkButton :link="`tel:${contacts?.phone}`" severity="secondary">
               {{ contacts?.phone }}
             </LinkButton>
-            <LinkButton :link="contacts?.phone" severity="secondary">
+            <LinkButton :link="contacts?.whatsapp" severity="secondary">
               WhatsApp
             </LinkButton>
             <LinkButton :link="contacts?.instagram" severity="secondary">

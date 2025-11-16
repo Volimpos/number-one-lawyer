@@ -88,7 +88,7 @@ const { isTransparent } = useHeaderScroll();
 .logo__image {
   width: 100%;
   height: 2.25rem;
-  object-fit: cover;
+  object-fit: contain;
   margin-top: -3px;
   border: 1px solid transparent;
 }
