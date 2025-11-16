@@ -6,9 +6,9 @@
 
 <script setup lang="ts">
 import { useModal } from "~/src/shared/model/modal/store";
+import ContactsOnlyForm from "./ContactsOnlyForm.vue";
 
 const openLeadModal = async () => {
-  const { default: ContactsOnlyForm } = await import("./ContactsOnlyForm.vue");
   const { openModal } = useModal();
   openModal(ContactsOnlyForm, { title: "" });
 };

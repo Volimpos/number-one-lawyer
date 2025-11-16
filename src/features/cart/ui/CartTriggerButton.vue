@@ -20,12 +20,11 @@
 import { Button } from "~/src/shared/ui/button";
 import { useModal } from "~/src/shared/model/modal/store";
 import { useCart } from "../model/store";
+import Cart from "./Cart.vue";
 const cartStore = useCart();
 const { productsInCart } = storeToRefs(cartStore);
 const modalStore = useModal();
 const { openModal } = modalStore;
-
-const Cart = defineAsyncComponent(() => import("./Cart.vue"));
 </script>
 
 <style scoped></style>
