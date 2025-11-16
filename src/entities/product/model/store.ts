@@ -2,7 +2,7 @@ import type { Product } from "~/src/entities/product";
 import { fetchProducts } from "../api/fetchProducts";
 
 export const useProductStore = defineStore("productStore", () => {
-  const products = ref<Product[] | null>(null);
+  const products = ref<Product[]>([]);
 
   const total = ref<number>(1);
   const page = ref<number>(1);

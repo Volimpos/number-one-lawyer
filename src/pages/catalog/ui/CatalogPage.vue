@@ -22,7 +22,6 @@ import { useProductStore } from "~/src/entities/product/model/store";
 import type { ProductsPage } from "~/src/entities/product";
 
 const route = useRoute();
-const router = useRouter();
 const catalog = useCatalog();
 
 const category = computed(() =>
