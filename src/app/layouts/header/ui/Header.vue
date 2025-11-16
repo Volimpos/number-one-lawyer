@@ -86,10 +86,8 @@ const { isTransparent } = useHeaderScroll();
 }
 
 .logo__image {
-  /* width: 100%; */
   height: 2.25rem;
   object-fit: contain;
-  border: 1px solid red;
   object-position: center left;
   margin-top: -3px;
 }
@@ -124,10 +122,6 @@ const { isTransparent } = useHeaderScroll();
     top: 0.5rem;
     padding-inline: 0.5rem;
     gap: 0.25rem;
-  }
-
-  .header__left {
-    /* padding-inline: 0.5rem; */
   }
 
   .header__left__nav__catalog-item,

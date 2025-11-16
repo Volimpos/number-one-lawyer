@@ -36,10 +36,6 @@ await useAsyncData<ProductsPage>("catalog", async () => {
     category: category.value,
     page: Number(route.query.page) || 1,
   });
-  router.push({
-    params: { category: category.value },
-    query: {},
-  });
 
   return {
     items: productStore.products,
