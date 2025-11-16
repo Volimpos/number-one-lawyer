@@ -23,7 +23,7 @@ import type { ProductsPage } from "~/src/entities/product";
 
 const route = useRoute();
 const catalog = useCatalog();
-
+const router = useRouter();
 const category = computed(() =>
   route.params.category ? String(route.params.category) : ""
 );
@@ -34,6 +34,10 @@ await useAsyncData<ProductsPage>("catalog", async () => {
   await productStore.loadCatalogPage({
     category: category.value,
     page: Number(route.query.page) || 1,
+  });
+  router.push({
+    params: { category: category.value },
+    query: {},
   });
 
   // return {
