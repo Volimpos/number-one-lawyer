@@ -14,7 +14,6 @@ export const useToast = defineStore("toastStore", () => {
   const toastList = ref<Toast[]>([]);
 
   const addToast = (inputToast: Toast) => {
-    console.log("add toast");
     const toast: Toast = {
       id: nanoid(),
       severity: inputToast.severity ?? "info",
