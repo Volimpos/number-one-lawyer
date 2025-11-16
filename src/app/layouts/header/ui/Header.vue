@@ -87,9 +87,10 @@ const { isTransparent } = useHeaderScroll();
 
 .logo__image {
   width: 100%;
-  height: 2.125rem;
-  object-fit: contain;
+  height: 2.25rem;
+  object-fit: cover;
   margin-top: -3px;
+  border: 1px solid transparent;
 }
 
 .header__left__nav {

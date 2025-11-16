@@ -1,32 +1,36 @@
 <template>
-  <Teleport to="body">
-    <div class="toast-container">
-      <transition-group name="toast-list" tag="ul">
-        <li
-          class="toast"
-          :class="{
-            'toast-error': toast.severity === 'error',
-            'toast-info': toast.severity === 'info',
-          }"
-          v-for="toast in toastList"
-          :key="toast.id"
-        >
-          <div class="flex flex-row items-center justify-between gap-2 w-full">
-            <p class="summary">{{ toast.summary }}</p>
-            <Button
-              text
-              severity="contrast"
-              size="small"
-              @click="removeToast(toast)"
+  <ClientOnly>
+    <Teleport to="body">
+      <div class="toast-container">
+        <transition-group name="toast-list" tag="ul">
+          <li
+            class="toast"
+            :class="{
+              'toast-error': toast.severity === 'error',
+              'toast-info': toast.severity === 'info',
+            }"
+            v-for="toast in toastList"
+            :key="toast.id"
+          >
+            <div
+              class="flex flex-row items-center justify-between gap-2 w-full"
             >
-              <i class="pi pi-times"></i>
-            </Button>
-          </div>
-          <div class="details">{{ toast.details }}</div>
-        </li>
-      </transition-group>
-    </div>
-  </Teleport>
+              <p class="summary">{{ toast.summary }}</p>
+              <Button
+                text
+                severity="contrast"
+                size="small"
+                @click="removeToast(toast)"
+              >
+                <i class="pi pi-times"></i>
+              </Button>
+            </div>
+            <div class="details">{{ toast.details }}</div>
+          </li>
+        </transition-group>
+      </div>
+    </Teleport>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">

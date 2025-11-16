@@ -80,7 +80,7 @@ const onSubmit = () => {
 const sendContactsToServer = async () => {
   loading.value = true;
   const response = await sendContacts(formValues.value);
-  if (response?.result) {
+  if (response && response.result) {
     closeModal();
     addToast({
       summary: "Спасибо за заказ",

@@ -1,31 +1,33 @@
 <template>
-  <Teleport to="body">
-    <Transition name="fade">
-      <div class="modal-overlay" v-if="isMaskOpen" @click="toggleModal">
-        <Transition name="slide-up">
-          <div class="modal" v-if="isModalOpen" @click.stop>
-            <div class="modal-header">
-              <div class="header-title">
-                {{ props?.title ?? "Диалог" }}
+  <ClientOnly>
+    <Teleport to="body">
+      <Transition name="fade">
+        <div class="modal-overlay" v-if="isMaskOpen" @click="toggleModal">
+          <Transition name="slide-up">
+            <div class="modal" v-if="isModalOpen" @click.stop>
+              <div class="modal-header">
+                <div class="header-title">
+                  {{ props?.title ?? "Диалог" }}
+                </div>
+                <Button
+                  text
+                  shape="circle"
+                  severity="secondary"
+                  @click="toggleModal"
+                >
+                  <i class="pi pi-times"></i>
+                </Button>
               </div>
-              <Button
-                text
-                shape="circle"
-                severity="secondary"
-                @click="toggleModal"
-              >
-                <i class="pi pi-times"></i>
-              </Button>
-            </div>
 
-            <div class="modal-body">
-              <component :is="component" v-if="component"></component>
+              <div class="modal-body">
+                <component :is="component" v-if="component"></component>
+              </div>
             </div>
-          </div>
-        </Transition>
-      </div>
-    </Transition>
-  </Teleport>
+          </Transition>
+        </div>
+      </Transition>
+    </Teleport>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
