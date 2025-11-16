@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { formatPrice } from "~/src/shared/lib/formatPrice";
 import { capitalizeFirst } from "~/src/shared/lib/capitalizeFirst";
-import { slug } from "../lib/slug";
+import { slug } from "~/src/entities/product/lib/slug";
 import LinkButton from "~/src/shared/ui/LinkButton/LinkButton.vue";
 import type { Product } from "../types";
 

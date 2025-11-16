@@ -51,6 +51,7 @@ import ctaSection from "./sections/cta-section.vue";
 import type { LandingInterface } from "../model/landing";
 import useApi from "~/src/shared/api/useApi";
 import { ErrorMessage } from "~/src/shared/ui/ErrorMessage";
+
 useSeoMeta({
   title: "Бренд украшений с характером | TAOLE",
   ogTitle: "Бренд украшений с характером | TAOLE",

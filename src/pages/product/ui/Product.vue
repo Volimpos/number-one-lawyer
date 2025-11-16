@@ -1,62 +1,49 @@
 <template>
   <div class="product" v-if="product">
     <ProductImages :images="product.images" />
-    <ProductInfo
-      :title="product.title"
-      :description="product.description"
-      :price="product.price"
-      :highlights="product.highlights"
-      :sizes="product.sizes"
-    />
-    <!-- <Button label="В корзину" class="product__submit-btn" @click="addToCart" /> -->
+    <div class="mt-20">
+      <TitleAndPrice :title="product.title" :price="product.price" />
+      <h2 class="sr-only">Информация о товаре</h2>
+      <div
+        class="flex flex-row items-start mt-10 w-full max-lg:flex-col-reverse"
+      >
+        <DescriptionAndHighlights
+          :description="product.description"
+          :highlights="Object.values(product.highlights)"
+        />
+        <div class="product-controls-container">
+          <ProductControls :product="product" />
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- <SizeGuide /> -->
 </template>
 
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import ProductImages from "./sections/ProductImages.vue";
-import ProductInfo from "./sections/ProductInfo.vue";
+import TitleAndPrice from "./sections/TitleAndPrice.vue";
+import DescriptionAndHighlights from "./sections/DescriptionAndHighlights.vue";
 import type { Product } from "~/src/entities/product/types";
-import { slugParseId } from "~/src/entities/product/lib/slug";
+import { parseIdFromSlug } from "~/src/entities/product/lib/slug";
 import { fetchProductById } from "~/src/entities/product/api/fetchProductById";
-
+import { ProductControls } from "~/src/widgets/product-controls";
+import { getProductFromStore } from "~/src/entities/product/model/getProductFromStore";
 const route = useRoute();
+const productId = ref<string>(parseIdFromSlug(route.params.slug) ?? "");
 
-// Убеждаем TypeScript, что slug это строка
-const slug = Array.isArray(route.params.slug)
-  ? (route.params.slug[0] ?? "")
-  : (route.params.slug ?? "");
+const product = ref<Product | null>(null);
 
-const productId = ref<string>(slugParseId(slug) ?? "");
+product.value = getProductFromStore(productId.value);
 
-const { data } = await useAsyncData(
-  `product/${productId}`, // Уникальный ключ для кэширования
-  async () => await fetchProductById(productId.value)
-);
+if (!product.value) {
+  const { data } = await useAsyncData(
+    `product/${productId}`, // Уникальный ключ для кэширования
+    async () => await fetchProductById(productId.value)
+  );
 
-const product = computed<Product | null>(() => data.value?.product);
-
-// const productCartStore = useProductCartStore();
-
-// const addToCart = () => {
-//   if (!product.value) {
-//     toast.add({ severity: "error", summary: "Товар не найден", life: 3000 });
-//     return;
-//   }
-//   if (!selectedSize.value) {
-//     toast.add({ severity: "error", summary: "Размер не выбран", life: 3000 });
-//     return;
-//   }
-
-//   productCartStore.addProduct(product.value, selectedSize.value);
-//   toast.add({
-//     severity: "success",
-//     summary: product.value.title,
-//     detail: `Добавлено в корзину (размер ${selectedSize.value})`,
-//     life: 3000,
-//   });
-// };
+  product.value = data.value?.product;
+}
 
 useSeoMeta({
   title: () => product.value?.title,
@@ -77,9 +64,22 @@ useSeoMeta({
   padding: 6rem 1rem;
 }
 
+.product-controls-container {
+  border: 1px solid var(--gray150);
+  border-width: 0 0 0 1px;
+  padding-bottom: 1rem;
+  flex: 1;
+  padding-left: 2rem;
+}
+
 @media screen and (max-width: 64rem) {
   .product {
     padding: 6rem 0.5rem;
+  }
+  .product-controls-container {
+    padding: 1rem 0;
+    width: 100%;
+    border: none;
   }
 }
 </style>

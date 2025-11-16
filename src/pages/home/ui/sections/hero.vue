@@ -16,7 +16,9 @@
       <div class="image-overlay">
         <div class="overlay__text-block second-block">
           <h2 class="hero-h2">{{ props.heroText2 }}</h2>
-          <Button large>Оформить заказ</Button>
+          <ContactsOnlyTrigger>
+            <Button size="large">Оформить заказ</Button>
+          </ContactsOnlyTrigger>
         </div>
       </div>
     </section>
@@ -26,6 +28,7 @@
 <script setup lang="ts">
 import { Button } from "~/src/shared/ui/button";
 import { LinkButton } from "~/src/shared/ui/LinkButton";
+import { ContactsOnlyTrigger } from "~/src/widgets/contacts-only-form";
 const props = defineProps({
   heroImage1: {
     type: String,

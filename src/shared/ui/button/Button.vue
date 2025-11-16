@@ -1,138 +1,261 @@
 <template>
-  <button class="app-button" :class="setBtnClass()" :disabled="props.disabled">
-    <slot name="iconLeft" v-if="!loading"></slot>
-    <i class="pi pi-spinner-dotted pi-spin" v-if="loading"></i>
-    <slot></slot>
-    <slot name="iconRight" v-if="!loading"></slot>
+  <button
+    :class="buttonClass"
+    :disabled="disabled || loading"
+    :aria-label="ariaLabel"
+    :aria-busy="loading"
+    v-bind="$attrs"
+  >
+    <span v-if="loading" class="app-button__loading">
+      <i class="pi pi-spinner-dotted pi-spin"></i>
+    </span>
+
+    <span v-else class="app-button__content">
+      <slot name="iconLeft"></slot>
+      <span class="app-button__label">
+        <slot></slot>
+      </span>
+      <slot name="iconRight"></slot>
+    </span>
   </button>
 </template>
 
 <script setup lang="ts">
-const loading = defineModel("loading");
 interface Props {
   severity?: "primary" | "secondary" | "contrast";
   shape?: "rect" | "circle";
-  large?: boolean;
+  size?: "small" | "normal" | "large";
+  loading?: boolean;
+  disabled?: boolean;
   fluid?: boolean;
   text?: boolean;
-  disabled?: boolean;
+  ariaLabel?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   severity: "primary",
   shape: "rect",
-  large: false,
+  size: "normal",
   fluid: false,
   text: false,
   disabled: false,
 });
+const slots = useSlots();
 
-const setBtnClass = (): string => {
-  let btnClass = "";
-  if (props.severity === "primary") btnClass += "btn-primary ";
-  if (props.severity === "secondary") btnClass += "btn-secondary ";
-  if (props.severity === "contrast") btnClass += "btn-contrast ";
-  if (props.shape === "rect") btnClass += "btn-rect ";
-  if (props.shape === "circle") btnClass += "btn-circle ";
-  if (props.text && props.shape === "rect") btnClass += "btn-rect-text ";
-  if (props.text && props.shape === "circle") btnClass += "btn-circle-text ";
-  if (props.fluid && props.shape !== "circle") btnClass += "fluid ";
-  if (props.large && props.shape !== "circle") btnClass += "btn-rect-large ";
-  if (!props.large && props.shape !== "circle") btnClass += "btn-rect-normal ";
-
-  if (props.fluid && props.shape !== "circle") btnClass += "fluid";
-
-  if (props.disabled) btnClass += "disabled";
-
-  return btnClass;
-};
+const buttonClass = computed(() => [
+  "app-button",
+  `app-button-${props.severity}`,
+  `app-button-${props.shape}`,
+  `app-button-${props.size}`,
+  {
+    "app-button-fluid": props.fluid,
+    "app-button-text": props.text,
+    "app-button-loading": props.loading,
+    "app-button-disabled": props.disabled,
+    "app-button-icon-only":
+      !slots.default && (slots.iconLeft || slots.iconRight),
+  },
+]);
 </script>
 
 <style scoped>
 .app-button {
-  transition: 200ms;
-  font-weight: 500;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  position: relative;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
   border: none;
   outline: none;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 200ms;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
 }
 
-.app-button:hover {
-  opacity: 0.8;
-}
-.app-button:active {
-  opacity: 0.9;
+.app-button i,
+.app-button__content i,
+.app-button__loading i,
+.app-button__label i {
+  font-size: 0.875rem;
 }
 
-.btn-rect {
+/* Формы */
+.app-button-rect {
   border-radius: 0.25rem;
+  font-size: 0.875rem;
 }
-.btn-circle {
+
+.app-button-circle {
   border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+/* Размеры для rectangular кнопок */
+.app-button-rect.app-button-small {
   height: 2rem;
-  width: 2rem;
+  padding-inline: 0.75rem;
 }
 
-.btn-primary {
-  background-color: var(--contrast);
-  color: white;
-}
-.btn-primary i {
-  color: white;
-}
-
-.btn-secondary {
-  background-color: var(--gray200);
-  color: var(--gray500);
-}
-.btn-secondary i {
-  color: var(--gray500);
-}
-
-.btn-contrast {
-  background-color: white;
-  color: var(--contrast);
-}
-.btn-contrast i {
-  color: var(--contrast);
-}
-
-.btn-rect-normal {
+.app-button-rect.app-button-normal {
   height: 2.5rem;
   padding-inline: 1rem;
 }
 
-.btn-rect-large {
+.app-button-rect.app-button-large {
   height: 3rem;
   padding-inline: 1.25rem;
 }
 
-.btn-rect-text {
-  background-color: transparent !important;
-  height: auto;
-  padding: 0;
+/* Размеры для circle кнопок */
+.app-button-circle.app-button-small {
+  width: 2rem;
+  height: 2rem;
 }
 
-.btn-circle-text {
-  background-color: transparent;
+.app-button-circle.app-button-normal {
+  width: 2.5rem;
+  height: 2.5rem;
 }
-.btn-circle-text:hover,
-.btn-circle-text:active {
+
+.app-button-circle.app-button-large {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Severity стили */
+.app-button-primary {
+  background-color: var(--contrast);
+  color: white;
+}
+
+.app-button-primary:hover:not(.app-button-disabled) {
+  opacity: 0.8;
+}
+
+.app-button-primary:active:not(.app-button-disabled) {
+  opacity: 0.9;
+}
+
+.app-button-secondary {
+  background-color: var(--gray150);
+  color: var(--gray500);
+}
+
+.app-button-secondary:hover:not(.app-button-disabled) {
   background-color: var(--gray200);
 }
-.btn-circle-text:disabled {
-  background-color: transparent !important;
+
+.app-button-secondary:active:not(.app-button-disabled) {
+  background-color: var(--gray150);
 }
 
-.fluid {
+.app-button-contrast {
+  background-color: white;
+  color: var(--contrast);
+}
+
+.app-button-contrast:hover:not(.app-button-disabled) {
+  background-color: var(--gray150);
+}
+
+.app-button-contrast:active:not(.app-button-disabled) {
+  background-color: var(--gray100);
+}
+
+/* Text variant */
+.app-button-text {
+  background-color: transparent;
+}
+
+.app-button-text:not(.app-button-circle) {
+  padding: 0 !important;
+}
+
+.app-button-text:hover:not(.app-button-disabled) {
+  background-color: transparent;
+}
+
+.app-button-text:active:not(.app-button-disabled) {
+  background-color: transparent;
+}
+
+.app-button-text.app-button-primary {
+  color: var(--contrast);
+}
+
+.app-button-text.app-button-secondary {
+  color: var(--gray400);
+}
+
+.app-button-text.app-button-contrast {
+  color: white;
+}
+
+/* Circle text variant */
+.app-button-circle.app-button-text:hover:not(.app-button-disabled) {
+  background-color: var(--gray150);
+}
+
+.app-button-circle.app-button-text:active:not(.app-button-disabled) {
+  background-color: var(--gray200);
+}
+
+/* Rect text variant - убираем высоту и паддинги */
+.app-button-rect.app-button-text {
+  height: auto;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Circle text variant - убираем фиксированные размеры */
+.app-button-circle.app-button-text {
+  width: auto;
+  height: auto;
+  padding: 1rem;
+}
+
+.app-button-circle.app-button-text.app-button-small {
+  padding: 0.5rem;
+}
+
+/* Модификаторы */
+.app-button-fluid {
   width: 100%;
+}
+
+.app-button-loading {
+  cursor: wait;
+}
+
+.app-button-loading .app-button__content {
+  opacity: 0.7;
+}
+
+.app-button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Внутренние элементы */
+.app-button__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-button__content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.app-button__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

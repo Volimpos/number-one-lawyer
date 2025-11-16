@@ -6,4 +6,4 @@
 import { HomePage } from "~/src/pages/home";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

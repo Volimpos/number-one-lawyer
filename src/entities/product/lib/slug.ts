@@ -126,13 +126,16 @@ const slug = (title: string): string => {
   );
 };
 
-const slugParseId = (slug: string | number) => {
+const parseIdFromSlug = (slug: string | string[] | undefined) => {
   if (!slug) {
     throw "Слаг не передан";
   }
-  const stringSlug = typeof slug === "string" ? slug : String(slug);
+  const parsedSlug = Array.isArray(slug) ? (slug[0] ?? "") : (slug ?? "");
+
+  const stringSlug =
+    typeof parsedSlug === "string" ? parsedSlug : String(parsedSlug);
 
   return stringSlug.split("-")[0];
 };
 
-export { slug, slugParseId };
+export { slug, parseIdFromSlug };

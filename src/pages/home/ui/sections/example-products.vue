@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ProductCard } from "~/src/entities/product/ui";
+import { ProductCard } from "~/src/entities/product";
 import type { Product } from "~/src/entities/product";
 interface Props {
   products: Product[];

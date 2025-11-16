@@ -26,6 +26,7 @@ interface Props {
   button?: boolean;
   link?: string;
   nuxtLink?: boolean;
+  fluid?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -34,6 +35,7 @@ const props = withDefaults(defineProps<Props>(), {
   button: false,
   link: "#",
   nuxtLink: false,
+  fluid: false,
 });
 
 const setBtnClass = (): string => {
@@ -48,6 +50,7 @@ const setBtnClass = (): string => {
     if (props.severity === "primary") btnClass += "link-rimary ";
     if (props.severity === "secondary") btnClass += "link-secondary ";
     if (props.severity === "contrast") btnClass += "link-contrast ";
+    if (props.fluid) btnClass += "fluid";
   }
 
   if (props.large) btnClass += "link-large ";
@@ -129,5 +132,11 @@ const setBtnClass = (): string => {
 }
 .link-button-contrast i {
   color: var(--contrast);
+}
+
+.fluid {
+  width: 100%;
+  text-align: center;
+  border: 2px solid violet;
 }
 </style>

@@ -4,7 +4,7 @@
       v-for="size in props.sizes"
       :value="size.value"
       :selected="isSizeSelected(size)"
-      :in-stock="size.inStock"
+      :inStock="size.inStock"
       @onSelect="onSelect(size)"
     />
   </fieldset>

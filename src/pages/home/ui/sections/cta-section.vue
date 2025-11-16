@@ -8,12 +8,14 @@
           <LinkButton link="/catalog" nuxt-link button large
             >Перейти в каталог</LinkButton
           >
-          <Button @click="" large severity="contrast">
-            Оформить заказ
-            <template #iconRight>
-              <i class="pi pi-arrow-right" />
-            </template>
-          </Button>
+          <ContactsOnlyTrigger>
+            <Button @click="" text>
+              Оформить заказ
+              <template #iconRight>
+                <i class="pi pi-arrow-right" />
+              </template>
+            </Button>
+          </ContactsOnlyTrigger>
         </div>
       </div>
       <div class="image-block">
@@ -26,9 +28,7 @@
 <script setup lang="ts">
 import { Button } from "~/src/shared/ui/button";
 import { LinkButton } from "~/src/shared/ui/LinkButton";
-// import { useModal } from "~/composables/useModal";
-
-// const { toggleModal } = useModal();
+import { ContactsOnlyTrigger } from "~/src/widgets/contacts-only-form";
 const props = defineProps({
   ctaText: {
     type: String,
@@ -81,7 +81,7 @@ const props = defineProps({
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  gap: 1rem;
+  gap: 2rem;
   font-weight: 500;
 }
 
