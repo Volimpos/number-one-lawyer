@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid";
+
 export const useToast = defineStore("toastStore", () => {
   interface Toast {
     id?: string;
@@ -14,7 +16,7 @@ export const useToast = defineStore("toastStore", () => {
   const addToast = (inputToast: Toast) => {
     console.log("add toast");
     const toast: Toast = {
-      id: crypto.randomUUID(),
+      id: nanoid(),
       severity: inputToast.severity ?? "info",
       summary: inputToast.summary,
       details: inputToast.details,
