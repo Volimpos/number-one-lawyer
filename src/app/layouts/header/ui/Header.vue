@@ -127,7 +127,7 @@ const { isTransparent } = useHeaderScroll();
   }
 
   .header__left {
-    padding-inline: 0.5rem;
+    /* padding-inline: 0.5rem; */
   }
 
   .header__left__nav__catalog-item,
