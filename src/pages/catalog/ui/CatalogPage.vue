@@ -39,13 +39,6 @@ await useAsyncData<ProductsPage>("catalog", async () => {
     params: { category: category.value },
     query: {},
   });
-
-  // return {
-  //   items: productStore.products,
-  //   page: productStore.page,
-  //   total: productStore.total,
-  //   error: productStore.error,
-  // };
 });
 
 const products = computed(() => productStore.products);
