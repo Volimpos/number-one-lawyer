@@ -1,0 +1,1 @@
+import{r,o as s,Q as l}from"./CqicfOM6.js";const a=(n=300)=>{const e=r(!1),o=()=>{e.value=window.scrollY>n};return s(()=>{window.addEventListener("scroll",o)}),l(()=>{window.removeEventListener("scroll",o)}),{isTransparent:e}};export{a as useHeaderScroll};
