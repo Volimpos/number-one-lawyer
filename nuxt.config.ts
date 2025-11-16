@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       title: "Магазин украшений с характером | TAOLE",
     },
   },
+  ssr: false,
   nitro: {
     prerender: {
       ignore: [
