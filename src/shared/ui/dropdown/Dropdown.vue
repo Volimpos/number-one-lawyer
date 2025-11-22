@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="triggerRef"
     @mouseenter="isDropdownOpen = true"
     @mouseleave="isDropdownOpen = false"
     class="dropdown-container"

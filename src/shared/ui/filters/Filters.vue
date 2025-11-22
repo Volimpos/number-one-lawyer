@@ -109,6 +109,7 @@ watch(
   align-items: center;
   justify-content: start;
   gap: 1rem;
+  touch-action: manipulation;
 }
 
 .filters-categories {

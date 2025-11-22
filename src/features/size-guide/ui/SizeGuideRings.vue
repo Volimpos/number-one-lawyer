@@ -89,7 +89,7 @@ const selectPrevSize = () => {
 
 @media screen and (max-width: 64rem) {
   .sizes-table-container {
-    height: calc(100dvh - 26rem);
+    height: calc(100dvh - 25rem);
   }
 }
 </style>

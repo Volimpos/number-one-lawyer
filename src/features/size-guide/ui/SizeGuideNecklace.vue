@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full border">
+  <div class="h-full w-full">
     <SizeTable
       :measurementArray="measurementArray"
       :sizeValuesArray="measurementArray"
