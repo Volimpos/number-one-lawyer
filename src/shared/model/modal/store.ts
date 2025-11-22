@@ -7,11 +7,13 @@ export const useModal = defineStore("modalStore", () => {
   const scrollBlock = useScroll();
   const component = ref<Component | null>(null);
   const props = ref<Record<string, any> | null>(null);
-
+  const title = ref<string>("");
   const openModal = async (
     childComponent: Component | null = null,
+    modalTitle: string = "Диалог",
     modalProps: Record<string, any> = {}
   ) => {
+    title.value = modalTitle;
     isMaskOpen.value = true;
     scrollBlock.lock();
     setTimeout(() => {
@@ -40,6 +42,7 @@ export const useModal = defineStore("modalStore", () => {
     isMaskOpen,
     component,
     props,
+    title,
     openModal,
     closeModal,
     toggleModal,

@@ -488,4 +488,11 @@ h2 {
 p {
   margin-bottom: 0.5rem;
 }
+
+@media screen and (max-width: 64rem) {
+  .privacy {
+    width: 100%;
+    padding: 6rem 0.5rem;
+  }
+}
 </style>

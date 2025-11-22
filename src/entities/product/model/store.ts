@@ -1,5 +1,6 @@
 import type { Product } from "~/src/entities/product";
 import { fetchProducts } from "../api/fetchProducts";
+import type { SortValueType } from "~/src/shared/types/filter";
 
 export const useProductStore = defineStore("productStore", () => {
   const products = ref<Product[]>([]);
@@ -11,7 +12,12 @@ export const useProductStore = defineStore("productStore", () => {
   const loading = ref<boolean>(false);
 
   const loadCatalogPage = async (
-    params: Partial<{ page: number; category: string }>
+    params: Partial<{
+      page: number;
+      category: string;
+      sort: SortValueType;
+      title: string;
+    }>
   ) => {
     loading.value = true;
     const response = await fetchProducts(params);

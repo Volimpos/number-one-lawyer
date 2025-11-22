@@ -10,7 +10,7 @@ import ContactsOnlyForm from "./ContactsOnlyForm.vue";
 
 const openLeadModal = async () => {
   const { openModal } = useModal();
-  openModal(ContactsOnlyForm, { title: "" });
+  openModal(ContactsOnlyForm, "");
 };
 </script>
 

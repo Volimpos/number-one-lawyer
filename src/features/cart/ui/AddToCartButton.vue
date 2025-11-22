@@ -18,7 +18,14 @@ const props = defineProps<{
 }>();
 
 const addProductToCart = () => {
-  if (!props.product || !props.size) return;
+  if (!props.product || !props.size) {
+    addToast({
+      severity: "error",
+      summary: "Ошибка",
+      details: "Размер не выбран",
+    });
+    return;
+  }
   addProduct(props.product, props.size);
   addToast({
     summary: props.product.title,

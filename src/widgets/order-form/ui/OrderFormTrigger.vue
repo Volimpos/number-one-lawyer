@@ -1,13 +1,5 @@
 <template>
-  <Button
-    fluid
-    size="large"
-    @click="
-      openModal(OrderForm, {
-        title: 'Корзина',
-      })
-    "
-  >
+  <Button fluid size="large" @click="openModal(OrderForm, 'Корзина')">
     Корзина
     <template #iconLeft>
       <i class="pi pi-cart-arrow-down" v-if="productsInCart.length > 0"></i>

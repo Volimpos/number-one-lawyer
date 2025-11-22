@@ -1,16 +1,18 @@
 <template>
   <div class="catalog-page">
     <h2 class="sr-only">Каталог</h2>
+
     <Catalog
       :products="products"
       :error="error"
       :loading="loading"
       :page="page"
       :total="total"
-      @first="onFirst"
-      @prev="onPrev"
-      @next="onNext"
-      @last="onLast"
+      @first="handleFirst"
+      @prev="handlePrev"
+      @next="handleNext"
+      @last="handleLast"
+      @onSort="(value) => onSort(value)"
     />
   </div>
 </template>
@@ -19,7 +21,7 @@
 import { Catalog } from "~/src/features/catalog";
 import { useCatalog } from "~/src/features/catalog/model/useCatalog";
 import { useProductStore } from "~/src/entities/product/model/store";
-import type { ProductsPage } from "~/src/entities/product";
+import { sortBy } from "../lib/sortBy";
 
 const route = useRoute();
 const catalog = useCatalog();
@@ -27,10 +29,11 @@ const router = useRouter();
 const category = computed(() =>
   route.params.category ? String(route.params.category) : ""
 );
+const activeSort = ref<string>("");
 
 const productStore = useProductStore();
 
-await useAsyncData<ProductsPage>("catalog", async () => {
+await useAsyncData("catalog", async () => {
   await productStore.loadCatalogPage({
     category: category.value,
     page: Number(route.query.page) || 1,
@@ -39,7 +42,21 @@ await useAsyncData<ProductsPage>("catalog", async () => {
     params: { category: category.value },
     query: {},
   });
+  return true;
 });
+
+const onSort = async (value: any) => {
+  // activeSort.value = sortBy(value);
+  await productStore.loadCatalogPage({
+    category: category.value,
+    page: 1,
+    sort: sortBy(value),
+  });
+  router.push({
+    params: { category: category.value },
+    query: { sort: sortBy(value) },
+  });
+};
 
 const products = computed(() => productStore.products);
 const page = computed(() => productStore.page);
@@ -48,6 +65,31 @@ const error = computed(() => productStore.error);
 const loading = catalog.loading;
 
 const { onFirst, onPrev, onNext, onLast } = useCatalog();
+
+const scrollToTop = () => {
+  if (typeof window === "undefined") return;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+const handleFirst = () => {
+  onFirst();
+  scrollToTop();
+};
+
+const handlePrev = () => {
+  onPrev();
+  scrollToTop();
+};
+
+const handleNext = () => {
+  onNext();
+  scrollToTop();
+};
+
+const handleLast = () => {
+  onLast();
+  scrollToTop();
+};
 
 useSeoMeta({
   title: "Каталог товаров TAOLE",

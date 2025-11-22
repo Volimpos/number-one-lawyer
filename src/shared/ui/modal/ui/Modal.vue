@@ -7,7 +7,7 @@
             <div class="modal" v-if="isModalOpen" @click.stop>
               <div class="modal-header">
                 <div class="header-title">
-                  {{ props?.title ?? "Диалог" }}
+                  {{ title }}
                 </div>
                 <Button
                   text
@@ -20,7 +20,11 @@
               </div>
 
               <div class="modal-body">
-                <component :is="component" v-if="component"></component>
+                <component
+                  :is="component"
+                  v-if="component"
+                  v-bind="props"
+                ></component>
               </div>
             </div>
           </Transition>
@@ -35,7 +39,8 @@ import { useModal } from "~/src/shared/model/modal/store";
 import { Button } from "~/src/shared/ui/button";
 const modalStore = useModal();
 
-const { isModalOpen, isMaskOpen, component, props } = storeToRefs(modalStore);
+const { isModalOpen, isMaskOpen, component, props, title } =
+  storeToRefs(modalStore);
 const { toggleModal } = modalStore;
 </script>
 

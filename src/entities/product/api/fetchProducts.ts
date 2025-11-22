@@ -1,11 +1,12 @@
 import api from "~/src/shared/api/useApi";
+import type { SortValueType } from "~/src/shared/types/filter";
 
 interface FetchProductsParams {
   page?: number;
   per_page?: number;
   search?: string;
   category?: string;
-  sort?: "priceUp" | "priceDown" | "dateUp" | "dateDown";
+  sort?: SortValueType;
   min_price?: number;
   max_price?: number;
 }

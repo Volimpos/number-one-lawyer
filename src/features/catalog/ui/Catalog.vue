@@ -1,5 +1,7 @@
 <template>
   <div class="catalog">
+    <Filters @onSort="(value: SortValueType) => emit('onSort', value)" />
+
     <div class="products-container" v-if="props.products && !error">
       <ProductCard
         v-for="product in props.products"
@@ -26,7 +28,8 @@
 import { ProductCard, type Product } from "~/src/entities/product";
 import { ErrorMessage } from "~/src/shared/ui/ErrorMessage";
 import { Paginator } from "~/src/features/paginator";
-
+import { Filters } from "~/src/shared/ui/filters";
+import type { SortValueType } from "~/src/shared/types/filter";
 const props = defineProps<{
   products: Product[] | null;
   error?: any;
@@ -38,11 +41,15 @@ const props = defineProps<{
   onNext: () => void;
   onLast: () => void;
 }>();
+
+const emit = defineEmits<{
+  (e: "onSort", sortValue: SortValueType): void;
+}>();
 </script>
 
 <style scoped>
 .catalog {
-  padding: 10rem 1rem 5rem;
+  padding: 8rem 1rem 5rem;
   width: 100%;
 }
 
@@ -52,6 +59,7 @@ const props = defineProps<{
   row-gap: 2.5rem;
   column-gap: 2rem;
   width: 100%;
+  margin-top: 2rem;
 }
 
 .paginator-container {

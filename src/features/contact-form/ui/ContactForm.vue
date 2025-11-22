@@ -32,7 +32,7 @@ import { InputPhone } from "~/src/shared/ui/input-phone";
 import { InputText } from "~/src/shared/ui/input-text";
 import { Button } from "~/src/shared/ui/button";
 import { AcceptPrivacy } from "~/src/shared/ui/accept-privacy";
-import { validateForm } from "../model.ts/validateForm";
+import { validateForm } from "../model/validateForm";
 import type { ContactFormInterface, ContactFormError } from "../types";
 import { useToast } from "~/src/shared/model/toast/store";
 import { sendContacts } from "../api/sendContacts";

@@ -19,7 +19,7 @@ export const useToast = defineStore("toastStore", () => {
       severity: inputToast.severity ?? "info",
       summary: inputToast.summary,
       details: inputToast.details,
-      life: inputToast.life ?? 7000,
+      life: inputToast.life ?? 4000,
     };
 
     toastList.value.push(toast);

@@ -119,11 +119,11 @@ const setBtnClass = (): string => {
   color: white;
 }
 .link-button-secondary {
-  background-color: var(--gray100);
-  color: var(--gray300);
+  background-color: var(--gray150);
+  color: var(--gray500);
 }
 .link-button-secondary i {
-  color: var(--gray300);
+  color: var(--gray500);
 }
 
 .link-button-contrast {
