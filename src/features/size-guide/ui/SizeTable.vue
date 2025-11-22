@@ -71,6 +71,8 @@ watch(
   max-height: 104%;
   position: relative;
   touch-action: manipulation;
+  z-index: 11;
+  overscroll-behavior: contain;
 }
 
 .table-header {

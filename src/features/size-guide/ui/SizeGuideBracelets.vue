@@ -1,11 +1,13 @@
 <template>
-  <SizeTable
-    :measurementArray="measurementArray"
-    :sizeValuesArray="sizeValuesArray"
-    :selected-size="selectedSize"
-    size-measure="Запястье (см)"
-    @onSelect="(size: string) => selectSize(size)"
-  />
+  <div class="h-full w-full">
+    <SizeTable
+      :measurementArray="measurementArray"
+      :sizeValuesArray="sizeValuesArray"
+      :selected-size="selectedSize"
+      size-measure="Запястье (см)"
+      @onSelect="(size: string) => selectSize(size)"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
