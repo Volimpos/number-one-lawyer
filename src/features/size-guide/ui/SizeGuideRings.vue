@@ -66,6 +66,7 @@ const selectPrevSize = () => {
   background-color: var(--gray100);
   border-radius: 0.25rem;
   padding: 1rem;
+  touch-action: manipulation;
 }
 
 .ring-text {
@@ -82,13 +83,13 @@ const selectPrevSize = () => {
 }
 
 .sizes-table-container {
-  height: 40svh;
+  height: 40dvh;
   margin-top: 2rem;
 }
 
 @media screen and (max-width: 64rem) {
   .sizes-table-container {
-    height: calc(100svh - 26rem);
+    height: calc(100dvh - 26rem);
   }
 }
 </style>

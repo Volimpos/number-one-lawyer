@@ -70,6 +70,7 @@ watch(
   overflow-y: auto;
   max-height: 104%;
   position: relative;
+  touch-action: manipulation;
 }
 
 .table-header {
