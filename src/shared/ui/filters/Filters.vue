@@ -118,6 +118,12 @@ watch(
   gap: 1rem;
   width: 100%;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
+.filters-categories::-webkit-scrollbar {
+  width: 0;
 }
 
 @media screen and (max-width: 64rem) {

@@ -1,8 +1,10 @@
 <template>
   <div
+    ref="triggerRef"
     @mouseenter="isDropdownOpen = true"
     @mouseleave="isDropdownOpen = false"
     class="dropdown-container"
+    @click.stop
   >
     <Button size="large" severity="secondary">
       <slot></slot>
@@ -32,6 +34,12 @@ import { Button } from "../button";
 import type { DropdownItemInterface } from "./types";
 
 const isDropdownOpen = ref<boolean>(false);
+
+onMounted(() => {
+  document.addEventListener("click", () => {
+    isDropdownOpen.value = false;
+  });
+});
 
 const props = defineProps<{
   items?: DropdownItemInterface[];

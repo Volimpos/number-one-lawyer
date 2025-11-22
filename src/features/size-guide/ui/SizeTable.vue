@@ -73,7 +73,6 @@ watch(
   touch-action: manipulation;
   z-index: 11;
   overscroll-behavior: contain;
-  height: 104%;
 }
 
 .table-header {
@@ -117,8 +116,8 @@ watch(
 }
 
 @media screen and (max-width: 64rem) {
-  /* .table-body {
-    max-height: calc(100dvh - 27rem);
-  } */
+  .table-container {
+    max-height: 100%;
+  }
 }
 </style>
