@@ -117,11 +117,8 @@ watch(
 }
 
 @media screen and (max-width: 64rem) {
-  .table-container {
-    height: calc(100dvh - 24rem);
-  }
-  .table-body {
+  /* .table-body {
     max-height: calc(100dvh - 27rem);
-  }
+  } */
 }
 </style>
