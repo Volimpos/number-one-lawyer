@@ -73,6 +73,7 @@ watch(
   touch-action: manipulation;
   z-index: 11;
   overscroll-behavior: contain;
+  height: 100%;
 }
 
 .table-header {
