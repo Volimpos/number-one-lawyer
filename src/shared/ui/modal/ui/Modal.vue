@@ -118,7 +118,8 @@ const { toggleModal } = modalStore;
     padding: 1rem;
   }
   .modal-body {
-    max-height: calc(100% - 4.5rem);
+    max-height: 92%;
+    height: 92%;
   }
 }
 

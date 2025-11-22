@@ -67,8 +67,8 @@ watch(
   display: flex;
   flex-direction: column;
   user-select: none;
-  height: 100%;
   overflow-y: auto;
+  max-height: 104%;
   position: relative;
 }
 

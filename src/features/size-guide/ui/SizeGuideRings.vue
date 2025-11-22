@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full overflow-hidden">
     <div class="ring-container">
       <p class="ring-text">
         Приложите Ваше кольцо, чтобы определить точный размер. Круг должен быть
@@ -84,5 +84,11 @@ const selectPrevSize = () => {
 .sizes-table-container {
   height: 40svh;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 64rem) {
+  .sizes-table-container {
+    height: calc(100svh - 26rem);
+  }
 }
 </style>
