@@ -91,9 +91,13 @@ import { LeadButton } from "~/src/features/lead-button";
   .cta-section {
     padding: 4rem 1rem;
   }
+
   .cta-section__inner {
     flex-direction: column;
     height: auto;
+  }
+  .cta-section__title {
+    font-size: 2rem;
   }
   .image-block {
     width: 100%;
