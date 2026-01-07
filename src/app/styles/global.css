@@ -1,13 +1,13 @@
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Manrope", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 *::selection {
-  background: var(--contrast);
-  color: white;
+  background: var(--blueShadow);
+  /* color: white; */
 }
 *::-moz-selection {
   background: var(--contrast);
@@ -20,12 +20,22 @@ p {
 }
 
 :root {
-  --contrast: #181818;
-  --gray100: #f9f9f9;
-  --gray150: #f4f4f4;
-  --gray200: #e6e6e6;
-  --gray300: #acacac;
-  --gray400: #686868;
-  --gray500: #373737;
-  --contrastTransparent: rgba(0, 0, 0, 0.35);
+  --white: white;
+  --gray100: #f2f2f2;
+  --gray200: #e5e5e5;
+  --gray300: #b8b8b8;
+  --gray400: #707070;
+  --gray500: #3f3f3f;
+  --gray600: #282828;
+  --primary: #ffb33f;
+  --primaryDark: #f4a020;
+  --blueShadow: rgba(121, 114, 216, 0.05);
+  --blueAccent: rgba(121, 114, 216, 0.2);
+  --yellowShadow: rgba(166, 128, 0, 0.05);
+  --yellowToBlueGradient: linear-gradient(
+    137.31deg,
+    rgba(255, 196, 106, 0.2) 31.73%,
+    rgba(121, 114, 216, 0.2) 77.4%
+  );
+  --buttonBorderRadius: 0.25rem;
 }

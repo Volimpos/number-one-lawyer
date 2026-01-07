@@ -1,13 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tsconfigPaths from "vite-tsconfig-paths";
-import Aura from "@primeuix/themes/aura";
+
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: "2025-12-29",
   devtools: { enabled: true },
   app: {
     head: {
       link: [{ rel: "icon", type: "image/svg", href: "./favicon.svg" }],
-      title: "Магазин украшений с характером | TAOLE",
+      title: "Консультация юриста в Челябинске | Юрист №1",
     },
   },
   alias: {
@@ -20,9 +20,9 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       {
-        name: "Montserrat",
+        name: "Manrope",
         provider: "google",
-        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        weights: [200, 300, 400, 500, 600, 700, 800],
       },
     ],
   },

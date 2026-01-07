@@ -72,7 +72,7 @@ watch(
   position: relative;
   touch-action: manipulation;
   z-index: 11;
-  overscroll-behavior: contain;
+  overscroll-behavior: none;
 }
 
 .table-header {

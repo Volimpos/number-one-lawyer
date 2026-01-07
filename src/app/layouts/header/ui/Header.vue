@@ -1,138 +1,175 @@
 <template>
-  <header class="header">
-    <div
-      class="header__left"
-      :class="isTransparent ? 'header-white_blur' : 'header-white'"
-    >
-      <LinkButton link="/" nuxtLink severity="primary">
-        <img src="../assets/logo.svg" alt="logo" class="logo__image" />
-      </LinkButton>
-
-      <div class="header__left__nav">
-        <div class="verticalLine lg:hidden"></div>
-        <LinkButton link="/catalog" nuxtLink severity="primary">
-          Каталог
-        </LinkButton>
-        <div class="verticalLine max-lg:hidden"></div>
-        <div class="max-lg:hidden">
-          <LinkButton :link="`tel:${contacts?.phone}`">
-            {{ contacts?.phone }}
-          </LinkButton>
+  <div class="header-container">
+    <header class="header">
+      <NuxtLink to="/" class="logo">
+        <img :src="logoMain" alt="Юрист №1 лого" />
+      </NuxtLink>
+      <nav class="nav">
+        <div class="nav-item nav-item--services" ref="servicesRef">
+          <a href="#" @click.prevent="isServicesOpen = !isServicesOpen">
+            Услуги
+            <i
+              class="pi pi-chevron-down chevron"
+              :class="{ 'chevron--open': isServicesOpen }"
+            ></i>
+          </a>
+          <Transition name="variant-fade">
+            <div v-if="isServicesOpen" class="dropdown">
+              <Menu />
+            </div>
+          </Transition>
         </div>
-
-        <div class="verticalLine max-lg:hidden"></div>
-        <div class="max-lg:hidden h-[78%] flex">
-          <ContactsOnlyTrigger>
-            <Button text>Оформить заказ</Button>
-          </ContactsOnlyTrigger>
-        </div>
+        <a
+          href="https://go.2gis.com/XAbrT"
+          target="_blank"
+          class="nav-item"
+          active-class="nav-item--active"
+        >
+          Отзывы
+        </a>
+        <NuxtLink to="/cases" class="nav-item" active-class="nav-item--active"
+          >Кейсы</NuxtLink
+        >
+      </nav>
+      <div class="lead-btn-container">
+        <LeadButton />
       </div>
-    </div>
-    <div class="header__right">
-      <OrderFormTrigger />
-    </div>
-  </header>
+      <BurgerMenuButton />
+    </header>
+    <BurgerMenu />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { LinkButton } from "~/src/shared/ui/LinkButton";
-import { Button } from "~/src/shared/ui/button";
-import { useHeaderScroll } from "../lib/useHeaderScroll";
-import { useContactsStore } from "~/src/shared/model/contacts/store";
-import { OrderFormTrigger } from "~/src/widgets/order-form";
-import { ContactsOnlyTrigger } from "~/src/widgets/contacts-only-form";
-const contactStore = useContactsStore();
-const contacts = contactStore.contacts;
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { BurgerMenuButton } from "~/src/features/burger-menu";
+import { LeadButton } from "~/src/features/lead-button";
+import { Menu } from "~/src/features/menu";
+import { BurgerMenu } from "~/src/features/burger-menu";
+import logoMain from "~/src/app/assets/logo.svg";
 
-const { isTransparent } = useHeaderScroll();
+const isServicesOpen = ref(false);
+const servicesRef = ref<HTMLElement | null>(null);
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (!servicesRef.value) return;
+
+  const target = event.target as Node | null;
+  if (target && !servicesRef.value.contains(target)) {
+    isServicesOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <style scoped>
-.header {
-  position: fixed;
+.header-container {
+  position: absolute;
   top: 1rem;
+  left: 0;
   width: 100%;
-  padding-inline: 1rem;
+  margin: 0 auto;
+  z-index: 2;
+}
+.header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  z-index: 10;
-  color: var(--contrast);
-  height: 3rem;
+  position: relative;
+  width: 100%;
+  padding-inline: 5rem;
+  margin: 0 auto;
 }
-
-.header-white {
-  background-color: white;
-}
-
-.header-white_blur {
-  background-color: rgba(255, 255, 255, 0.737);
-  backdrop-filter: blur(1rem);
-}
-
-.header__left {
-  flex: 1;
+.logo {
+  width: 50px;
+  height: 50px;
   display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
-  padding-inline: 1rem;
+}
+.nav {
+  gap: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.nav-item {
+  position: relative;
+  padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  height: 100%;
-  transition: 200ms;
+}
+.nav-item:hover {
+  background-color: var(--blueShadow);
+}
+
+.nav-item--active {
+  background-color: var(--blueShadowActive);
+}
+.chevron {
+  font-size: 0.5rem;
+  transition: transform 0.2s ease;
+}
+.chevron--open {
+  transform: rotate(180deg);
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background-color: var(--white);
+  border-radius: 0.25rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
   z-index: 10;
 }
-
-.logo__image {
-  height: 2.25rem;
-  object-fit: contain;
-  object-position: center left;
-  margin-top: -3px;
+.variant-fade-enter-active,
+.variant-fade-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
-
-.header__left__nav {
+.variant-fade-enter-from,
+.variant-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.variant-fade-enter-to,
+.variant-fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.lead-btn-container {
   display: flex;
-  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: end;
-  gap: 1rem;
-  height: 100%;
 }
 
-.header__right {
-  width: 7.75rem;
-  height: 100%;
-}
-
-.header__left__nav__catalog-item,
-.header__left__nav__phone-item {
-  border-right: 0.085rem solid var(--gray150);
-  padding-right: 1rem;
-}
-
-.verticalLine {
-  height: 2rem;
-  border-right: 1.5px solid var(--gray150);
-}
-
-@media screen and (max-width: 64rem) {
+@media (max-width: 96rem) {
   .header {
-    top: 0.5rem;
-    padding-inline: 0.5rem;
-    gap: 0.25rem;
+    padding-inline: 2rem;
   }
-
-  .header__left__nav__catalog-item,
-  .header__left__nav__phone-item {
-    border-right: none;
-    border-left: 0.085rem solid var(--gray150);
-    padding-left: 1.5rem;
+}
+@media (max-width: 80rem) {
+  .header {
+    padding-inline: 1rem;
   }
+}
 
-  .header__left__nav__phone-item,
-  .header__left__nav__order-item {
+@media (max-width: 64rem) {
+  .nav,
+  .lead-btn-container {
     display: none;
   }
 }
