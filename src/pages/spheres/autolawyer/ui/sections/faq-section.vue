@@ -1,38 +1,10 @@
 <template>
-  <section class="faq">
-    <div class="faq__inner">
-      <h2 class="faq__title">Вопросы, которые задают почти всегда</h2>
-      <div class="faq__content">
-        <img :src="faqImage" alt="FAQ" class="faq__image" />
-        <div class="faq__list">
-          <div
-            v-for="(item, index) in items"
-            :key="item.q"
-            class="faq-item"
-            :class="{ 'faq-item--open': openItems[index] }"
-          >
-            <button
-              class="faq-item__q"
-              @click="toggleItem(index)"
-              type="button"
-            >
-              {{ item.q }}
-              <span class="faq-item__icon">+</span>
-            </button>
-            <div class="faq-item__a-wrapper">
-              <div class="faq-item__a">
-                <p>{{ item.a }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <FaqSection :faqImage="faqImage" :items="items" />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { FaqSection } from "@/shared/ui/faq-section";
 import faqImage from "../../assets/faq_img.webp";
 
 const items = [
@@ -118,7 +90,7 @@ const toggleItem = (index: number) => {
   padding: 1.25rem 1.5rem;
   background: var(--white);
   text-align: left;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--cardShadow);
   user-select: none;
   transition: background-color 0.2s;
 }

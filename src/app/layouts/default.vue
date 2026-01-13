@@ -131,10 +131,10 @@ watch(
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .bg-blob {
     filter: blur(70px);
-    opacity: 0.15;
+    opacity: 0.3;
   }
 
   .bg-blob--left,

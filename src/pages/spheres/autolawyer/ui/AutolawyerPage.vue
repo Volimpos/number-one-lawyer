@@ -16,6 +16,9 @@ import FaqSection from "./sections/faq-section.vue";
 import { ReviewsSection } from "~/src/widgets/reviews-section";
 import { CtaSection } from "~/src/widgets/cta-section";
 
+const requestURL = useRequestURL();
+const canonicalUrl = requestURL.href;
+
 useSeoMeta({
   title: "Автоюрист в Челябинске — ДТП, ОСАГО, ГИБДД, лишение прав | Юрист №1",
   ogTitle:
@@ -24,10 +27,35 @@ useSeoMeta({
     "Нужен автоюрист в Челябинске? Поможем после ДТП: споры со страховой (ОСАГО/КАСКО), оспаривание постановлений ГИБДД, защита при лишении прав, возмещение ущерба. Бесплатная консультация.",
   ogDescription:
     "Нужен автоюрист в Челябинске? Поможем после ДТП: споры со страховой (ОСАГО/КАСКО), оспаривание постановлений ГИБДД, защита при лишении прав, возмещение ущерба. Бесплатная консультация.",
-  ogImage:
-    "https://s3.ru1.storage.beget.cloud/a9fd9a74202c-volimpos/taole/taole-logo.jpg",
+  robots: "index, follow",
+  ogType: "website",
+  ogUrl: canonicalUrl,
+  ogImage: "~/src/app/assets/logo.svg",
+  ogImageAlt: "Автоюрист в Челябинске — Юридическая компания №1",
   twitterCard: "summary_large_image",
+  twitterTitle: "Автоюрист в Челябинске — ДТП, ОСАГО, ГИБДД, лишение прав",
+  twitterDescription:
+    "Нужен автоюрист в Челябинске? Поможем после ДТП: споры со страховой (ОСАГО/КАСКО), оспаривание постановлений ГИБДД, защита при лишении прав, возмещение ущерба.",
+  twitterImage: "~/src/app/assets/logo.svg",
   ogSiteName: "Юридическая компания №1",
+  ogLocale: "ru_RU",
+  articleAuthor: "Юридическая компания №1",
+});
+
+useHead({
+  link: [
+    {
+      rel: "canonical",
+      href: canonicalUrl,
+    },
+  ],
+  meta: [
+    {
+      name: "keywords",
+      content:
+        "автоюрист, автоюрист Челябинск, юрист по ДТП, юрист по ОСАГО, юрист по КАСКО, оспаривание постановлений ГИБДД, лишение водительских прав, возмещение ущерба после ДТП, споры со страховой, автоюрист консультация, защита при ДТП, юрист по автомобильным делам, восстановление прав, обжалование штрафов ГИБДД",
+    },
+  ],
 });
 </script>
 

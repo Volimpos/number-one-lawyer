@@ -38,4 +38,5 @@ p {
     rgba(121, 114, 216, 0.2) 77.4%
   );
   --buttonBorderRadius: 0.25rem;
+  --cardShadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 }

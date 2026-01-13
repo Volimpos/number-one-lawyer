@@ -7,7 +7,18 @@
 /**
  * Exhaustive list of all the available route names in the app
  * */
-export type RoutesNamesList = 'index' | 'privacy' | 'autolawyer';
+export type RoutesNamesList =
+  | 'index'
+  | 'privacy'
+  | 'land_law'
+  | 'autolawyer'
+  | 'family_law'
+  | 'labour_law'
+  | 'housing_law'
+  | 'criminal_law'
+  | 'customer_law'
+  | 'migration_law'
+  | 'inheritance_law';
 
 /**
  * Routes params are only required for the exact targeted route name,
@@ -18,7 +29,15 @@ export type RoutesNamesList = 'index' | 'privacy' | 'autolawyer';
 export type RoutesParamsRecord = {
   index: never;
   privacy: never;
+  land_law: never;
   autolawyer: never;
+  family_law: never;
+  labour_law: never;
+  housing_law: never;
+  criminal_law: never;
+  customer_law: never;
+  migration_law: never;
+  inheritance_law: never;
 };
 
 /**
@@ -28,14 +47,33 @@ export type RoutesParamsRecord = {
 export type RoutesParamsRecordResolved = {
   index: never;
   privacy: never;
+  land_law: never;
   autolawyer: never;
+  family_law: never;
+  labour_law: never;
+  housing_law: never;
+  criminal_law: never;
+  customer_law: never;
+  migration_law: never;
+  inheritance_law: never;
 };
 
 /**
  * Discriminated union that will allow to infer params based on route name
  * It's used for programmatic navigation like router.push or <NuxtLink/>
  * */
-export type RoutesNamedLocations = { name: 'index' } | { name: 'privacy' } | { name: 'autolawyer' };
+export type RoutesNamedLocations =
+  | { name: 'index' }
+  | { name: 'privacy' }
+  | { name: 'land_law' }
+  | { name: 'autolawyer' }
+  | { name: 'family_law' }
+  | { name: 'labour_law' }
+  | { name: 'housing_law' }
+  | { name: 'criminal_law' }
+  | { name: 'customer_law' }
+  | { name: 'migration_law' }
+  | { name: 'inheritance_law' };
 
 /**
  * Type returned by a resolved Route that will allow to type guard the route name.
@@ -44,16 +82,44 @@ export type RoutesNamedLocations = { name: 'index' } | { name: 'privacy' } | { n
 export type RoutesNamedLocationsResolved = {
   name: RoutesNamesList;
   params: RoutesParamsRecord[keyof RoutesParamsRecord];
-} & ({ name: 'index' } | { name: 'privacy' } | { name: 'autolawyer' });
+} & (
+  | { name: 'index' }
+  | { name: 'privacy' }
+  | { name: 'land_law' }
+  | { name: 'autolawyer' }
+  | { name: 'family_law' }
+  | { name: 'labour_law' }
+  | { name: 'housing_law' }
+  | { name: 'criminal_law' }
+  | { name: 'customer_law' }
+  | { name: 'migration_law' }
+  | { name: 'inheritance_law' }
+);
 
 export type RoutesNamesListRecord = {
   index: 'index';
   privacy: 'privacy';
+  landLaw: 'land_law';
   autolawyer: 'autolawyer';
+  familyLaw: 'family_law';
+  labourLaw: 'labour_law';
+  housingLaw: 'housing_law';
+  criminalLaw: 'criminal_law';
+  customerLaw: 'customer_law';
+  migrationLaw: 'migration_law';
+  inheritanceLaw: 'inheritance_law';
 };
 
 export const routesNames = {
   index: 'index' as const,
   privacy: 'privacy' as const,
+  landLaw: 'land_law' as const,
   autolawyer: 'autolawyer' as const,
+  familyLaw: 'family_law' as const,
+  labourLaw: 'labour_law' as const,
+  housingLaw: 'housing_law' as const,
+  criminalLaw: 'criminal_law' as const,
+  customerLaw: 'customer_law' as const,
+  migrationLaw: 'migration_law' as const,
+  inheritanceLaw: 'inheritance_law' as const,
 };

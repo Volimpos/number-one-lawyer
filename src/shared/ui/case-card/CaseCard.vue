@@ -36,7 +36,7 @@ const props = defineProps<{
   justify-content: start;
   gap: 1rem;
   background-color: var(--white);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--cardShadow);
   padding: 1.5rem;
   border-radius: 0.5rem;
 }

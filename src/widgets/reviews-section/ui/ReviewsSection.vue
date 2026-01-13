@@ -14,6 +14,34 @@
     </div>
 
     <div class="reviews-section__grid">
+      <a
+        href="https://go.2gis.com/XAbrT"
+        target="_blank"
+        class="double-gis-badge"
+      >
+        <div class="double-gis-badge__top">
+          <StarsRating :rating="5" />
+          <img
+            src="../assets/2_gis.svg"
+            alt="2GIS"
+            class="double-gis-badge__logo"
+          />
+        </div>
+        <div class="double-gis-badge__bottom">
+          <div class="double-gis-badge__total-rating">
+            <span class="double-gis-badge__total-rating-value">4.9</span>
+            <sup class="double-gis-badge__total-rating-divider">/5</sup>
+          </div>
+          <div class="double-gis-badge__text">
+            <span class="double-gis-badge__total-reviews-value"
+              >Очень хорошо</span
+            >
+            <span class="double-gis-badge__total-reviews-text"
+              >На основании 438 отзывов</span
+            >
+          </div>
+        </div>
+      </a>
       <ReviewCard
         v-for="(review, index) in reviews"
         :key="review.name"
@@ -29,6 +57,7 @@
 
 <script setup lang="ts">
 import { ReviewCard } from "~/src/shared/ui/review-card";
+import { StarsRating } from "~/src/shared/ui/stars-rating";
 const reviews = [
   {
     text: "Отличная работа! Спасибо за подробные консультации, внимательное отношение и реальную помощь в решении моего вопроса от первого обращения и до окончательного результата.",
@@ -64,12 +93,6 @@ const reviews = [
     text: "Всегда на связи, отвечает на вопросы без задержек, объясняет сложные юридические моменты простым и понятным языком и на практике доказывает, что действительно защищает интересы клиента, а не просто ведёт дело формально.",
     name: "Екатерина Морозова",
     initials: "ЕМ",
-    rating: 5,
-  },
-  {
-    text: "Высокий уровень профессионализма и индивидуальный подход к каждому клиенту. Всегда готовы помочь, объяснить все детали и найти оптимальное решение даже в самых сложных ситуациях.",
-    name: "Сергей Волков",
-    initials: "СВ",
     rating: 5,
   },
 ];
@@ -134,6 +157,52 @@ const reviews = [
   grid-column: 2;
 }
 
+.double-gis-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  /* background-color: rgba(255, 255, 255, 0.58); */
+  box-shadow: var(--cardShadow);
+}
+.double-gis-badge__top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray300);
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+.double-gis-badge__bottom {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--gray600);
+}
+
+.double-gis-badge__total-rating-value {
+  font-weight: 600;
+  font-size: 2rem;
+}
+.double-gis-badge__total-rating-divider {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.double-gis-badge__text {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+}
+.double-gis-badge__total-reviews-value {
+  font-weight: 700;
+}
 @media screen and (max-width: 80rem) {
   .reviews-section__grid :deep(.review-card--centered) {
     grid-column: 1;

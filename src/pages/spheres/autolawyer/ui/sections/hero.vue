@@ -135,7 +135,7 @@ import { LeadButton } from "~/src/features/lead-button";
 .hero-card__item {
   background-color: var(--white);
   border-radius: 0.5rem;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--cardShadow);
   gap: 1rem;
   padding: 2.5rem;
   text-align: left;

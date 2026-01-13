@@ -5,7 +5,7 @@
 
       <div class="you-get__grid">
         <img
-          :src="auto1"
+          :src="photo"
           alt="Автоюристы готовятся к судебному процессу"
           class="you-get__image"
         />
@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import auto1 from "~/src/pages/spheres/autolawyer/assets/auto_1.webp";
+import photo from "~/src/pages/spheres/autolawyer/assets/auto_1.webp";
 const content = [
   {
     title: "Ассистента на переговорах",
@@ -155,7 +155,7 @@ const content = [
     border-radius: 0.5rem;
     padding: 1.5rem;
     background: var(--white);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--cardShadow);
   }
 }
 </style>
