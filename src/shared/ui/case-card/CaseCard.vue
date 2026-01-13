@@ -5,7 +5,7 @@
       <p class="date">{{ props.date }}</p>
       <p class="sphere">{{ props.sphere }}</p>
     </div>
-    <div>
+    <div class="case-content">
       <p class="case-title">{{ props.title }}</p>
       <p class="case-description">{{ props.description }}</p>
     </div>
@@ -44,7 +44,6 @@ const props = defineProps<{
   width: 100%;
   height: 12rem;
   aspect-ratio: 16/9;
-  background-color: aquamarine;
   object-fit: cover;
   border-radius: 0.25rem;
 }
@@ -67,6 +66,10 @@ const props = defineProps<{
   background-color: var(--gray100);
   padding: 0.25rem 1rem;
   border-radius: 999px;
+}
+.case-content {
+  height: 10.5rem;
+  overflow: hidden;
 }
 .case-title {
   width: 100%;
@@ -100,5 +103,32 @@ const props = defineProps<{
 
 .case-link:hover {
   background-color: var(--primaryDark);
+}
+
+@media screen and (max-width: 80rem) {
+  .case-card {
+    padding: 1.25rem;
+    gap: 0.75rem;
+  }
+  .case-image {
+    height: 14vw;
+  }
+  .case-title {
+    font-size: 1.125rem;
+  }
+}
+
+@media screen and (max-width: 64rem) {
+  .case-card {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  .case-image {
+    width: 100%;
+    height: 12rem;
+  }
+  .case-title {
+    font-size: 1.25rem;
+  }
 }
 </style>

@@ -14,54 +14,13 @@
         За время работы мы сопровождали большое количество дел в разных отраслях
         права. Делимся интересными примерами.
       </p>
-
-      <div class="cases__grid">
-        <CaseCard
-          :image="case1Image"
-          date="16 марта 2028г."
-          sphere="Миграционное право"
-          title="Оспорили выдворение иностранного гражданина"
-          description="Гражданин Узбекистана Равшан В. был остановлен сотрудниками полиции для проверки документов. Оказалось, что у него истёк срок предельного пребывания в России. В судебном порядке удалось доказать законность его пребывания."
-          link="/cases/1"
-        />
-
-        <CaseCard
-          :image="case2Image"
-          date="9 февраля 2025г."
-          sphere="Права потребителей"
-          title="Вернули деньги за билет в автобусе"
-          description="Пенсионерка Галина К. оплатила проезд в автобусе, однако кондуктор отказался выдать билет. После обращения в суд нам удалось взыскать с перевозчика стоимость билета и компенсацию морального вреда."
-          link="/cases/2"
-        />
-
-        <CaseCard
-          :image="case3Image"
-          date="21 августа 2024г."
-          sphere="Трудовое право"
-          title="Взыскали зарплату и неустойку за вынужденный простой"
-          description="Сотрудник был незаконно отстранён от работы и более трёх месяцев не получал заработную плату. В результате судебного разбирательства мы взыскали всю задолженность и неустойку."
-          link="/cases/3"
-        />
-
-        <CaseCard
-          :image="case4Image"
-          date="22 ноюля 5509г."
-          sphere="Наследство"
-          title="Взыскали моральный вред с робота"
-          description="Робот был незаконно уничтожен. В результате судебного разбирательства мы взыскали моральный вред и возмещение ущерба. Ему было неприятно видеть, как его друг и создатель уничтожают его."
-          link="/cases/4"
-        />
-      </div>
+      <CasesSection class="mt-8 max-lg:mt-2" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { CaseCard } from "../../../../shared/ui/case-card";
-import case1Image from "../../assets/case_1.jpg";
-import case2Image from "../../assets/case_2.jpg";
-import case3Image from "../../assets/case_3.jpg";
-import case4Image from "../../assets/case_4.jpg";
+import { CasesSection } from "~/src/widgets/cases-section";
 </script>
 
 <style scoped>
@@ -114,36 +73,15 @@ import case4Image from "../../assets/case_4.jpg";
   color: var(--gray400);
 }
 
-.cases__grid {
-  margin-top: 2rem;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.75rem;
-}
-
 @media screen and (max-width: 96rem) {
   .cases__inner {
     padding-inline: 2rem;
-  }
-  .cases__grid {
-    gap: 1rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    & > :nth-child(4) {
-      display: none;
-    }
   }
 }
 
 @media screen and (max-width: 80rem) {
   .cases__inner {
     padding-inline: 1rem;
-  }
-  .cases__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    & > :nth-child(4) {
-      display: flex;
-    }
   }
 }
 
@@ -163,17 +101,6 @@ import case4Image from "../../assets/case_4.jpg";
 
   .cases__subtitle {
     max-width: 100%;
-  }
-
-  .cases__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 48rem) {
-  .cases__grid {
-    grid-template-columns: minmax(0, 1fr);
   }
 }
 </style>

@@ -9,8 +9,15 @@ export const useBurgerMenu = () => {
         isBurgerMenuOpen.value ? scrollBlock.lock() : scrollBlock.unlock();
     };
 
+    const closeBurgerMenu = () => {
+        if (!isBurgerMenuOpen.value) return;
+        isBurgerMenuOpen.value = false;
+        scrollBlock.unlock();
+    };
+
     return {
         isBurgerMenuOpen,
         toggleBurgerMenu,
+        closeBurgerMenu,
     };
 };

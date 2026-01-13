@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import { BurgerMenuButton } from "~/src/features/burger-menu";
 import { LeadButton } from "~/src/features/lead-button";
 import { Menu } from "~/src/features/menu";
@@ -50,6 +50,7 @@ import logoMain from "~/src/app/assets/logo.svg";
 
 const isServicesOpen = ref(false);
 const servicesRef = ref<HTMLElement | null>(null);
+const route = useRoute();
 
 const handleClickOutside = (event: MouseEvent) => {
   if (!servicesRef.value) return;
@@ -67,6 +68,13 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener("click", handleClickOutside);
 });
+
+watch(
+  () => route.fullPath,
+  () => {
+    isServicesOpen.value = false;
+  }
+);
 </script>
 
 <style scoped>

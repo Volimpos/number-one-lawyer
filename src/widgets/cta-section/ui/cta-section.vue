@@ -80,7 +80,7 @@ import { LeadButton } from "~/src/features/lead-button";
     padding: 2rem;
   }
   .image-block img {
-    max-height: calc(100% - 2rem);
+    height: calc(100% - 2rem);
     aspect-ratio: 3/4;
     object-fit: cover;
     right: 2rem;
@@ -101,10 +101,12 @@ import { LeadButton } from "~/src/features/lead-button";
   }
   .image-block {
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1;
+    height: 20rem;
   }
   .image-block img {
     width: 100%;
+    height: 100%;
     position: absolute;
     bottom: 0;
     right: 0;

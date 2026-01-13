@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     },
   },
   alias: {
-    "@": "./src",
+    "@": "/src",
   },
   dir: {
     pages: "src/app/routes",

@@ -1,0 +1,8 @@
+const ctaSection_vue_vue_type_style_index_0_scoped_508db5bd_lang = ".cta-section[data-v-508db5bd]{padding:4rem 5rem}.cta-section__inner[data-v-508db5bd]{background:var(--yellowToBlueGradient);border-radius:.5rem;display:flex;flex-direction:row;gap:2rem;height:70dvh}.text-block[data-v-508db5bd]{align-items:start;display:flex;flex:1;flex-direction:column;gap:1.5rem;justify-content:start;padding:3rem}.cta-section__title[data-v-508db5bd]{color:var(--gray600);font-size:3rem;font-weight:700;line-height:110%}.cta-section__description[data-v-508db5bd]{color:var(--gray500)}.image-block[data-v-508db5bd]{flex:1;position:relative}.image-block img[data-v-508db5bd]{aspect-ratio:1/1;border-radius:.5rem .5rem 0 0;bottom:0;position:absolute;right:3rem;width:32rem}@media screen and (max-width:96rem){.cta-section[data-v-508db5bd]{padding:4rem 2rem}}@media screen and (max-width:80rem){.cta-section[data-v-508db5bd]{padding:4rem 1rem}.text-block[data-v-508db5bd]{flex:1;padding:2rem}.image-block img[data-v-508db5bd]{aspect-ratio:3/4;max-height:calc(100% - 2rem);-o-object-fit:cover;object-fit:cover;right:2rem}}@media screen and (max-width:64rem){.cta-section[data-v-508db5bd]{padding:4rem 1rem}.cta-section__inner[data-v-508db5bd]{flex-direction:column;height:auto}.image-block[data-v-508db5bd]{aspect-ratio:3/4;width:100%}.image-block img[data-v-508db5bd]{border-radius:0 0 .5rem .5rem;bottom:0;position:absolute;right:0;width:100%}}";
+
+const ctaSectionStyles_CnVKBRAP = [
+  ctaSection_vue_vue_type_style_index_0_scoped_508db5bd_lang
+];
+
+export { ctaSectionStyles_CnVKBRAP as default };
+//# sourceMappingURL=cta-section-styles.CnVKBRAP.mjs.map

@@ -59,32 +59,32 @@ watch(
   position: absolute;
   border-radius: 9999px;
   filter: blur(100px);
-  opacity: 0.14;
+  opacity: 0.12;
   will-change: transform, opacity;
 }
 
 .bg-blob--left {
   width: 40vw;
   height: 40vw;
-  background-color: rgba(140, 155, 255, 0.5); /* небесно-фиолетовый, бледнее */
+  background-color: rgb(0, 110, 255, 0.6); /* небесно-фиолетовый, бледнее */
   top: 50%;
   left: 50%;
-  animation: blob-carousel 22s linear infinite;
+  animation: blob-carousel 10s linear infinite;
   animation-delay: 0s;
 }
 
 .bg-blob--right {
   width: 40vw;
   height: 40vw;
-  background-color: rgba(
-    150,
-    130,
+  background-color: rgb(
+    163,
+    124,
     255,
     0.5
   ); /* небесно-фиолетовый, чуть теплее и бледнее */
   top: 50%;
   left: 50%;
-  animation: blob-carousel 22s linear infinite;
+  animation: blob-carousel 10s linear infinite;
   animation-delay: -8s;
 }
 
@@ -94,7 +94,7 @@ watch(
   background-color: rgba(250, 200, 80, 0.35); /* золотой, ещё бледнее */
   top: 50%;
   left: 50%;
-  animation: blob-carousel 22s linear infinite;
+  animation: blob-carousel 10s linear infinite;
   animation-delay: -16s;
 }
 
@@ -109,7 +109,7 @@ watch(
   ); /* золотой, потемнее и ещё бледнее */
   top: 50%;
   left: 50%;
-  animation: blob-carousel 22s linear infinite;
+  animation: blob-carousel 10s linear infinite;
   animation-delay: -24s;
 }
 
@@ -134,7 +134,7 @@ watch(
 @media (max-width: 1024px) {
   .bg-blob {
     filter: blur(70px);
-    opacity: 0.12;
+    opacity: 0.15;
   }
 
   .bg-blob--left,

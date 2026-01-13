@@ -1,0 +1,1 @@
+export { default } from "file:///D:/Progs/OSPanel/domains/numberOneLawyer/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"

@@ -5,7 +5,7 @@
         <span class="max-lg:hidden"
           >Реальные отзывы в независимых источниках.</span
         >
-        <span class="lg:hidden">Больше отзывов</span>
+        <span class="lg:hidden">Отзывы клиентов</span>
         <span class="hero__badge-btn">Читать →</span>
       </NuxtLink>
 

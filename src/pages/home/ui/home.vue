@@ -1,7 +1,7 @@
 <template>
   <hero />
   <cases-section />
-  <reviews-section />
+  <ReviewsSection />
   <stats-section />
   <may-trust-section />
   <law-spheres />
@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import Hero from "./sections/hero.vue";
 import CasesSection from "./sections/cases-section.vue";
-import ReviewsSection from "./sections/reviews-section.vue";
+import { ReviewsSection } from "~/src/widgets/reviews-section";
 import StatsSection from "./sections/stats-section.vue";
 import MayTrustSection from "./sections/may-trust-section.vue";
 import LawSpheres from "./sections/law-spheres.vue";
