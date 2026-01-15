@@ -2,10 +2,14 @@
   <div class="header-container">
     <header class="header">
       <NuxtLink to="/" class="logo">
-        <img :src="logoMain" alt="Юрист №1 лого" />
+        <img :src="logoMain" alt="Юридическая компания №1 лого" />
       </NuxtLink>
       <nav class="nav">
-        <div class="nav-item nav-item--services" ref="servicesRef">
+        <div
+          class="nav-item nav-item--services"
+          :class="{ 'nav-item--open': isServicesOpen }"
+          ref="servicesRef"
+        >
           <a href="#" @click.prevent="isServicesOpen = !isServicesOpen">
             Услуги
             <i
@@ -27,7 +31,10 @@
         >
           Отзывы
         </a>
-        <NuxtLink to="/cases" class="nav-item" active-class="nav-item--active"
+        <NuxtLink
+          to="/cases"
+          class="nav-item nav-item--cases"
+          active-class="nav-item--active"
           >Кейсы</NuxtLink
         >
       </nav>
@@ -85,6 +92,7 @@ watch(
   width: 100%;
   margin: 0 auto;
   z-index: 2;
+  user-select: none;
 }
 .header {
   display: flex;
@@ -123,7 +131,16 @@ watch(
 }
 
 .nav-item--active {
-  background-color: var(--blueShadowActive);
+  background-color: var(--blueShadow);
+}
+
+/* Выделение кнопки Кейсы для всех путей, начинающихся с /cases */
+.nav-item--cases.router-link-active {
+  background-color: var(--blueShadow);
+}
+
+.nav-item--open {
+  background-color: var(--blueShadow);
 }
 .chevron {
   font-size: 0.5rem;
@@ -138,7 +155,7 @@ watch(
   left: 0;
   margin-top: 0.5rem;
   background-color: var(--white);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
   z-index: 10;
 }

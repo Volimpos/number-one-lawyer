@@ -9,12 +9,13 @@
         <span class="hero__badge-btn">Читать →</span>
       </NuxtLink>
 
-      <h1 class="hero__title">Помощь опытных автоюристов в Челябинске</h1>
+      <h1 class="hero__title">Услуги семейного юриста в Челябинске</h1>
 
       <p class="hero__subtitle">
-        Восстанавливаем справедливость на дорогах. Взыскание ущерба при ДТП,
-        оспаривание вины, помощь при лишении прав и споры со страховыми
-        компаниями. Более 10 лет успешной практики.
+        Решаем сложные вопросы деликатно и профессионально. Развод, раздел
+        имущества, алименты, определение места жительства детей — поможем
+        достичь справедливого решения с минимальным стрессом. Более 10 лет
+        успешной практики в семейном праве.
       </p>
 
       <div class="hero__actions">
@@ -25,30 +26,14 @@
       </div>
 
       <div class="hero__cards">
-        <div class="hero-card__item">
-          <div class="hero-card__icon">1</div>
-          <div class="hero-card__title">Помощь при ДТП</div>
-          <div class="hero-card__text">
-            Оспаривание вины, взыскание стоимости ремонта, установление
-            виновника и привлечение к ответственности
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">2</div>
-          <div class="hero-card__title">Лишение прав</div>
-          <div class="hero-card__text">
-            Находим нарушения, обжалуем постановление, возвращаем права
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">3</div>
-          <div class="hero-card__title">Споры со страховой</div>
-          <div class="hero-card__text">
-            Добиваемся выплат в судебном и досудебном порядке. Оспорим
-            незаконный отказ.
-          </div>
+        <div
+          v-for="(service, index) in services"
+          :key="index"
+          class="hero-card__item"
+        >
+          <div class="hero-card__icon">{{ index + 1 }}</div>
+          <div class="hero-card__title">{{ service.title }}</div>
+          <div class="hero-card__text">{{ service.description }}</div>
         </div>
       </div>
     </div>
@@ -57,6 +42,24 @@
 
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
+
+const services = [
+  {
+    title: "Раздел имущества",
+    description:
+      "Справедливый раздел совместно нажитого имущества при разводе. Оценка активов, защита интересов, достижение соглашения или представление в суде",
+  },
+  {
+    title: "Алименты",
+    description:
+      "Взыскание алиментов на детей и супруга. Определение размера выплат, изменение размера алиментов, взыскание задолженности",
+  },
+  {
+    title: "Споры о детях",
+    description:
+      "Определение места жительства детей, порядок общения с ребенком, лишение или ограничение родительских прав. Защита интересов детей",
+  },
+];
 </script>
 
 <style scoped>

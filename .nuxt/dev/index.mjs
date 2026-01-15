@@ -3312,7 +3312,7 @@ const _VP3ouqMAiOm2hAw1o9xQI2C89LmeVWX1UxmXeSmz0M = (function(nitro) {
 
 const rootDir = "D:/Progs/OSPanel/domains/numberOneLawyer";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[{"rel":"icon","type":"image/svg","href":"./favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"Консультация юриста в Челябинске | Юрист №1"};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[{"rel":"icon","type":"image/svg","href":"./favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"Консультация юриста в Челябинске | Юридическая компания №1"};
 
 const appRootTag = "div";
 

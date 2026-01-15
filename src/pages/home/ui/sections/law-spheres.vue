@@ -50,7 +50,7 @@
 const items = [
   {
     title: "Защита прав потребителей",
-    link: "/consumer-protection",
+    link: "/customer_law",
   },
   {
     title: "Автоюрист",
@@ -58,31 +58,31 @@ const items = [
   },
   {
     title: "Семейное право",
-    link: "/family-law",
+    link: "/family_law",
   },
   {
     title: "Уголовное право",
-    link: "/criminal-law",
+    link: "/criminal_law",
   },
   {
     title: "Миграционное право",
-    link: "/migration-law",
+    link: "/migration_law",
   },
   {
     title: "Трудовое право",
-    link: "/labor-law",
+    link: "/labour_law",
   },
   {
     title: "Жилищное право",
-    link: "/housing-law",
+    link: "/housing_law",
   },
   {
     title: "Наследство",
-    link: "/inheritance-law",
+    link: "/inheritance_law",
   },
   {
     title: "Земельное право",
-    link: "/land-law",
+    link: "/land_law",
   },
 ];
 </script>

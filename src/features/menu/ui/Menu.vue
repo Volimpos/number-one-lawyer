@@ -42,7 +42,7 @@ const menuItems = [
   },
   {
     label: "Трудовое право",
-    link: "/labor_law",
+    link: "/labour_law",
   },
   {
     label: "Уголовное право",
@@ -55,6 +55,7 @@ const menuItems = [
 .menu-container {
   background-color: var(--white);
   padding-block: 0.75rem;
+  border-radius: inherit;
 }
 .menu-item {
   display: block;

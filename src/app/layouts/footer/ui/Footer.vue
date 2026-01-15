@@ -3,7 +3,7 @@
     <footer class="footer">
       <div class="logo">
         <NuxtLink to="/">
-          <img :src="logoMain" alt="Юрист №1 лого" />
+          <img :src="logoMain" alt="Юридическая компания №1 лого" />
         </NuxtLink>
       </div>
       <div class="info">
@@ -63,31 +63,31 @@ const services = [
   },
   {
     title: "Семейное право",
-    link: "/family-law",
+    link: "/family_law",
   },
   {
     title: "Уголовное право",
-    link: "/criminal-law",
+    link: "/criminal_law",
   },
   {
     title: "Миграционное право",
-    link: "/migration-law",
+    link: "/migration_law",
   },
   {
     title: "Трудовое право",
-    link: "/labor-law",
+    link: "/labor_law",
   },
   {
     title: "Жилищное право",
-    link: "/housing-law",
+    link: "/housing_law",
   },
   {
     title: "Наследство",
-    link: "/inheritance-law",
+    link: "/inheritance_law",
   },
   {
     title: "Земельное право",
-    link: "/land-law",
+    link: "/land_law",
   },
 ];
 </script>

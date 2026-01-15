@@ -9,12 +9,12 @@
         <span class="hero__badge-btn">Читать →</span>
       </NuxtLink>
 
-      <h1 class="hero__title">Помощь опытных автоюристов в Челябинске</h1>
+      <h1 class="hero__title">Услуги юриста по наследственным спорам</h1>
 
       <p class="hero__subtitle">
-        Восстанавливаем справедливость на дорогах. Взыскание ущерба при ДТП,
-        оспаривание вины, помощь при лишении прав и споры со страховыми
-        компаниями. Более 10 лет успешной практики.
+        Решаем споры между наследниками, восстанавливаем пропущенные сроки,
+        защищаем ваши интересы в суде. Более 10 лет успешной практики в
+        наследственном праве.
       </p>
 
       <div class="hero__actions">
@@ -25,30 +25,14 @@
       </div>
 
       <div class="hero__cards">
-        <div class="hero-card__item">
-          <div class="hero-card__icon">1</div>
-          <div class="hero-card__title">Помощь при ДТП</div>
-          <div class="hero-card__text">
-            Оспаривание вины, взыскание стоимости ремонта, установление
-            виновника и привлечение к ответственности
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">2</div>
-          <div class="hero-card__title">Лишение прав</div>
-          <div class="hero-card__text">
-            Находим нарушения, обжалуем постановление, возвращаем права
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">3</div>
-          <div class="hero-card__title">Споры со страховой</div>
-          <div class="hero-card__text">
-            Добиваемся выплат в судебном и досудебном порядке. Оспорим
-            незаконный отказ.
-          </div>
+        <div
+          v-for="(card, index) in inheritanceServices"
+          :key="index"
+          class="hero-card__item"
+        >
+          <div class="hero-card__icon">{{ index + 1 }}</div>
+          <div class="hero-card__title">{{ card.title }}</div>
+          <div class="hero-card__text">{{ card.text }}</div>
         </div>
       </div>
     </div>
@@ -57,6 +41,26 @@
 
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
+
+interface InheritanceService {
+  title: string;
+  text: string;
+}
+
+const inheritanceServices: InheritanceService[] = [
+  {
+    title: "Оформление наследства",
+    text: "Помогаем собрать документы, оформить право на наследство у нотариуса и получить свидетельство о праве на наследство.",
+  },
+  {
+    title: "Споры между наследниками",
+    text: "Решаем конфликты при разделе имущества, защищаем ваши интересы в суде, помогаем достичь справедливого раздела.",
+  },
+  {
+    title: "Восстановление сроков",
+    text: "Восстанавливаем пропущенный срок принятия наследства через суд, защищаем ваши права даже при существенных задержках.",
+  },
+];
 </script>
 
 <style scoped>

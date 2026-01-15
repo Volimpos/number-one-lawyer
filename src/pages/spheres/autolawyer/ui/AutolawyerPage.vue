@@ -15,14 +15,16 @@ import CasesSection from "./sections/cases-section.vue";
 import FaqSection from "./sections/faq-section.vue";
 import { ReviewsSection } from "~/src/widgets/reviews-section";
 import { CtaSection } from "~/src/widgets/cta-section";
+import logo from "~/src/app/assets/logo.svg";
 
 const requestURL = useRequestURL();
 const canonicalUrl = requestURL.href;
 
 useSeoMeta({
-  title: "Автоюрист в Челябинске — ДТП, ОСАГО, ГИБДД, лишение прав | Юрист №1",
+  title:
+    "Автоюрист в Челябинске — ДТП, ОСАГО, ГИБДД, лишение прав | Юридическая компания №1",
   ogTitle:
-    "Автоюрист в Челябинске — ДТП, ОСАГО, ГИБДД, лишение прав | Юрист №1",
+    "Автоюрист в Челябинске — ДТП, ОСАГО, ГИБДД, лишение прав | Юридическая компания №1",
   description:
     "Нужен автоюрист в Челябинске? Поможем после ДТП: споры со страховой (ОСАГО/КАСКО), оспаривание постановлений ГИБДД, защита при лишении прав, возмещение ущерба. Бесплатная консультация.",
   ogDescription:
@@ -30,13 +32,13 @@ useSeoMeta({
   robots: "index, follow",
   ogType: "website",
   ogUrl: canonicalUrl,
-  ogImage: "~/src/app/assets/logo.svg",
+  ogImage: logo,
   ogImageAlt: "Автоюрист в Челябинске — Юридическая компания №1",
   twitterCard: "summary_large_image",
   twitterTitle: "Автоюрист в Челябинске — ДТП, ОСАГО, ГИБДД, лишение прав",
   twitterDescription:
     "Нужен автоюрист в Челябинске? Поможем после ДТП: споры со страховой (ОСАГО/КАСКО), оспаривание постановлений ГИБДД, защита при лишении прав, возмещение ущерба.",
-  twitterImage: "~/src/app/assets/logo.svg",
+  twitterImage: logo,
   ogSiteName: "Юридическая компания №1",
   ogLocale: "ru_RU",
   articleAuthor: "Юридическая компания №1",

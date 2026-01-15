@@ -9,12 +9,15 @@
         <span class="hero__badge-btn">Читать →</span>
       </NuxtLink>
 
-      <h1 class="hero__title">Помощь опытных автоюристов в Челябинске</h1>
+      <h1 class="hero__title">
+        РВП, ВНЖ, гражданство РФ — юрист по миграционному праву в Челябинске
+      </h1>
 
       <p class="hero__subtitle">
-        Восстанавливаем справедливость на дорогах. Взыскание ущерба при ДТП,
-        оспаривание вины, помощь при лишении прав и споры со страховыми
-        компаниями. Более 10 лет успешной практики.
+        Помогаем законно оформить РВП, ВНЖ и гражданство РФ, подготовить
+        документы и пройти процедуры без лишних отказов и затягиваний. Защищаем
+        при выдворении/депортации, запрете на въезд и в спорах с МВД. Работаем
+        по Челябинску и области.
       </p>
 
       <div class="hero__actions">
@@ -25,30 +28,14 @@
       </div>
 
       <div class="hero__cards">
-        <div class="hero-card__item">
-          <div class="hero-card__icon">1</div>
-          <div class="hero-card__title">Помощь при ДТП</div>
-          <div class="hero-card__text">
-            Оспаривание вины, взыскание стоимости ремонта, установление
-            виновника и привлечение к ответственности
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">2</div>
-          <div class="hero-card__title">Лишение прав</div>
-          <div class="hero-card__text">
-            Находим нарушения, обжалуем постановление, возвращаем права
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">3</div>
-          <div class="hero-card__title">Споры со страховой</div>
-          <div class="hero-card__text">
-            Добиваемся выплат в судебном и досудебном порядке. Оспорим
-            незаконный отказ.
-          </div>
+        <div
+          v-for="(card, idx) in heroCards"
+          :key="card.title"
+          class="hero-card__item"
+        >
+          <div class="hero-card__icon">{{ idx + 1 }}</div>
+          <div class="hero-card__title">{{ card.title }}</div>
+          <div class="hero-card__text">{{ card.text }}</div>
         </div>
       </div>
     </div>
@@ -57,6 +44,21 @@
 
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
+
+const heroCards = [
+  {
+    title: "РВП, ВНЖ, гражданство РФ",
+    text: "Проверим основания, подготовим пакет документов, запишем и сопроводим по этапам — чтобы снизить риск отказа.",
+  },
+  {
+    title: "Запрет на въезд и отказ",
+    text: "Разберём причину, подготовим обращения и жалобы, при необходимости — иск в суд. Поможем восстановить право на въезд.",
+  },
+  {
+    title: "Выдворение/депортация",
+    text: "Оценим риски, соберём доказательства и защитим в споре с МВД и в суде. Работаем быстро в срочных ситуациях.",
+  },
+];
 </script>
 
 <style scoped>
