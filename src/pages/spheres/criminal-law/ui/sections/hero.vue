@@ -9,12 +9,14 @@
         <span class="hero__badge-btn">Читать →</span>
       </NuxtLink>
 
-      <h1 class="hero__title">Помощь опытных автоюристов в Челябинске</h1>
+      <h1 class="hero__title">
+        Команда адвокатов Челябинска по уголовным делам
+      </h1>
 
       <p class="hero__subtitle">
-        Восстанавливаем справедливость на дорогах. Взыскание ущерба при ДТП,
-        оспаривание вины, помощь при лишении прав и споры со страховыми
-        компаниями. Более 10 лет успешной практики.
+        Профессиональная защита обвиняемых и восстановление прав потерпевших.
+        Специализация: дела по наркотикам, финансовым преступлениям, хищению.
+        Опыт ведения сложных дел, судебное и досудебное сопровождение.
       </p>
 
       <div class="hero__actions">
@@ -25,30 +27,18 @@
       </div>
 
       <div class="hero__cards">
-        <div class="hero-card__item">
-          <div class="hero-card__icon">1</div>
-          <div class="hero-card__title">Помощь при ДТП</div>
-          <div class="hero-card__text">
-            Оспаривание вины, взыскание стоимости ремонта, установление
-            виновника и привлечение к ответственности
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">2</div>
-          <div class="hero-card__title">Лишение прав</div>
-          <div class="hero-card__text">
-            Находим нарушения, обжалуем постановление, возвращаем права
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">3</div>
-          <div class="hero-card__title">Споры со страховой</div>
-          <div class="hero-card__text">
-            Добиваемся выплат в судебном и досудебном порядке. Оспорим
-            незаконный отказ.
-          </div>
+        <div
+          v-for="(card, index) in heroCards"
+          :key="index"
+          class="hero-card__item"
+          :class="{
+            'hero-card__item--right-aligned':
+              index === heroCards.length - 1 && heroCards.length % 3 !== 0,
+          }"
+        >
+          <div class="hero-card__icon">{{ index + 1 }}</div>
+          <div class="hero-card__title">{{ card.title }}</div>
+          <div class="hero-card__text">{{ card.text }}</div>
         </div>
       </div>
     </div>
@@ -57,6 +47,34 @@
 
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
+
+interface HeroCard {
+  title: string;
+  text: string;
+}
+
+const heroCards: HeroCard[] = [
+  {
+    title: "Консультации",
+    text: "Бесплатные первичные консультации по уголовным делам. Анализ ситуации, оценка перспектив дела, разработка стратегии защиты или защиты прав потерпевшего.",
+  },
+  {
+    title: "Сопровождение на допросах",
+    text: "Присутствие адвоката на допросах в следственных органах. Защита от незаконных методов ведения допроса, контроль соблюдения прав, помощь в формулировке показаний.",
+  },
+  {
+    title: "Выезд в СИЗО",
+    text: "Срочные и плановые встречи с подзащитными в следственных изоляторах. Консультации, подготовка к следственным действиям, обжалование меры пресечения.",
+  },
+  {
+    title: "Досудебное сопровождение",
+    text: "Защита на стадии дознания и предварительного следствия. Участие в следственных действиях, обжалование незаконных решений следователя, сбор доказательств, ходатайства о прекращении дела или изменении меры пресечения.",
+  },
+  {
+    title: "Судебное сопровождение",
+    text: "Полное ведение дела в суде: подготовка процессуальных документов, участие в заседаниях, защита интересов на всех стадиях уголовного процесса, обжалование приговоров.",
+  },
+];
 </script>
 
 <style scoped>
@@ -98,7 +116,7 @@ import { LeadButton } from "~/src/features/lead-button";
 }
 
 .hero__title {
-  max-width: 58rem;
+  width: 64rem;
   font-size: 4rem;
   line-height: 110%;
   font-weight: 700;
@@ -106,7 +124,7 @@ import { LeadButton } from "~/src/features/lead-button";
 }
 
 .hero__subtitle {
-  max-width: 36rem;
+  max-width: 44rem;
   color: var(--gray400);
 }
 
@@ -130,6 +148,8 @@ import { LeadButton } from "~/src/features/lead-button";
   gap: 1.5rem;
   width: 100%;
   margin-top: 2rem;
+  justify-items: center;
+  justify-content: center;
 }
 
 .hero-card__item {
@@ -157,10 +177,22 @@ import { LeadButton } from "~/src/features/lead-button";
   font-weight: 700;
   color: var(--gray600);
   margin-top: 2.25rem;
+  line-height: 110%;
 }
 .hero-card__text {
   color: var(--gray400);
   font-weight: 500;
+  margin-top: 1rem;
+}
+
+.hero-card__item--right-aligned {
+  grid-column: 3 / 4;
+}
+
+@media screen and (max-width: 80rem) {
+  .hero-card__item--right-aligned {
+    grid-column: auto;
+  }
 }
 
 @media screen and (max-width: 96rem) {
@@ -178,6 +210,7 @@ import { LeadButton } from "~/src/features/lead-button";
     max-width: 44rem;
   }
   .hero__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
   .hero-card__item {

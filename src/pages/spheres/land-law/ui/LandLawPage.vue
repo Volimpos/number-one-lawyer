@@ -31,7 +31,7 @@ useSeoMeta({
   robots: "index, follow",
   ogType: "website",
   ogUrl: canonicalUrl,
-  ogImage: "~/src/app/assets/logo.svg",
+  ogImage: "~/src/shared/assets/logo.svg",
   ogImageAlt:
     "Юрист по земельному праву в Челябинске — Юридическая компания №1",
   twitterCard: "summary_large_image",
@@ -39,7 +39,7 @@ useSeoMeta({
     "Юрист по земельному праву в Челябинске — оформление участков, споры о границах, приватизация",
   twitterDescription:
     "Профессиональная помощь юриста по земельному праву в Челябинске. Оформление участков, споры о границах, приватизация, изъятие земельных участков, сопровождение сделок с недвижимостью.",
-  twitterImage: "~/src/app/assets/logo.svg",
+  twitterImage: "~/src/shared/assets/logo.svg",
   ogSiteName: "Юридическая компания №1",
   ogLocale: "ru_RU",
   articleAuthor: "Юридическая компания №1",

@@ -1,17 +1,11 @@
-<template>
-  <ul class="menu-container">
-    <NuxtLink
-      class="menu-item"
-      :to="item.link"
-      v-for="item in menuItems"
-      :key="item.label"
-      >{{ item.label }}</NuxtLink
-    >
-  </ul>
-</template>
+import { ref } from "vue";
 
-<script setup lang="ts">
-const menuItems = [
+interface Sphere {
+  label: string;
+  link: string;
+}
+
+const spheres = ref<Sphere[]>([
   {
     label: "Автоюрист",
     link: "/autolawyer",
@@ -33,7 +27,7 @@ const menuItems = [
     link: "/migration_law",
   },
   {
-    label: "Наследственное право",
+    label: "Наследство",
     link: "/inheritance_law",
   },
   {
@@ -48,22 +42,6 @@ const menuItems = [
     label: "Уголовное право",
     link: "/criminal_law",
   },
-];
-</script>
+]);
 
-<style scoped>
-.menu-container {
-  background-color: var(--white);
-  padding-block: 0.75rem;
-  border-radius: inherit;
-}
-.menu-item {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: var(--gray600);
-  white-space: nowrap;
-}
-.menu-item:hover {
-  background-color: var(--gray100);
-}
-</style>
+export default spheres;

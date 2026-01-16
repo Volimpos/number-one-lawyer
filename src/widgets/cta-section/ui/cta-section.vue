@@ -75,10 +75,17 @@ import { LeadButton } from "~/src/features/lead-button";
   .cta-section {
     padding: 4rem 1rem;
   }
+  .cta-section__inner {
+    height: 60dvh;
+  }
   .text-block {
     flex: 1;
     padding: 2rem;
   }
+  .cta-section__title {
+    font-size: 2rem;
+  }
+
   .image-block img {
     height: calc(100% - 2rem);
     aspect-ratio: 3/4;
@@ -89,15 +96,18 @@ import { LeadButton } from "~/src/features/lead-button";
 
 @media screen and (max-width: 64rem) {
   .cta-section {
-    padding: 4rem 1rem;
+    padding: 0 1rem;
   }
 
   .cta-section__inner {
     flex-direction: column;
     height: auto;
   }
+  .text-block {
+    padding: 1.5rem;
+  }
   .cta-section__title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   .image-block {
     width: 100%;

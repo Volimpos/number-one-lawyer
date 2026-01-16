@@ -9,12 +9,12 @@
         <span class="hero__badge-btn">Читать →</span>
       </NuxtLink>
 
-      <h1 class="hero__title">Помощь опытных автоюристов в Челябинске</h1>
+      <h1 class="hero__title">Услуги юриста по трудовому праву в Челябинске</h1>
 
       <p class="hero__subtitle">
-        Восстанавливаем справедливость на дорогах. Взыскание ущерба при ДТП,
-        оспаривание вины, помощь при лишении прав и споры со страховыми
-        компаниями. Более 10 лет успешной практики.
+        Восстановление на работе, взыскание невыплаченной зарплаты, компенсации
+        за незаконное увольнение и защита при спорах с работодателем. Опытные
+        юристы по трудовому праву с успешной практикой более 10 лет.
       </p>
 
       <div class="hero__actions">
@@ -25,30 +25,14 @@
       </div>
 
       <div class="hero__cards">
-        <div class="hero-card__item">
-          <div class="hero-card__icon">1</div>
-          <div class="hero-card__title">Помощь при ДТП</div>
-          <div class="hero-card__text">
-            Оспаривание вины, взыскание стоимости ремонта, установление
-            виновника и привлечение к ответственности
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">2</div>
-          <div class="hero-card__title">Лишение прав</div>
-          <div class="hero-card__text">
-            Находим нарушения, обжалуем постановление, возвращаем права
-          </div>
-        </div>
-
-        <div class="hero-card__item">
-          <div class="hero-card__icon">3</div>
-          <div class="hero-card__title">Споры со страховой</div>
-          <div class="hero-card__text">
-            Добиваемся выплат в судебном и досудебном порядке. Оспорим
-            незаконный отказ.
-          </div>
+        <div
+          v-for="(service, index) in services"
+          :key="index"
+          class="hero-card__item"
+        >
+          <div class="hero-card__icon">{{ index + 1 }}</div>
+          <div class="hero-card__title">{{ service.title }}</div>
+          <div class="hero-card__text">{{ service.description }}</div>
         </div>
       </div>
     </div>
@@ -57,6 +41,29 @@
 
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
+
+interface Service {
+  title: string;
+  description: string;
+}
+
+const services: Service[] = [
+  {
+    title: "Восстановление на работе",
+    description:
+      "Оспаривание незаконного увольнения, восстановление в должности с выплатой компенсации за вынужденный прогул и морального вреда.",
+  },
+  {
+    title: "Взыскание зарплаты",
+    description:
+      "Взыскание невыплаченной заработной платы, премии, компенсаций за задержку выплат, отпускных и других причитающихся выплат.",
+  },
+  {
+    title: "Защита при трудовых спорах",
+    description:
+      "Представление интересов в суде, переговоры с работодателем, составление претензий и исковых заявлений по трудовым вопросам.",
+  },
+];
 </script>
 
 <style scoped>
@@ -106,7 +113,7 @@ import { LeadButton } from "~/src/features/lead-button";
 }
 
 .hero__subtitle {
-  max-width: 36rem;
+  max-width: 40rem;
   color: var(--gray400);
 }
 
@@ -157,10 +164,12 @@ import { LeadButton } from "~/src/features/lead-button";
   font-weight: 700;
   color: var(--gray600);
   margin-top: 2.25rem;
+  line-height: 110%;
 }
 .hero-card__text {
   color: var(--gray400);
   font-weight: 500;
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 96rem) {

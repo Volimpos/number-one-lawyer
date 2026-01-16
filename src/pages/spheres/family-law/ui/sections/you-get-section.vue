@@ -1,34 +1,9 @@
 <template>
-  <section class="you-get">
-    <div class="you-get__inner">
-      <h2 class="you-get__title">Что Вы получаете</h2>
-
-      <div class="you-get__grid">
-        <img
-          :src="photo"
-          alt="Юрист по семейному праву консультирует клиента"
-          class="you-get__image"
-        />
-        <div class="you-get__content">
-          <div
-            class="you-get__content-item"
-            v-for="item in content"
-            :key="item.title"
-          >
-            <p class="you-get__content-item-title">
-              {{ item.title }}
-            </p>
-            <p class="you-get__content-item-text">
-              {{ item.description }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <YouGetSection :photo="photo" :content="content" />
 </template>
 
 <script setup lang="ts">
+import { YouGetSection } from "~/src/widgets/you-get-section";
 import photo from "~/src/pages/spheres/family-law/assets/family-law_1.webp";
 const content = [
   {

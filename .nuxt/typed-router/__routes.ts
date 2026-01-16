@@ -8,6 +8,7 @@
  * Exhaustive list of all the available route names in the app
  * */
 export type RoutesNamesList =
+  | 'cases'
   | 'index'
   | 'privacy'
   | 'land_law'
@@ -27,6 +28,7 @@ export type RoutesNamesList =
  *
  * */
 export type RoutesParamsRecord = {
+  cases: never;
   index: never;
   privacy: never;
   land_law: never;
@@ -45,6 +47,7 @@ export type RoutesParamsRecord = {
  *
  * */
 export type RoutesParamsRecordResolved = {
+  cases: never;
   index: never;
   privacy: never;
   land_law: never;
@@ -63,6 +66,7 @@ export type RoutesParamsRecordResolved = {
  * It's used for programmatic navigation like router.push or <NuxtLink/>
  * */
 export type RoutesNamedLocations =
+  | { name: 'cases' }
   | { name: 'index' }
   | { name: 'privacy' }
   | { name: 'land_law' }
@@ -83,6 +87,7 @@ export type RoutesNamedLocationsResolved = {
   name: RoutesNamesList;
   params: RoutesParamsRecord[keyof RoutesParamsRecord];
 } & (
+  | { name: 'cases' }
   | { name: 'index' }
   | { name: 'privacy' }
   | { name: 'land_law' }
@@ -97,6 +102,7 @@ export type RoutesNamedLocationsResolved = {
 );
 
 export type RoutesNamesListRecord = {
+  cases: 'cases';
   index: 'index';
   privacy: 'privacy';
   landLaw: 'land_law';
@@ -111,6 +117,7 @@ export type RoutesNamesListRecord = {
 };
 
 export const routesNames = {
+  cases: 'cases' as const,
   index: 'index' as const,
   privacy: 'privacy' as const,
   landLaw: 'land_law' as const,

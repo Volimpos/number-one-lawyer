@@ -1,161 +1,32 @@
 <template>
-  <section class="you-get">
-    <div class="you-get__inner">
-      <h2 class="you-get__title">Что Вы получаете</h2>
-
-      <div class="you-get__grid">
-        <img
-          :src="photo"
-          alt="Автоюристы готовятся к судебному процессу"
-          class="you-get__image"
-        />
-        <div class="you-get__content">
-          <div
-            class="you-get__content-item"
-            v-for="item in content"
-            :key="item.title"
-          >
-            <p class="you-get__content-item-title">
-              {{ item.title }}
-            </p>
-            <p class="you-get__content-item-text">
-              {{ item.description }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <YouGetSection :photo="photo" :content="content" />
 </template>
 
 <script setup lang="ts">
-import photo from "~/src/pages/spheres/criminal-law/assets/auto_1.webp";
+import { YouGetSection } from "~/src/widgets/you-get-section";
+import photo from "~/src/pages/spheres/criminal-law/assets/criminal_1.webp";
 const content = [
   {
-    title: "Ассистента на переговорах",
+    title: "Круглосуточную защиту и оперативную помощь",
     description:
-      "Выезжаем в ГАИ и страховую компанию, ведём переговоры и добиваемся максимальной выплаты. При правильном подходе часто можно избежать суда.",
+      "Уголовное дело не ждёт. Мы доступны 24/7 для срочных вызовов в СИЗО, на допросы и следственные действия. Выезжаем в любое время суток, когда Вам нужна защита. Понимаем, что каждая минута может быть решающей.",
   },
   {
-    title: "Уверенность в судебном процессе",
+    title: "Опыт ведения сложных уголовных дел",
     description:
-      "Выходим в суд за Вас чтобы завершить процесс с максимальной выгодой. Вы можете спать спокойно, зная, что в суде работают профессионалы.",
+      "Более 10 лет защищаем по делам о наркотиках, финансовых преступлениях, хищениях и других категориях. Знаем все нюансы уголовного процесса, работаем с лучшими экспертами и используем проверенные стратегии защиты. Наша статистика оправдательных приговоров и прекращённых дел говорит сама за себя.",
   },
   {
-    title: "Заботу и правововую поддержку",
+    title: "Полное сопровождение на всех стадиях",
     description:
-      "Консультируем неограниченно, объясняем суть действий и всегда держим в курсе дел. Понимаем, что разбитый автомобиль и проблемы с документами могут выбить из колеи, поэтому всегда относимся с пониманием в Вашим вопросам.",
+      "От первой консультации до обжалования приговора — мы с Вами на каждом этапе. Участвуем в допросах, следственных действиях, судебных заседаниях. Готовим все процессуальные документы, собираем доказательства, обжалуем незаконные решения. Вы не останетесь один на один с системой.",
+  },
+  {
+    title: "Конфиденциальность и понимание",
+    description:
+      "Мы понимаем, насколько сложна Ваша ситуация. Гарантируем полную конфиденциальность и тактичное отношение. Объясняем каждый шаг простым языком, держим в курсе всех событий по делу. Вы всегда знаете, что происходит и какие у Вас перспективы.",
   },
 ];
 </script>
 
-<style scoped>
-.you-get {
-  padding: 4rem 0;
-}
-
-.you-get__inner {
-  width: 100%;
-  margin: 0 auto;
-  padding-inline: 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  text-align: center;
-}
-
-.you-get__title {
-  font-size: 3rem;
-  line-height: 110%;
-  font-weight: 700;
-  color: var(--gray600);
-  max-width: 60rem;
-}
-
-.you-get__subtitle {
-  max-width: 46rem;
-  color: var(--gray400);
-}
-
-.you-get__grid {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-  width: 100%;
-}
-
-.you-get__image {
-  border-radius: 0.5rem;
-  height: 36rem;
-  object-position: 50% 10%;
-  object-fit: cover;
-  width: 100%;
-}
-.you-get__content {
-  padding-block: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.you-get__content-item {
-  text-align: left;
-}
-.you-get__content-item-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 110%;
-  color: var(--gray600);
-}
-
-.you-get__content-item-text {
-  color: var(--gray400);
-  font-weight: 500;
-  margin-top: 0.5rem;
-}
-
-@media screen and (max-width: 96rem) {
-  .you-get__inner {
-    padding-inline: 2rem;
-  }
-}
-
-@media screen and (max-width: 80rem) {
-  .you-get__inner {
-    padding-inline: 1rem;
-  }
-  .you-get__grid {
-    gap: 1rem;
-  }
-  .card {
-    padding: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 64rem) {
-  .you-get__inner {
-    align-items: flex-start;
-    text-align: left;
-  }
-  .you-get__title {
-    font-size: 2rem;
-  }
-  .you-get__grid {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-top: 0;
-  }
-  .you-get__content {
-    gap: 1.5rem;
-    padding-block: 0;
-  }
-  .you-get__content-item {
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    background: var(--white);
-    box-shadow: var(--cardShadow);
-  }
-}
-</style>
+<style scoped></style>

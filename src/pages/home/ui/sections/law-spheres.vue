@@ -9,12 +9,12 @@
     <div class="law-sphere-section__grid">
       <NuxtLink
         :to="item.link"
-        v-for="item in items"
-        :key="item.title"
+        v-for="item in spheres"
+        :key="item.label"
         class="law-sphere-section__item"
       >
         <p class="law-sphere-section__item-title">
-          {{ item.title }}
+          {{ item.label }}
         </p>
         <div class="arrow-icon">
           <svg
@@ -47,44 +47,7 @@
 </template>
 
 <script setup lang="ts">
-const items = [
-  {
-    title: "Защита прав потребителей",
-    link: "/customer_law",
-  },
-  {
-    title: "Автоюрист",
-    link: "/autolawyer",
-  },
-  {
-    title: "Семейное право",
-    link: "/family_law",
-  },
-  {
-    title: "Уголовное право",
-    link: "/criminal_law",
-  },
-  {
-    title: "Миграционное право",
-    link: "/migration_law",
-  },
-  {
-    title: "Трудовое право",
-    link: "/labour_law",
-  },
-  {
-    title: "Жилищное право",
-    link: "/housing_law",
-  },
-  {
-    title: "Наследство",
-    link: "/inheritance_law",
-  },
-  {
-    title: "Земельное право",
-    link: "/land_law",
-  },
-];
+import spheres from "~/src/shared/model/menu/store";
 </script>
 
 <style scoped>

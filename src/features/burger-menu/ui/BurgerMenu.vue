@@ -15,7 +15,7 @@
 import { watch } from "vue";
 import { useRoute } from "vue-router";
 import { LeadButton } from "~/src/features/lead-button";
-import { Menu } from "~/src/features/menu";
+import { Menu } from "~/src/shared/ui/menu";
 import { useBurgerMenu } from "../model/useBurgerMenu";
 
 const route = useRoute();

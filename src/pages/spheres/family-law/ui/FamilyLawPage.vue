@@ -15,7 +15,7 @@ import CasesSection from "./sections/cases-section.vue";
 import FaqSection from "./sections/faq-section.vue";
 import { ReviewsSection } from "~/src/widgets/reviews-section";
 import { CtaSection } from "~/src/widgets/cta-section";
-import logo from "~/src/app/assets/logo.svg";
+import logo from "~/src/shared/assets/logo.svg";
 
 const requestURL = useRequestURL();
 const canonicalUrl = requestURL.href;

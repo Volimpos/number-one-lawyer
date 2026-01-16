@@ -26,9 +26,9 @@
           <div class="services">
             <p class="footer-title">Услуги</p>
             <ul class="mt-6 flex flex-col gap-2">
-              <li v-for="service in services" :key="service.title">
+              <li v-for="service in spheres" :key="service.label">
                 <NuxtLink :to="service.link">
-                  {{ service.title }}
+                  {{ service.label }}
                 </NuxtLink>
               </li>
             </ul>
@@ -48,48 +48,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import logoMain from "~/src/app/assets/logo.svg";
+import logoMain from "~/src/shared/assets/logo.svg";
 import vkLogo from "~/src/app/assets/vk_logo.svg";
 import tgLogo from "~/src/app/assets/tg_logo.svg";
 
-const services = [
-  {
-    title: "Защита прав потребителей",
-    link: "/consumer-protection",
-  },
-  {
-    title: "Автоюрист",
-    link: "/autolawyer",
-  },
-  {
-    title: "Семейное право",
-    link: "/family_law",
-  },
-  {
-    title: "Уголовное право",
-    link: "/criminal_law",
-  },
-  {
-    title: "Миграционное право",
-    link: "/migration_law",
-  },
-  {
-    title: "Трудовое право",
-    link: "/labor_law",
-  },
-  {
-    title: "Жилищное право",
-    link: "/housing_law",
-  },
-  {
-    title: "Наследство",
-    link: "/inheritance_law",
-  },
-  {
-    title: "Земельное право",
-    link: "/land_law",
-  },
-];
+import spheres from "~/src/shared/model/menu/store";
 </script>
 
 <style scoped>

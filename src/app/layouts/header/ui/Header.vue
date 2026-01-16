@@ -51,9 +51,9 @@
 import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import { BurgerMenuButton } from "~/src/features/burger-menu";
 import { LeadButton } from "~/src/features/lead-button";
-import { Menu } from "~/src/features/menu";
+import { Menu } from "~/src/shared/ui/menu";
 import { BurgerMenu } from "~/src/features/burger-menu";
-import logoMain from "~/src/app/assets/logo.svg";
+import logoMain from "~/src/shared/assets/logo.svg";
 
 const isServicesOpen = ref(false);
 const servicesRef = ref<HTMLElement | null>(null);
