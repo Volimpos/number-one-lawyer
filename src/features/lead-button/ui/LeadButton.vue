@@ -12,10 +12,12 @@
           direction === 'up' ? 'variant-list--up' : 'variant-list--down',
         ]"
       >
-        <li>Написать в WhatsApp</li>
+        <li>
+          <a href="https://wa.me/79058303062" target="_blank">Написать в WhatsApp</a>
+        </li>
         <li>Написать в Telegram</li>
         <li>Заказать звонок</li>
-        <li>Позвонить</li>
+        <li><a href="tel:+7 (905) 830-30-62">+7 (905) 830-30-62</a></li>
       </ul>
     </Transition>
   </div>

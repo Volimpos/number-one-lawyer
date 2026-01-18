@@ -1,1 +1,0 @@
-const selectSize = (sizes: string[]) => {};

@@ -75,9 +75,10 @@ const lawyerPhotos = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, ph
     gap: 1rem;
 }
 .photo {
-    height: 100%;
     border-radius: 0.25rem;
     object-fit: cover;
+    width: 100%;
+    aspect-ratio: 9/16;
 }
 /* Смещение второй колонки вниз на 1/3 высоты */
 .photo:nth-child(3n+2) {
@@ -112,6 +113,9 @@ const lawyerPhotos = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, ph
     .photos {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+}
+.photo {
+    height: 16rem;
 }
 .photo:nth-child(3n+2) {
     transform: translateY(0);
