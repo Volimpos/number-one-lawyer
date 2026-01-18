@@ -81,7 +81,6 @@ const props = defineProps<{
 .you-get__image {
   border-radius: 0.5rem;
   height: 36rem;
-  object-position: 50% 10%;
   object-fit: cover;
   width: 100%;
 }

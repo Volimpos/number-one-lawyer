@@ -1,6 +1,5 @@
 <template>
   <Hero />
-  <ServicesSection />
   <YouGetSection />
   <CasesSection />
   <ReviewsSection />

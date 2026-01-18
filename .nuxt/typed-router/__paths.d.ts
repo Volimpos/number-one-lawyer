@@ -6,8 +6,10 @@
 
 export type RoutePathSchema =
   | '/'
+  | '/about'
   | '/autolawyer'
   | '/cases'
+  | '/cases/:slug'
   | '/criminal_law'
   | '/customer_law'
   | '/family_law'
@@ -60,6 +62,12 @@ type ValidEndOfPath<T> = T extends `/`
           ? true
           : false;
 
+type ValidateAbout<T> = T extends `/about${infer TAbout}`
+  ? ValidEndOfPath<TAbout> extends false
+    ? "End of path '/about' is invalid"
+    : true
+  : false;
+
 type ValidateAutolawyer<T> = T extends `/autolawyer${infer TAutolawyer}`
   ? ValidEndOfPath<TAutolawyer> extends false
     ? "End of path '/autolawyer' is invalid"
@@ -69,6 +77,12 @@ type ValidateAutolawyer<T> = T extends `/autolawyer${infer TAutolawyer}`
 type ValidateCases<T> = T extends `/cases${infer TCases}`
   ? ValidEndOfPath<TCases> extends false
     ? "End of path '/cases' is invalid"
+    : true
+  : false;
+
+type ValidateCasesSlug<T> = T extends `/cases/${infer TSlug}`
+  ? ValidParam<TSlug> extends false
+    ? "Parameter {slug} of path '/cases/:slug' is invalid"
     : true
   : false;
 
@@ -129,60 +143,68 @@ type ValidatePrivacy<T> = T extends `/privacy${infer TPrivacy}`
 export type ValidatePath<T extends string> = T extends string
   ? T extends '/'
     ? T
-    : ValidateAutolawyer<T> extends true
+    : ValidateAbout<T> extends true
       ? T
-      : ValidateCases<T> extends true
+      : ValidateAutolawyer<T> extends true
         ? T
-        : ValidateCriminalLaw<T> extends true
+        : ValidateCases<T> extends true
           ? T
-          : ValidateCustomerLaw<T> extends true
+          : ValidateCasesSlug<T> extends true
             ? T
-            : ValidateFamilyLaw<T> extends true
+            : ValidateCriminalLaw<T> extends true
               ? T
-              : ValidateHousingLaw<T> extends true
+              : ValidateCustomerLaw<T> extends true
                 ? T
-                : ValidateInheritanceLaw<T> extends true
+                : ValidateFamilyLaw<T> extends true
                   ? T
-                  : ValidateLabourLaw<T> extends true
+                  : ValidateHousingLaw<T> extends true
                     ? T
-                    : ValidateLandLaw<T> extends true
+                    : ValidateInheritanceLaw<T> extends true
                       ? T
-                      : ValidateMigrationLaw<T> extends true
+                      : ValidateLabourLaw<T> extends true
                         ? T
-                        : ValidatePrivacy<T> extends true
+                        : ValidateLandLaw<T> extends true
                           ? T
-                          : string extends T
+                          : ValidateMigrationLaw<T> extends true
                             ? T
-                            : `Error: ${ValidateAutolawyer<T> | ValidateCases<T> | ValidateCriminalLaw<T> | ValidateCustomerLaw<T> | ValidateFamilyLaw<T> | ValidateHousingLaw<T> | ValidateInheritanceLaw<T> | ValidateLabourLaw<T> | ValidateLandLaw<T> | ValidateMigrationLaw<T> | ValidatePrivacy<T>}`
+                            : ValidatePrivacy<T> extends true
+                              ? T
+                              : string extends T
+                                ? T
+                                : `Error: ${ValidateAbout<T> | ValidateAutolawyer<T> | ValidateCases<T> | ValidateCasesSlug<T> | ValidateCriminalLaw<T> | ValidateCustomerLaw<T> | ValidateFamilyLaw<T> | ValidateHousingLaw<T> | ValidateInheritanceLaw<T> | ValidateLabourLaw<T> | ValidateLandLaw<T> | ValidateMigrationLaw<T> | ValidatePrivacy<T>}`
   : never;
 
 // RouteNameFromPath, RouteNameFromLocalePath
 export type RouteNameFromPath<T extends string> = T extends string
   ? T extends '/'
     ? 'index'
-    : ValidateAutolawyer<T> extends true
-      ? 'autolawyer'
-      : ValidateCases<T> extends true
-        ? 'cases'
-        : ValidateCriminalLaw<T> extends true
-          ? 'criminal_law'
-          : ValidateCustomerLaw<T> extends true
-            ? 'customer_law'
-            : ValidateFamilyLaw<T> extends true
-              ? 'family_law'
-              : ValidateHousingLaw<T> extends true
-                ? 'housing_law'
-                : ValidateInheritanceLaw<T> extends true
-                  ? 'inheritance_law'
-                  : ValidateLabourLaw<T> extends true
-                    ? 'labour_law'
-                    : ValidateLandLaw<T> extends true
-                      ? 'land_law'
-                      : ValidateMigrationLaw<T> extends true
-                        ? 'migration_law'
-                        : ValidatePrivacy<T> extends true
-                          ? 'privacy'
-                          : never
+    : ValidateAbout<T> extends true
+      ? 'about'
+      : ValidateAutolawyer<T> extends true
+        ? 'autolawyer'
+        : ValidateCases<T> extends true
+          ? 'cases'
+          : ValidateCasesSlug<T> extends true
+            ? 'cases-slug'
+            : ValidateCriminalLaw<T> extends true
+              ? 'criminal_law'
+              : ValidateCustomerLaw<T> extends true
+                ? 'customer_law'
+                : ValidateFamilyLaw<T> extends true
+                  ? 'family_law'
+                  : ValidateHousingLaw<T> extends true
+                    ? 'housing_law'
+                    : ValidateInheritanceLaw<T> extends true
+                      ? 'inheritance_law'
+                      : ValidateLabourLaw<T> extends true
+                        ? 'labour_law'
+                        : ValidateLandLaw<T> extends true
+                          ? 'land_law'
+                          : ValidateMigrationLaw<T> extends true
+                            ? 'migration_law'
+                            : ValidatePrivacy<T> extends true
+                              ? 'privacy'
+                              : never
   : never;
 
 export type TypedPathParameter<T extends string> = ValidatePath<T> | RoutePathSchema;

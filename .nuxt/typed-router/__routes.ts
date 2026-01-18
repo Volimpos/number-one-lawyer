@@ -8,14 +8,16 @@
  * Exhaustive list of all the available route names in the app
  * */
 export type RoutesNamesList =
-  | 'cases'
+  | 'about'
   | 'index'
   | 'privacy'
   | 'land_law'
   | 'autolawyer'
   | 'family_law'
   | 'labour_law'
+  | 'cases'
   | 'housing_law'
+  | 'cases-slug'
   | 'criminal_law'
   | 'customer_law'
   | 'migration_law'
@@ -28,14 +30,18 @@ export type RoutesNamesList =
  *
  * */
 export type RoutesParamsRecord = {
-  cases: never;
+  about: never;
   index: never;
   privacy: never;
   land_law: never;
   autolawyer: never;
   family_law: never;
   labour_law: never;
+  cases: never;
   housing_law: never;
+  'cases-slug': {
+    slug: string | number;
+  };
   criminal_law: never;
   customer_law: never;
   migration_law: never;
@@ -47,14 +53,18 @@ export type RoutesParamsRecord = {
  *
  * */
 export type RoutesParamsRecordResolved = {
-  cases: never;
+  about: never;
   index: never;
   privacy: never;
   land_law: never;
   autolawyer: never;
   family_law: never;
   labour_law: never;
+  cases: never;
   housing_law: never;
+  'cases-slug': {
+    slug: string;
+  };
   criminal_law: never;
   customer_law: never;
   migration_law: never;
@@ -66,14 +76,21 @@ export type RoutesParamsRecordResolved = {
  * It's used for programmatic navigation like router.push or <NuxtLink/>
  * */
 export type RoutesNamedLocations =
-  | { name: 'cases' }
+  | { name: 'about' }
   | { name: 'index' }
   | { name: 'privacy' }
   | { name: 'land_law' }
   | { name: 'autolawyer' }
   | { name: 'family_law' }
   | { name: 'labour_law' }
+  | { name: 'cases' }
   | { name: 'housing_law' }
+  | {
+      name: 'cases-slug';
+      params: {
+        slug: string | number;
+      };
+    }
   | { name: 'criminal_law' }
   | { name: 'customer_law' }
   | { name: 'migration_law' }
@@ -87,14 +104,21 @@ export type RoutesNamedLocationsResolved = {
   name: RoutesNamesList;
   params: RoutesParamsRecord[keyof RoutesParamsRecord];
 } & (
-  | { name: 'cases' }
+  | { name: 'about' }
   | { name: 'index' }
   | { name: 'privacy' }
   | { name: 'land_law' }
   | { name: 'autolawyer' }
   | { name: 'family_law' }
   | { name: 'labour_law' }
+  | { name: 'cases' }
   | { name: 'housing_law' }
+  | {
+      name: 'cases-slug';
+      params: {
+        slug: string;
+      };
+    }
   | { name: 'criminal_law' }
   | { name: 'customer_law' }
   | { name: 'migration_law' }
@@ -102,14 +126,16 @@ export type RoutesNamedLocationsResolved = {
 );
 
 export type RoutesNamesListRecord = {
-  cases: 'cases';
+  about: 'about';
   index: 'index';
   privacy: 'privacy';
   landLaw: 'land_law';
   autolawyer: 'autolawyer';
   familyLaw: 'family_law';
   labourLaw: 'labour_law';
+  cases: 'cases';
   housingLaw: 'housing_law';
+  casesSlug: 'cases-slug';
   criminalLaw: 'criminal_law';
   customerLaw: 'customer_law';
   migrationLaw: 'migration_law';
@@ -117,14 +143,16 @@ export type RoutesNamesListRecord = {
 };
 
 export const routesNames = {
-  cases: 'cases' as const,
+  about: 'about' as const,
   index: 'index' as const,
   privacy: 'privacy' as const,
   landLaw: 'land_law' as const,
   autolawyer: 'autolawyer' as const,
   familyLaw: 'family_law' as const,
   labourLaw: 'labour_law' as const,
+  cases: 'cases' as const,
   housingLaw: 'housing_law' as const,
+  casesSlug: 'cases-slug' as const,
   criminalLaw: 'criminal_law' as const,
   customerLaw: 'customer_law' as const,
   migrationLaw: 'migration_law' as const,

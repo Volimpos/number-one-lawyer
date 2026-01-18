@@ -7,7 +7,7 @@ import { YouGetSection } from "~/src/widgets/you-get-section";
 import photo from "~/src/pages/spheres/labour-law/assets/labour_1.webp";
 const content = [
   {
-    title: "Команду боевых юристов",
+    title: "Команду сильных юристов",
     description:
       "Если Вы находитесь под нашей защитой, значит мы бьемся за Вас всеми возможными способами. Вы ставите задачу, мы исполняем. Нас невозможно переманить, напугать или проигнорировать. Используем все средства.",
   },

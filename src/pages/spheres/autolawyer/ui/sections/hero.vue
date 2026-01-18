@@ -1,13 +1,13 @@
 <template>
   <section class="hero">
     <div class="hero__inner">
-      <NuxtLink to="/reviews" class="hero__badge">
+      <a href="https://go.2gis.com/XAbrT" target="_blank" class="hero__badge">
         <span class="max-lg:hidden"
           >Реальные отзывы в независимых источниках.</span
         >
         <span class="lg:hidden">Отзывы клиентов</span>
         <span class="hero__badge-btn">Читать →</span>
-      </NuxtLink>
+      </a>
 
       <h1 class="hero__title">Помощь опытных автоюристов в Челябинске</h1>
 
