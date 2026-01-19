@@ -13,9 +13,12 @@
         ]"
       >
         <li>
-          <a href="https://wa.me/79058303062" target="_blank">Написать в WhatsApp</a>
+          <a href="https://wa.me/79227441323" target="_blank">Написать в WhatsApp</a>
         </li>
-        <li>Написать в Telegram</li>
+        <li>
+          
+<a href="https://t.me/urist_law1">Написать в Telegram</a>
+        </li>
         <li>Заказать звонок</li>
         <li><a href="tel:+7 (905) 830-30-62">+7 (905) 830-30-62</a></li>
       </ul>

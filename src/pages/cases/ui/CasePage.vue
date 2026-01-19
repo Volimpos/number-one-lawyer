@@ -122,7 +122,7 @@ color: var(--gray600);
   gap: 3rem;
 }
 .case-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 100%;
 }
 .case-image {
