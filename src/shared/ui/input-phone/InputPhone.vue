@@ -77,11 +77,12 @@ const formatPhone = (value: string): string => {
   outline: none;
   height: 3rem;
   padding-inline: 1rem;
-  color: var(--contrast);
+  color: var(--gray600);
+  font-weight: 500;
 }
 
 .input-phone:focus {
-  border: 1px solid var(--contrast);
+  border: 1px solid var(--gray500);
 }
 
 .error {

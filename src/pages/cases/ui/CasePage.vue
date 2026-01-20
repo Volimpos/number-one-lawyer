@@ -1,17 +1,15 @@
 <template>
   <div class="wrapper">
-    <div class="case-info">
+    <div class="case-info" v-if="caseItem">
     <div class="case-text">
-        <p class="sphere">Защита прав потребителей</p>
-        <p class="case-title">Взыскали деньги с автосалона за некачественный автомобиль</p>
-        <p class="case-description">
-            Клиент приобрел Киа Рио с пробегом в автосалоне подержанных авто. После покупки выяснилось, что пробег автомобиля значительно выше заявленного, отличается комплектация, а состояние оставляет желать лучшего. Условия кредита же были сумасшедшими: ставка более 60% годовых, куча дополнительных услуг, о которых его не предупреждали. Таким образом реальная стоимость автомобиля оказалась выше рыночной более чем в два раза. В судебном порядке удалось оспорить сделку и взыскать компенсацию. 
-        </p>
-        <button class="show-documents-btn">
+        <p class="sphere">{{ caseItem.sphere }}</p>
+        <p class="case-title">{{ caseItem.title }}</p>
+        <p class="case-description">{{ caseItem.description }}</p>
+        <a :href="caseItem.document" target="_blank" class="show-documents-btn">
             Документы по делу
-        </button>
+        </a>
     </div>
-    <img :src="image" alt="Кейс" class="case-image">
+    <img :src="caseItem.image" alt="Кейс" class="case-image">
   </div>
   <div class="more-cases">
     <p class="more-cases__subtitle">Другие кейсы</p>
@@ -24,6 +22,25 @@
 <script setup lang="ts">
 import { CasesSection } from '~/src/widgets/cases-section';
 import image from "~/src/app/assets/case-image.jpg"
+import type { CaseItem } from '~/src/entities/case/model/interfaces';
+import getCaseFromStore from '~/src/entities/case/model/getCaseFromStore';
+import { fetchCaseById } from '~/src/entities/case/api/fetchCaseById';
+
+const route = useRoute();
+const caseId = ref<string>(String(route.params.id) ?? "");
+const caseItem = ref<CaseItem | null>(null);
+caseItem.value = getCaseFromStore(caseId.value);
+
+if (!caseItem.value) {
+  const { data } = await useAsyncData(
+    `cases/${caseId.value}`, // Уникальный ключ для кэширования
+    async () => await fetchCaseById(caseId.value)
+  );
+
+  caseItem.value = data.value?.data as CaseItem;
+}
+
+
 </script>
 
 <style scoped>
@@ -69,6 +86,9 @@ color: var(--gray600);
   border-radius: 0.25rem;
   transition: 200ms;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .show-documents-btn:hover {

@@ -8,6 +8,7 @@ export const useModal = defineStore("modalStore", () => {
   const component = ref<Component | null>(null);
   const props = ref<Record<string, any> | null>(null);
   const title = ref<string>("");
+  
   const openModal = async (
     childComponent: Component | null = null,
     modalTitle: string = "Диалог",

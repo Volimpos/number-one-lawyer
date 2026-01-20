@@ -15,3 +15,9 @@ export interface ApiError {
   statusText?: string;
   data?: any;
 }
+
+export interface ApiResponse {
+  result: boolean;
+  error: string | null;
+  data?: Record<string, any> | null;
+}

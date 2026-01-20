@@ -4,7 +4,7 @@
       <Checkbox v-model:checked="isAgree" />
       <p class="policy-text">
         Согласна(-ен) с
-        <NuxtLink to="/privacy">политикой конфиденциальности сайта</NuxtLink>
+        <NuxtLink class="link" to="/privacy">политикой конфиденциальности сайта</NuxtLink>
       </p>
     </label>
     <p class="error">{{ props.error }}</p>
@@ -25,13 +25,18 @@ const props = defineProps({
 <style scoped>
 .policy-text {
   font-size: 0.875rem;
-  color: var(--gray400);
-  font-weight: 400;
+  color: var(--gray500);
+  font-weight: 500;
+  line-height: 130%;
 }
 
 .error {
   margin-top: 0.5rem;
   color: rgb(200, 53, 53);
   font-size: 0.875rem;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 </style>

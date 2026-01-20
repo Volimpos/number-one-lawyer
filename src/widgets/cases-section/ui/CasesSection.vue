@@ -1,51 +1,69 @@
 <template>
   <div class="cases__grid">
-    <CaseCard
-      :image="case1Image"
-      date="16 марта 2028г."
-      sphere="Миграционное право"
-      title="Оспорили выдворение иностранного гражданина"
-      description="Гражданин Узбекистана Равшан В. был остановлен сотрудниками полиции для проверки документов. Оказалось, что у него истёк срок предельного пребывания в России. В судебном порядке удалось доказать законность его пребывания."
-      link="/cases/1"
+  <template v-if="!casesToDisplay || isLoading">
+    <CaseCardSkeleton v-for="item in 4" :key="item"/>
+  </template>
+  <template v-else>
+    <CaseCard v-for="caseItem in casesToDisplay" :key="caseItem.id"
+      :image="caseItem.image"
+      :date="formatDate(caseItem.created_at)"
+      :sphere="caseItem.sphere"
+      :title="caseItem.title"
+      :description="caseItem.description"
+      :link="`/cases/${caseItem.id}`"
     />
-
-    <CaseCard
-      :image="case2Image"
-      date="9 февраля 2025г."
-      sphere="Права потребителей"
-      title="Вернули деньги за билет в автобусе"
-      description="Пенсионерка Галина К. оплатила проезд в автобусе, однако кондуктор отказался выдать билет. После обращения в суд нам удалось взыскать с перевозчика стоимость билета и компенсацию морального вреда."
-      link="/cases/2"
-    />
-
-    <CaseCard
-      :image="case3Image"
-      date="21 августа 2024г."
-      sphere="Трудовое право"
-      title="Взыскали зарплату и неустойку за вынужденный простой"
-      description="Сотрудник был незаконно отстранён от работы и более трёх месяцев не получал заработную плату. В результате судебного разбирательства мы взыскали всю задолженность и неустойку."
-      link="/cases/3"
-    />
+  </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import { CaseCard } from "~/src/shared/ui/case-card";
-import case1Image from "../assets/case_1.jpg";
-import case2Image from "../assets/case_2.jpg";
-import case3Image from "../assets/case_3.jpg";
-import case4Image from "../assets/case_4.jpg";
+import { CaseCard } from "~/src/entities/case";
+import { useCases } from "~/src/entities/case/model/store";
+import getLimitedCaseItems from "~/src/entities/case/model/getLimitedCaseItems";
+import type { CaseItem } from "~/src/entities/case/model/interfaces";
+import CaseCardSkeleton from "~/src/entities/case/ui/CaseCardSkeleton.vue";
+import { formatDate } from "~/src/shared/lib/formatDate";
+
+const casesStore = useCases()
+const { loadAllCases } = casesStore
+const { cases } = storeToRefs(casesStore)
+const casesToDisplay = ref<CaseItem[] | null>(null)
+
+const isLoading = ref<boolean>(false)
+const loadSection = async () => {
+  isLoading.value = true
+  await loadAllCases()
+  if (cases.value && cases.value?.length > 0) {
+    casesToDisplay.value = getLimitedCaseItems()
+    console.log(casesToDisplay.value)
+  }
+  isLoading.value = false
+}
+
+onMounted(async () => {
+  await loadSection()
+})
 </script>
 
 <style scoped>
 .cases__grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 @media screen and (max-width: 96rem) {
+  .cases__grid {
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .cases__grid > :nth-child(4) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 80rem) {
   .cases__grid {
     gap: 1rem;
   }

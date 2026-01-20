@@ -14,10 +14,11 @@ const text = defineModel("text", { default: "" });
   outline: none;
   height: 3rem;
   padding-inline: 1rem;
-  color: var(--contrast);
+  color: var(--gray600);
+  font-weight: 500;
 }
 
 .input-text:focus {
-  border: 1px solid var(--contrast);
+  border: 1px solid var(--gray500);
 }
 </style>

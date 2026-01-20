@@ -13,11 +13,11 @@ export type RoutesNamesList =
   | 'privacy'
   | 'land_law'
   | 'autolawyer'
+  | 'cases-id'
   | 'family_law'
   | 'labour_law'
   | 'cases'
   | 'housing_law'
-  | 'cases-slug'
   | 'criminal_law'
   | 'customer_law'
   | 'migration_law'
@@ -35,13 +35,13 @@ export type RoutesParamsRecord = {
   privacy: never;
   land_law: never;
   autolawyer: never;
+  'cases-id': {
+    id: string | number;
+  };
   family_law: never;
   labour_law: never;
   cases: never;
   housing_law: never;
-  'cases-slug': {
-    slug: string | number;
-  };
   criminal_law: never;
   customer_law: never;
   migration_law: never;
@@ -58,13 +58,13 @@ export type RoutesParamsRecordResolved = {
   privacy: never;
   land_law: never;
   autolawyer: never;
+  'cases-id': {
+    id: string;
+  };
   family_law: never;
   labour_law: never;
   cases: never;
   housing_law: never;
-  'cases-slug': {
-    slug: string;
-  };
   criminal_law: never;
   customer_law: never;
   migration_law: never;
@@ -81,16 +81,16 @@ export type RoutesNamedLocations =
   | { name: 'privacy' }
   | { name: 'land_law' }
   | { name: 'autolawyer' }
+  | {
+      name: 'cases-id';
+      params: {
+        id: string | number;
+      };
+    }
   | { name: 'family_law' }
   | { name: 'labour_law' }
   | { name: 'cases' }
   | { name: 'housing_law' }
-  | {
-      name: 'cases-slug';
-      params: {
-        slug: string | number;
-      };
-    }
   | { name: 'criminal_law' }
   | { name: 'customer_law' }
   | { name: 'migration_law' }
@@ -109,16 +109,16 @@ export type RoutesNamedLocationsResolved = {
   | { name: 'privacy' }
   | { name: 'land_law' }
   | { name: 'autolawyer' }
+  | {
+      name: 'cases-id';
+      params: {
+        id: string;
+      };
+    }
   | { name: 'family_law' }
   | { name: 'labour_law' }
   | { name: 'cases' }
   | { name: 'housing_law' }
-  | {
-      name: 'cases-slug';
-      params: {
-        slug: string;
-      };
-    }
   | { name: 'criminal_law' }
   | { name: 'customer_law' }
   | { name: 'migration_law' }
@@ -131,11 +131,11 @@ export type RoutesNamesListRecord = {
   privacy: 'privacy';
   landLaw: 'land_law';
   autolawyer: 'autolawyer';
+  casesId: 'cases-id';
   familyLaw: 'family_law';
   labourLaw: 'labour_law';
   cases: 'cases';
   housingLaw: 'housing_law';
-  casesSlug: 'cases-slug';
   criminalLaw: 'criminal_law';
   customerLaw: 'customer_law';
   migrationLaw: 'migration_law';
@@ -148,11 +148,11 @@ export const routesNames = {
   privacy: 'privacy' as const,
   landLaw: 'land_law' as const,
   autolawyer: 'autolawyer' as const,
+  casesId: 'cases-id' as const,
   familyLaw: 'family_law' as const,
   labourLaw: 'labour_law' as const,
   cases: 'cases' as const,
   housingLaw: 'housing_law' as const,
-  casesSlug: 'cases-slug' as const,
   criminalLaw: 'criminal_law' as const,
   customerLaw: 'customer_law' as const,
   migrationLaw: 'migration_law' as const,

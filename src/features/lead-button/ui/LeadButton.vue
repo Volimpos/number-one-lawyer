@@ -16,10 +16,9 @@
           <a href="https://wa.me/79227441323" target="_blank">Написать в WhatsApp</a>
         </li>
         <li>
-          
-<a href="https://t.me/urist_law1">Написать в Telegram</a>
+          <a href="https://t.me/urist_law1" target="_blank">Написать в Telegram</a>
         </li>
-        <li>Заказать звонок</li>
+        <li @click="openModalForm">Заказать звонок</li>
         <li><a href="tel:+7 (905) 830-30-62">+7 (905) 830-30-62</a></li>
       </ul>
     </Transition>
@@ -28,11 +27,17 @@
 
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
-
+import { useModal } from "../model/store";
+import { ContactForm } from "../../contact-form";
+const { openModal } = useModal()
 const optionsOpen = ref<boolean>(false);
 const root = ref<HTMLElement | null>(null);
 const listEl = ref<HTMLElement | null>(null);
 const direction = ref<"up" | "down">("down");
+
+const openModalForm = () => {
+  openModal(ContactForm, 'Заявка на обратный звонок')
+}
 
 const updateDirection = () => {
   if (!root.value || !listEl.value) return;

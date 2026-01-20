@@ -29,6 +29,7 @@ p {
   --gray600: #282828;
   --primary: #ffb33f;
   --primaryDark: #f4a020;
+  --primaryLight: #ffcd81;
   --blueShadow: rgba(121, 114, 216, 0.05);
   --blueAccent: rgba(121, 114, 216, 0.2);
   --yellowShadow: rgba(166, 128, 0, 0.05);

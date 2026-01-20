@@ -2,21 +2,19 @@
   <ClientOnly>
     <Teleport to="body">
       <Transition name="fade">
-        <div class="modal-overlay" v-if="isMaskOpen" @click="toggleModal">
+        <div class="modal-overlay" v-if="isMaskOpen" >
           <Transition name="slide-up">
-            <div class="modal" v-if="isModalOpen" @click.stop>
+            <div class="modal" v-if="isModalOpen" >
               <div class="modal-header">
                 <div class="header-title">
                   {{ title }}
                 </div>
-                <Button
-                  text
-                  shape="circle"
-                  severity="secondary"
+                <button
+                class="close-modal"
                   @click="toggleModal"
                 >
                   <i class="pi pi-times"></i>
-                </Button>
+                </button>
               </div>
 
               <div class="modal-body">
@@ -51,7 +49,7 @@ const { toggleModal } = modalStore;
   left: 0;
   width: 100%;
   height: 100dvh;
-  background: var(--contrastTransparent);
+  background: #00000062;
   z-index: 11;
   display: flex;
   align-items: center;
@@ -63,9 +61,9 @@ const { toggleModal } = modalStore;
 .modal {
   background-color: white;
   transform: translateY(0);
-  width: 34rem;
-  padding: 1.5rem;
-  border-radius: 0.25rem;
+  width: 36rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
 }
 
 .modal-header {
@@ -76,6 +74,7 @@ const { toggleModal } = modalStore;
   gap: 1rem;
   font-size: 1.5rem;
   font-weight: 500;
+  color: var(--gray600);
 }
 
 .modal-body {
@@ -108,6 +107,10 @@ const { toggleModal } = modalStore;
 
 .modal-body::-webkit-scrollbar-thumb:hover {
   background: var(--gray150);
+}
+
+.close-modal {
+  color: var(--gray500);
 }
 
 @media screen and (max-width: 64rem) {

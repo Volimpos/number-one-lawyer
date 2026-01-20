@@ -32,13 +32,13 @@ const checked = defineModel("checked", { default: true });
   width: 1.4rem;
   height: 1.4rem;
   background: white;
-  border: 1px solid var(--contrast);
+  border: 1px solid var(--gray600);
   border-radius: 3px;
   position: relative;
 }
 
 .checkbox input:checked + .checkmark {
-  background: var(--contrast);
+  background: var(--gray600);
 }
 
 .checkbox input:checked + .checkmark::after {

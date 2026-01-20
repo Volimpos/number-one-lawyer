@@ -1,7 +1,7 @@
 <template>
   <section class="cases">
     <div class="cases__inner">
-      <NuxtLink to="/blog/cases" class="cases__badge">
+      <NuxtLink to="/cases" class="cases__badge">
         <span
           >Больше кейсов <span class="max-lg:hidden">в нашем блоге.</span></span
         >

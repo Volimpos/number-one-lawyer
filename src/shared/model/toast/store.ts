@@ -9,7 +9,7 @@ export const useToast = defineStore("toastStore", () => {
     life?: number | null;
   }
 
-  type ToastSeverity = "info" | "error";
+  type ToastSeverity = "info" | "error" | 'success';
 
   const toastList = ref<Toast[]>([]);
 

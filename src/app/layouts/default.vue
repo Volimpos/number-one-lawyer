@@ -12,6 +12,7 @@
       <slot />
       <Footer />
       <Modal />
+      <Toast/>
     </div>
   </div>
 </template>
@@ -19,10 +20,9 @@
 <script setup lang="ts">
 import { Footer } from "~/src/app/layouts/footer";
 import { Header } from "~/src/app/layouts/header";
-
 import { Modal } from "~/src/shared/ui/modal";
 import { useModal } from "~/src/shared/model/modal/store";
-
+import { Toast } from "~/src/shared/ui/toast";
 const route = useRoute();
 const { closeModal } = useModal();
 
