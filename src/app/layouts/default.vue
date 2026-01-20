@@ -11,6 +11,7 @@
       <Header />
       <slot />
       <Footer />
+      <FloatButton/>
       <Modal />
       <Toast/>
     </div>
@@ -23,6 +24,7 @@ import { Header } from "~/src/app/layouts/header";
 import { Modal } from "~/src/shared/ui/modal";
 import { useModal } from "~/src/shared/model/modal/store";
 import { Toast } from "~/src/shared/ui/toast";
+import { FloatButton } from "~/src/widgets/float-button";
 const route = useRoute();
 const { closeModal } = useModal();
 

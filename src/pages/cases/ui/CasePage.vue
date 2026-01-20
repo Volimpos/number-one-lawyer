@@ -21,10 +21,10 @@
 
 <script setup lang="ts">
 import { CasesSection } from '~/src/widgets/cases-section';
-import image from "~/src/app/assets/case-image.jpg"
 import type { CaseItem } from '~/src/entities/case/model/interfaces';
 import getCaseFromStore from '~/src/entities/case/model/getCaseFromStore';
 import { fetchCaseById } from '~/src/entities/case/api/fetchCaseById';
+import logo from "~/src/shared/assets/logo.svg";
 
 const route = useRoute();
 const caseId = ref<string>(String(route.params.id) ?? "");
@@ -39,6 +39,83 @@ if (!caseItem.value) {
 
   caseItem.value = data.value?.data as CaseItem;
 }
+
+// SEO и GEO оптимизация - вычисляемые значения для динамических мета-тегов
+const seoTitle = computed(() => {
+  if (!caseItem.value) {
+    return 'Кейс | Юридическая компания №1 в Челябинске';
+  }
+  return `${caseItem.value.title} | ${caseItem.value.sphere} в Челябинске | Юридическая компания №1`;
+});
+
+const seoDescription = computed(() => {
+  if (!caseItem.value) {
+    return 'Успешные кейсы юридической компании №1 в Челябинске. Профессиональная помощь юристов и адвокатов по различным правовым вопросам.';
+  }
+  const geoKeywords = 'в Челябинске, Челябинская область';
+  const shortDescription = caseItem.value.description.length > 120 
+    ? caseItem.value.description.substring(0, 120) + '...'
+    : caseItem.value.description;
+  return `${shortDescription} ${geoKeywords}. ${caseItem.value.sphere} - профессиональная юридическая помощь от компании №1 в Челябинске.`;
+});
+
+const seoKeywords = computed(() => {
+  if (!caseItem.value) {
+    return 'юрист Челябинск, адвокат Челябинск, юридическая помощь Челябинск, юридические услуги Челябинск';
+  }
+  const sphere = caseItem.value.sphere.toLowerCase();
+  return `${sphere} Челябинск, ${sphere} Челябинская область, юрист по ${sphere} Челябинск, адвокат ${sphere} Челябинск, юридическая помощь ${sphere} Челябинск, кейс ${sphere}, успешное дело ${sphere}, юридическая компания №1 Челябинск`;
+});
+
+const seoImage = computed(() => 
+  caseItem.value?.image || logo
+);
+
+const twitterTitle = computed(() => {
+  if (!caseItem.value) {
+    return 'Кейс | Юридическая компания №1 в Челябинске';
+  }
+  return `${caseItem.value.title} | ${caseItem.value.sphere} в Челябинске`;
+});
+
+const twitterDescription = computed(() => {
+  if (!caseItem.value) {
+    return 'Успешные кейсы юридической компании №1 в Челябинске.';
+  }
+  const shortDescription = caseItem.value.description.length > 100 
+    ? caseItem.value.description.substring(0, 100) + '...'
+    : caseItem.value.description;
+  return `${shortDescription} в Челябинске. ${caseItem.value.sphere}.`;
+});
+
+useSeoMeta({
+  title: seoTitle,
+  ogTitle: seoTitle,
+  description: seoDescription,
+  ogDescription: seoDescription,
+  ogImage: seoImage,
+  ogType: 'article',
+  ogSiteName: 'Юридическая компания №1',
+  ogLocale: 'ru_RU',
+  twitterCard: 'summary_large_image',
+  twitterTitle: twitterTitle,
+  twitterDescription: twitterDescription,
+  twitterImage: seoImage,
+  keywords: seoKeywords,
+  author: 'Юридическая компания №1',
+});
+
+// Статические GEO мета-теги для улучшения локального ранжирования
+useHead({
+  meta: [
+    { name: 'geo.region', content: 'RU-CHE' },
+    { name: 'geo.placename', content: 'Челябинск' },
+    { name: 'geo.position', content: '55.1644;61.4368' },
+    { name: 'ICBM', content: '55.1644, 61.4368' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'googlebot', content: 'index, follow' },
+  ],
+});
 
 
 </script>
