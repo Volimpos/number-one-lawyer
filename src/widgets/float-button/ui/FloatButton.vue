@@ -40,6 +40,8 @@ const { isVisible } = useFloatButtonScroll(300);
 }
 
 @media screen and (max-width: 64rem){
-    
+    .float-button {
+    bottom: 0.5rem;
+}
 }
 </style>
