@@ -18,9 +18,26 @@
             <p>Адрес: г. Челябинск, ул Кирова, д. 7А, помещ. 29</p>
           </div>
           <div class="social">
-            <a href="#"><img :src="vkLogo" alt="VK" /></a>
-            <a href="#"><img :src="tgLogo" alt="Telegram" /></a>
+            <a href="https://vk.ru/ykchelybinsk"><img :src="vkLogo" class="vkLogo" alt="VK" /></a>
+            <a href="https://t.me/urist01"><img :src="tgLogo" alt="Telegram" class="tgLogo" /></a>
+            <a href="https://2gis.ru/chelyabinsk/firm/70000001089709132">
+              <img :src="gisLogo" alt="2GIS">
+            </a>
+            <a href="https://chelyabinsk.flamp.ru/firm/yuridicheskaya_kompaniya_1-70000001089709132"><img :src="flampLogo" alt="Flamp" class="flampLogo" /></a>
+            <a href="https://www.avito.ru/brands/39c6409fa838c6c354eedd1b716c8768/all?sellerId=9154d3067f34c49f0c5a424bcc51f460">
+              <img :src="avitoLogo" alt="Avito" class="avitoLogo">
+            </a>
+            <a href="https://uslugi.yandex.ru/profile/YuridicheskayaKompaniya1-2964404">
+              <img :src="yandexIspolnitelLogo" alt="YandexIspolniteli" class="yandexInspolniteli">
+            </a>
+            <a href="https://chelyabinsk.law-firmika.ru/firms.php?i=602583">
+              <img :src="firmikaLogo" alt="Firmika">
+            </a>
+            <a href="https://yandex.ru/maps/org/yuridicheskaya_kompaniya_1/229043841147/?ll=61.402658%2C55.180739&z=15.6">
+              <img :src="yandexMapsLogo" alt="YandexMaps" class="yandexMaps">
+            </a>
           </div>
+
         </div>
         <div class="links">
           <div class="services">
@@ -50,7 +67,12 @@
 import logoMain from "~/src/shared/assets/logo.svg";
 import vkLogo from "~/src/app/assets/vk_logo.svg";
 import tgLogo from "~/src/app/assets/tg_logo.svg";
-
+import gisLogo from "~/src/app/assets/2GIS_logo.svg"
+import flampLogo from "~/src/app/assets/flamp.png"
+import firmikaLogo from "~/src/app/assets/firmika.svg"
+import avitoLogo from "~/src/app/assets/Avito_logo.svg"
+import yandexMapsLogo from "~/src/app/assets/yandex-maps-logo.svg"
+import yandexIspolnitelLogo from "~/src/app/assets/yai.svg"
 import spheres from "~/src/shared/model/menu/store";
 </script>
 
@@ -84,10 +106,11 @@ import spheres from "~/src/shared/model/menu/store";
   flex-direction: row;
   gap: 1.5rem;
   margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 .social img {
-  width: 2rem;
   height: 2rem;
+  object-fit: contain;
 }
 
 .links {

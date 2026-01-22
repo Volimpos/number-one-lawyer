@@ -73,6 +73,7 @@ const sendContactsToServer = async () => {
       severity: 'success',
       life: 4000,
     });
+    window.location.assign('/thank_you')
   } else {
     addToast({
       severity: "error",

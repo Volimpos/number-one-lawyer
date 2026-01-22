@@ -12,6 +12,7 @@ export type RoutesNamesList =
   | 'index'
   | 'privacy'
   | 'land_law'
+  | 'thank_you'
   | 'autolawyer'
   | 'cases-id'
   | 'family_law'
@@ -34,6 +35,7 @@ export type RoutesParamsRecord = {
   index: never;
   privacy: never;
   land_law: never;
+  thank_you: never;
   autolawyer: never;
   'cases-id': {
     id: string | number;
@@ -57,6 +59,7 @@ export type RoutesParamsRecordResolved = {
   index: never;
   privacy: never;
   land_law: never;
+  thank_you: never;
   autolawyer: never;
   'cases-id': {
     id: string;
@@ -80,6 +83,7 @@ export type RoutesNamedLocations =
   | { name: 'index' }
   | { name: 'privacy' }
   | { name: 'land_law' }
+  | { name: 'thank_you' }
   | { name: 'autolawyer' }
   | {
       name: 'cases-id';
@@ -108,6 +112,7 @@ export type RoutesNamedLocationsResolved = {
   | { name: 'index' }
   | { name: 'privacy' }
   | { name: 'land_law' }
+  | { name: 'thank_you' }
   | { name: 'autolawyer' }
   | {
       name: 'cases-id';
@@ -130,6 +135,7 @@ export type RoutesNamesListRecord = {
   index: 'index';
   privacy: 'privacy';
   landLaw: 'land_law';
+  thankYou: 'thank_you';
   autolawyer: 'autolawyer';
   casesId: 'cases-id';
   familyLaw: 'family_law';
@@ -147,6 +153,7 @@ export const routesNames = {
   index: 'index' as const,
   privacy: 'privacy' as const,
   landLaw: 'land_law' as const,
+  thankYou: 'thank_you' as const,
   autolawyer: 'autolawyer' as const,
   casesId: 'cases-id' as const,
   familyLaw: 'family_law' as const,
