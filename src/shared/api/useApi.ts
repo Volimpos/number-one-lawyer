@@ -1,8 +1,8 @@
 import type { Api } from "./interfaces";
 import type { RequestOptions } from "./interfaces";
 
-// const baseURL = "http://127.0.0.1:8000";
-const baseURL = "https://api.number1lawyer.ru";
+const baseURL = "http://127.0.0.1:8000";
+// const baseURL = "https://api.number1lawyer.ru";
 
 // Кастомный класс ошибки для API
 class ApiError extends Error {
