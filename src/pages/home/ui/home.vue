@@ -16,7 +16,6 @@ import StatsSection from "./sections/stats-section.vue";
 import MayTrustSection from "./sections/may-trust-section.vue";
 import LawSpheres from "./sections/law-spheres.vue";
 import { CtaSection } from "~/src/widgets/cta-section"
-import { useHead } from 'nuxt/app';
 import logo from "~/src/shared/assets/logo.svg";
 useSeoMeta({
   title:
