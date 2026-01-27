@@ -15,7 +15,9 @@ import { ReviewsSection } from "~/src/widgets/reviews-section";
 import StatsSection from "./sections/stats-section.vue";
 import MayTrustSection from "./sections/may-trust-section.vue";
 import LawSpheres from "./sections/law-spheres.vue";
-import { CtaSection } from "~/src/widgets/cta-section";
+import { CtaSection } from "~/src/widgets/cta-section"
+import { useHead } from 'nuxt/app';
+import logo from "~/src/shared/assets/logo.svg";
 useSeoMeta({
   title:
     "Бесплатная консультация юриста в Челябинске | Юридическая компания №1",
@@ -25,8 +27,7 @@ useSeoMeta({
     "Юридическая компания №1 в Челябинске — профессиональная помощь юристов и адвокатов. Консультации, защита в суде, сопровождение бизнеса, гражданские и арбитражные споры. Работаем по Челябинску и области.",
   ogDescription:
     "Юридическая компания №1 в Челябинске — профессиональная помощь юристов и адвокатов. Консультации, защита в суде, сопровождение бизнеса, гражданские и арбитражные споры. Работаем по Челябинску и области.",
-  ogImage:
-    "https://s3.ru1.storage.beget.cloud/a9fd9a74202c-volimpos/taole/taole-logo.jpg",
+  ogImage: logo,
   twitterCard: "summary_large_image",
   ogSiteName: "Юридическая компания №1",
 });
