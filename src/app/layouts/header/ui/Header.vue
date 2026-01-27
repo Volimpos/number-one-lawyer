@@ -57,7 +57,7 @@ import { BurgerMenuButton } from "~/src/features/burger-menu";
 import { LeadButton } from "~/src/features/lead-button";
 import { Menu } from "~/src/shared/ui/menu";
 import { BurgerMenu } from "~/src/features/burger-menu";
-import logoMain from "~/src/shared/assets/logo.svg";
+import logoMain from "~/src/shared/assets/logo.png";
 
 const isServicesOpen = ref(false);
 const servicesRef = ref<HTMLElement | null>(null);
@@ -120,9 +120,6 @@ watch(
   height: 50px;
   display: block;
   object-fit: contain;
-  image-rendering: -webkit-optimize-contrast;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
 .nav {
   gap: 0.75rem;
@@ -207,10 +204,13 @@ watch(
 
 @media (max-width: 64rem) {
   .logo,
-  .logo__image
-  {
+  .logo__image {
     width: 43px;
     height: 43px;
+  }
+
+  .header-container {
+    top: 16px;
   }
 
   .nav,
