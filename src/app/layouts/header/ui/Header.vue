@@ -116,8 +116,8 @@ watch(
   align-items: center;
 }
 .logo__image {
-  width: 100%;
-  height: 100%;
+  width: 50px;
+  height: 50px;
   display: block;
   object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
@@ -206,7 +206,9 @@ watch(
 }
 
 @media (max-width: 64rem) {
-  .logo {
+  .logo,
+  .logo__image
+  {
     width: 43px;
     height: 43px;
   }
