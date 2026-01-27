@@ -3,7 +3,7 @@
     <footer class="footer">
       <div class="logo">
         <NuxtLink to="/">
-          <img :src="logoMain" alt="Юридическая компания №1 лого" />
+          <img :src="logoMain" alt="Юридическая компания №1 лого" class="logo__image" />
         </NuxtLink>
       </div>
       <div class="info">
@@ -94,6 +94,14 @@ import spheres from "~/src/shared/model/menu/store";
 }
 .logo {
   margin-top: 4rem;
+  width: 50px;
+  height: 50px;
+}
+
+.logo__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .info {
   margin-top: 2rem;
@@ -139,5 +147,9 @@ import spheres from "~/src/shared/model/menu/store";
     display: flex;
     flex-direction: column;
   }
+  .logo {
+  width: 43px;
+  height: 43px;
+}
 }
 </style>
