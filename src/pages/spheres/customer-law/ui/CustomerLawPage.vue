@@ -31,7 +31,7 @@ useSeoMeta({
   robots: "index, follow",
   ogType: "website",
   ogUrl: canonicalUrl,
-  ogImage: "~/src/shared/assets/logo.svg",
+  ogImage: "~/src/shared/assets/logo.png",
   ogImageAlt:
     "Юрист по защите прав потребителей в Челябинске — Юридическая компания №1",
   twitterCard: "summary_large_image",
@@ -39,7 +39,7 @@ useSeoMeta({
     "Юрист по защите прав потребителей в Челябинске — возврат денег за некачественный товар или услугу",
   twitterDescription:
     "Профессиональная помощь юриста по защите прав потребителей в Челябинске. Возврат товара, защита при некачественных услугах, взыскание компенсации, споры с продавцами и исполнителями услуг.",
-  twitterImage: "~/src/shared/assets/logo.svg",
+  twitterImage: "~/src/shared/assets/logo.png",
   ogSiteName: "Юридическая компания №1",
   ogLocale: "ru_RU",
   articleAuthor: "Юридическая компания №1",
