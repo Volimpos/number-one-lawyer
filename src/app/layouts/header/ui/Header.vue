@@ -120,6 +120,9 @@ watch(
   height: 100%;
   display: block;
   object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .nav {
   gap: 0.75rem;
