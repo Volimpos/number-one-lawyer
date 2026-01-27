@@ -64,7 +64,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import logoMain from "~/src/shared/assets/logo.png";
+import logoMain from "~/src/shared/assets/logo.svg";
 import vkLogo from "~/src/app/assets/vk_logo.svg";
 import tgLogo from "~/src/app/assets/tg_logo.svg";
 import gisLogo from "~/src/app/assets/2GIS_logo.svg"

@@ -27,7 +27,7 @@ import { useAsyncData } from 'nuxt/app';
 import {CaseCard} from '~/src/entities/case';
 import { useCases } from '~/src/entities/case/model/store';
 import { formatDate } from '~/src/shared/lib/formatDate';
-import logo from "~/src/shared/assets/logo.png";
+import logo from "~/src/shared/assets/logo.svg";
 
 const requestURL = useRequestURL();
 const canonicalUrl = requestURL.href;

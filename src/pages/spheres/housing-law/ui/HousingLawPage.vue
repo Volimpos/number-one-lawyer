@@ -31,14 +31,14 @@ useSeoMeta({
   robots: "index, follow",
   ogType: "website",
   ogUrl: canonicalUrl,
-  ogImage: "~/src/shared/assets/logo.png",
+  ogImage: "~/src/shared/assets/logo.svg",
   ogImageAlt: "Юрист по жилищному праву в Челябинске — Юридическая компания №1",
   twitterCard: "summary_large_image",
   twitterTitle:
     "Юрист по жилищному праву в Челябинске — споры с УК, приватизация, ЖКХ",
   twitterDescription:
     "Профессиональная помощь юриста по жилищному праву в Челябинске. Споры с управляющими компаниями, приватизация, проблемы с ЖКХ, выселение, перепланировка.",
-  twitterImage: "~/src/shared/assets/logo.png",
+  twitterImage: "~/src/shared/assets/logo.svg",
   ogSiteName: "Юридическая компания №1",
   ogLocale: "ru_RU",
   articleAuthor: "Юридическая компания №1",
