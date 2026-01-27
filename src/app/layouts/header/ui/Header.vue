@@ -1,8 +1,12 @@
 <template>
   <div class="header-container">
     <header class="header">
-      <NuxtLink to="/" class="logo">
-        <img :src="logoMain" alt="Юридическая компания №1 лого" />
+    <NuxtLink to="/" class="logo">
+      <img
+        class="logo__image"
+        :src="logoMain"
+        alt="Юридическая компания №1 лого"
+      />
       </NuxtLink>
       <nav class="nav">
         <div
@@ -111,6 +115,12 @@ watch(
   justify-content: flex-start;
   align-items: center;
 }
+.logo__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
 .nav {
   gap: 0.75rem;
   display: flex;
@@ -193,6 +203,11 @@ watch(
 }
 
 @media (max-width: 64rem) {
+  .logo {
+    width: 43px;
+    height: 43px;
+  }
+
   .nav,
   .lead-btn-container {
     display: none;
