@@ -57,7 +57,7 @@ import { BurgerMenuButton } from "~/src/features/burger-menu";
 import { LeadButton } from "~/src/features/lead-button";
 import { Menu } from "~/src/shared/ui/menu";
 import { BurgerMenu } from "~/src/features/burger-menu";
-import logoMain from "~/src/shared/assets/logo.svg";
+import logoMain from "~/src/shared/assets/logo.png";
 
 const isServicesOpen = ref(false);
 const servicesRef = ref<HTMLElement | null>(null);

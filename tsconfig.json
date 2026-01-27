@@ -1,8 +1,11 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "files": [
-    "./env.d.ts",
-    "./src/shims-assets.d.ts"
+  "include": [
+    "app.vue",
+    "env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "src/shims-assets.d.ts"
   ],
   "references": [
     {
