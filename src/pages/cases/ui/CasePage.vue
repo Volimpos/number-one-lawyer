@@ -25,6 +25,7 @@ import type { CaseItem } from '~/src/entities/case/model/interfaces';
 import getCaseFromStore from '~/src/entities/case/model/getCaseFromStore';
 import { fetchCaseById } from '~/src/entities/case/api/fetchCaseById';
 import logo from "~/src/shared/assets/logo.svg";
+import { useHead } from 'nuxt/app';
 
 const route = useRoute();
 const caseId = ref<string>(String(route.params.id) ?? "");
