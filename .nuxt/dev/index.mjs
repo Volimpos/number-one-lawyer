@@ -751,6 +751,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
+    "yandexMetrikaId": 104927147,
     "primevue": {
       "usePrimeVue": true,
       "autoImport": true,

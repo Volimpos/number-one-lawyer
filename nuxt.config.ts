@@ -31,6 +31,11 @@ export default defineNuxtConfig({
     "./src/app/styles/tailwind.css",
     "./src/app/styles/global.css",
   ],
+  runtimeConfig: {
+    public: {
+      yandexMetrikaId: 104927147,
+    },
+  },
   tailwindcss: {
     cssPath: "src/app/styles/tailwind.css",
     configPath: "tailwind.config.ts",
