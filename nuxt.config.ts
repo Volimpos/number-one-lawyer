@@ -4,9 +4,13 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineNuxtConfig({
   compatibilityDate: "2025-12-29",
   devtools: { enabled: true },
+  ssr: true,
   app: {
     head: {
-      link: [{ rel: "icon", type: "image/svg", href: "./favicon.svg" }],
+      link: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
+      ],
       title: "Бесплатная консультация юриста в Челябинске | Юридическая компания №1",
     },
   },

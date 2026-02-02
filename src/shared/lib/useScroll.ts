@@ -1,4 +1,4 @@
-import { onScopeDispose } from "vue";
+import { getCurrentScope, onScopeDispose } from "vue";
 
 const useScroll = () => {
   let wasLocked = false;
@@ -28,7 +28,9 @@ const useScroll = () => {
   };
 
   // Опционально: автоматически разблокировать при уничтожении компонента/контекста
-  onScopeDispose(unlock);
+  if (getCurrentScope()) {
+    onScopeDispose(unlock);
+  }
 
   return { lock, unlock };
 };
