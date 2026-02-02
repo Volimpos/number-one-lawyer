@@ -1,8 +1,0 @@
-const reviewsSection_vue_vue_type_style_index_0_scoped_f8308891_lang = ".reviews-section[data-v-f8308891]{align-items:center;display:flex;flex-direction:column;gap:1.5rem;padding:4rem 0}.badge[data-v-f8308891]{align-items:center;border:1px solid var(--gray300);border-radius:999px;color:var(--gray400);display:inline-flex;font-size:.875rem;font-weight:500;gap:.5rem;padding:.5rem 2rem;transition:.1s}.badge[data-v-f8308891]:hover{border-color:var(--gray400)}.badge-btn[data-v-f8308891]{color:var(--primaryDark)}.reviews-section__title[data-v-f8308891]{color:var(--gray600);font-size:3rem;font-weight:700;line-height:110%;text-align:center}.reviews-section__subtitle[data-v-f8308891]{color:var(--gray400);margin-top:1rem;max-width:32rem;text-align:center}.reviews-section__grid[data-v-f8308891]{display:grid;gap:1.5rem;grid-auto-rows:2fr;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:2rem;padding:0 5rem;width:100%}@media screen and (max-width:96rem){.reviews-section__grid[data-v-f8308891]{gap:1rem;padding-inline:2rem}}@media screen and (max-width:80rem){.reviews-section__grid[data-v-f8308891]{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:1rem}}@media screen and (max-width:64rem){.reviews-section[data-v-f8308891]{align-items:start;padding-inline:1rem}.reviews-section__title[data-v-f8308891]{font-size:2rem;text-align:left}.reviews-section__subtitle[data-v-f8308891]{text-align:left}.reviews-section__grid[data-v-f8308891]{grid-template-columns:repeat(1,minmax(0,1fr));margin-top:.5rem;padding-inline:0}}";
-
-const reviewsSectionStyles_LuzsOIC4 = [
-  reviewsSection_vue_vue_type_style_index_0_scoped_f8308891_lang
-];
-
-export { reviewsSectionStyles_LuzsOIC4 as default };
-//# sourceMappingURL=reviews-section-styles.LuzsOIC4.mjs.map
