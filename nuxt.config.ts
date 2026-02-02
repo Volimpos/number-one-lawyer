@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [{ rel: "icon", type: "image/svg", href: "./favicon.svg" }],
-      title: "Консультация юриста в Челябинске | Юридическая компания №1",
+      title: "Бесплатная консультация юриста в Челябинске | Юридическая компания №1",
     },
   },
   alias: {
