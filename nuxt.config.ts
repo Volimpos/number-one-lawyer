@@ -37,7 +37,6 @@ export default defineNuxtConfig({
     configPath: "tailwind.config.ts",
   },
   modules: [
-    // "@nuxt/fonts",
     "@nuxtjs/tailwindcss",
     "@primevue/nuxt-module",
     "nuxt-typed-router",
