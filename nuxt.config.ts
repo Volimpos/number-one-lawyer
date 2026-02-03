@@ -1,10 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tsconfigPaths from "vite-tsconfig-paths";
 
+// Маршруты кейсов для SSG (пререндер при nuxt generate)
+const caseRoutes = Array.from({ length: 30 }, (_, i) => `/cases/${i + 1}`);
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-12-29",
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
   app: {
     head: {
       link: [
@@ -21,19 +24,11 @@ export default defineNuxtConfig({
     pages: "src/app/routes",
     layouts: "src/app/layouts",
   },
-  fonts: {
-    families: [
-      {
-        name: "Manrope",
-        provider: "google",
-        weights: [200, 300, 400, 500, 600, 700, 800],
-      },
-    ],
-  },
   css: [
     "primeicons/primeicons.css",
     "./src/app/styles/tailwind.css",
     "./src/app/styles/global.css",
+    "./src/app/styles/fonts.css",
   ],
   runtimeConfig: {
     public: {
@@ -45,12 +40,34 @@ export default defineNuxtConfig({
     configPath: "tailwind.config.ts",
   },
   modules: [
-    "@nuxt/fonts",
+    // "@nuxt/fonts",
     "@nuxtjs/tailwindcss",
     "@primevue/nuxt-module",
     "nuxt-typed-router",
     "@pinia/nuxt",
   ],
+  nitro: {
+    prerender: {
+      routes: [
+        "/",
+        "/about",
+        "/privacy",
+        "/thank_you",
+        "/autolawyer",
+        "/criminal_law",
+        "/customer_law",
+        "/family_law",
+        "/housing_law",
+        "/inheritance_law",
+        "/labour_law",
+        "/land_law",
+        "/migration_law",
+        "/cases",
+        ...caseRoutes,
+      ],
+      crawlLinks: true,
+    },
+  },
   vite: {
     plugins: [tsconfigPaths()],
   },

@@ -53,7 +53,7 @@ const loadCase = async () => {
   }
 };
 
-// Загрузка только на клиенте (SSR false)
+// Загрузка данных кейса на клиенте после гидрации (SSG)
 onMounted(loadCase);
 watch(caseId, loadCase);
 
