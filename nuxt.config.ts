@@ -1,9 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tsconfigPaths from "vite-tsconfig-paths";
 
-// Маршруты кейсов для SSG (пререндер при nuxt generate)
-const caseRoutes = Array.from({ length: 30 }, (_, i) => `/cases/${i + 1}`);
-
 export default defineNuxtConfig({
   compatibilityDate: "2025-12-29",
   devtools: { enabled: true },
@@ -63,7 +60,6 @@ export default defineNuxtConfig({
         "/land_law",
         "/migration_law",
         "/cases",
-        ...caseRoutes,
       ],
       crawlLinks: true,
     },
