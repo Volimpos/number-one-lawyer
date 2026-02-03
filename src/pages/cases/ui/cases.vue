@@ -5,7 +5,11 @@
     <p class="description">Показываем свою работу и делимся полезной практикой</p>
     </div>
     <div class="cases-grid">
-        <CaseCard 
+      <template v-if="!cases || cases.length === 0">
+      <CaseCardSkeleton v-for="i in 20" :key="i"/>
+      </template>
+      <template v-else>
+        <CaseCard
             v-for="(caseItem, index) in cases" 
             :key="index"
             :image="caseItem.image"
@@ -15,6 +19,7 @@
             :description="caseItem.description"
             :link="`/cases/${caseItem.id}`"
         />
+      </template>
 </div>
     </div>
    
@@ -24,7 +29,7 @@
 
 <script setup lang="ts">
 import { useAsyncData } from 'nuxt/app';
-import {CaseCard} from '~/src/entities/case';
+import {CaseCard, CaseCardSkeleton} from '~/src/entities/case';
 import { useCases } from '~/src/entities/case/model/store';
 import { formatDate } from '~/src/shared/lib/formatDate';
 import logo from "~/src/shared/assets/logo.png";
@@ -69,9 +74,9 @@ useHead({
 const casesStore = useCases()
 const { cases } = storeToRefs(casesStore)
 
-    await useAsyncData("cases", async () => {
-  await casesStore.loadAllCases()
-});
+await useAsyncData("cases", async () => {
+  await casesStore.loadAllCases();
+}, { server: false });
 </script>
 
 <style scoped>
@@ -98,6 +103,10 @@ const { cases } = storeToRefs(casesStore)
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
+}
+
+.cases-grid > * {
+    min-width: 0;
 }
 
 @media screen and (max-width: 96rem) {

@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper">
-    <div class="case-info" v-if="caseItem">
+    <div class="loader" v-if="!caseItem">
+      <i class="pi pi-spinner pi-spin text-2xl"></i>
+    </div>
+  
+    <div class="case-info" v-else>
     <div class="case-text">
         <p class="sphere">{{ caseItem.sphere }}</p>
         <p class="case-title">{{ caseItem.title }}</p>
@@ -26,20 +30,32 @@ import getCaseFromStore from '~/src/entities/case/model/getCaseFromStore';
 import { fetchCaseById } from '~/src/entities/case/api/fetchCaseById';
 import logo from "~/src/shared/assets/logo.png";
 import { useHead } from 'nuxt/app';
+import { ref } from 'vue';
 
 const route = useRoute();
-const caseId = ref<string>(String(route.params.id) ?? "");
+const caseId = computed(() => String(route.params.id ?? ''));
 const caseItem = ref<CaseItem | null>(null);
-caseItem.value = getCaseFromStore(caseId.value);
 
-if (!caseItem.value) {
-  const { data } = await useAsyncData(
-    `cases/${caseId.value}`, // Уникальный ключ для кэширования
-    async () => await fetchCaseById(caseId.value)
-  );
+const loadCase = async () => {
+  const id = caseId.value;
+  if (!id || id === 'undefined') return;
 
-  caseItem.value = data.value?.data as CaseItem;
-}
+  const fromStore = getCaseFromStore(id);
+  if (fromStore) {
+    caseItem.value = fromStore;
+    return;
+  }
+
+  caseItem.value = null;
+  const result = await fetchCaseById(id);
+  if (result?.data) {
+    caseItem.value = result.data as CaseItem;
+  }
+};
+
+// Загрузка только на клиенте (SSR false)
+onMounted(loadCase);
+watch(caseId, loadCase);
 
 // SEO и GEO оптимизация - вычисляемые значения для динамических мета-тегов
 const seoTitle = computed(() => {
@@ -124,6 +140,17 @@ useHead({
 <style scoped>
 .wrapper {
   padding: 10rem 5rem 1rem;
+}
+.loader {
+  width: 100%;
+  height: 50dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader i {
+  font-size: 2rem;
+  color: var(--gray400);
 }
 .case-info {
   display: grid;

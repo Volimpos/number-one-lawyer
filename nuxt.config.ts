@@ -4,6 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineNuxtConfig({
   compatibilityDate: "2025-12-29",
   devtools: { enabled: true },
+  ssr: false,
   app: {
     head: {
       link: [
