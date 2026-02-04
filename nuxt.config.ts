@@ -12,6 +12,13 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/png", href: "/favicon.png" },
       ],
       title: "Бесплатная консультация  юриста в Челябинске | Юридическая компания №1",
+      script: [
+        {
+          src: 'cdn.callibri.ru/callibri.js',
+          type: 'text/javascript',
+          defer: true
+        }
+      ]
     },
   },
   alias: {
