@@ -39,6 +39,7 @@ onMounted(async () => {
     wheelMultiplier: 0.85, // чуть медленнее, чем действия пользователя
     smoothWheel: true,
     autoRaf: true,
+    syncTouch: true, // плавный скролл на смартфонах (может быть нестабильно на iOS < 16)
   });
 });
 
