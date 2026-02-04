@@ -35,7 +35,6 @@ const loadSection = async () => {
   await loadAllCases()
   if (cases.value && cases.value?.length > 0) {
     casesToDisplay.value = getLimitedCaseItems()
-    console.log(casesToDisplay.value)
   }
   isLoading.value = false
 }

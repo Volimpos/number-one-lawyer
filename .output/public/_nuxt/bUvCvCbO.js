@@ -1,0 +1,1 @@
+import{r,o as s,a0 as l}from"./BxdV1xH3.js";const a=(n=300)=>{const e=r(!1),o=()=>{e.value=window.scrollY>n};return s(()=>{window.addEventListener("scroll",o)}),l(()=>{window.removeEventListener("scroll",o)}),{isTransparent:e}};export{a as useHeaderScroll};
