@@ -37,6 +37,9 @@ const caseId = computed(() => String(route.params.id ?? ''));
 const caseItem = ref<CaseItem | null>(null);
 
 const loadCase = async () => {
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   const id = caseId.value;
   if (!id || id === 'undefined') return;
 

@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   },
   css: [
     "primeicons/primeicons.css",
+    "lenis/dist/lenis.css",
     "./src/app/styles/tailwind.css",
     "./src/app/styles/global.css",
     "./src/app/styles/fonts.css",

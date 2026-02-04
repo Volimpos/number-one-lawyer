@@ -25,8 +25,27 @@ import { Modal } from "~/src/shared/ui/modal";
 import { useModal } from "~/src/shared/model/modal/store";
 import { Toast } from "~/src/shared/ui/toast";
 import { FloatButton } from "~/src/widgets/float-button";
+
 const route = useRoute();
 const { closeModal } = useModal();
+
+let lenis: InstanceType<typeof import("lenis").default> | null = null;
+
+onMounted(async () => {
+  const { default: Lenis } = await import("lenis");
+
+  lenis = new Lenis({
+    lerp: 0.07, // меньше = больше задержка, плавнее (по умолчанию 0.1)
+    wheelMultiplier: 0.85, // чуть медленнее, чем действия пользователя
+    smoothWheel: true,
+    autoRaf: true,
+  });
+});
+
+onUnmounted(() => {
+  lenis?.destroy();
+  lenis = null;
+});
 
 // Закрываем при смене pathname
 watch(
