@@ -1,8 +1,0 @@
-const ThankYouPage_vue_vue_type_style_index_0_scoped_1b3bdba3_lang = ".wrapper[data-v-1b3bdba3]{align-items:center;display:flex;flex-direction:column;gap:2rem;justify-content:center;padding:12rem 5rem 5rem;text-align:center}.h1[data-v-1b3bdba3]{font-size:3.5rem;font-weight:700;line-height:110%}.text[data-v-1b3bdba3]{color:var(--gray500);width:42rem}.home[data-v-1b3bdba3]{align-items:center;border:1.5px solid var(--primaryDark);border-radius:.25rem;color:var(--primaryDark);display:flex;font-weight:500;height:2.5rem;justify-content:center;outline:none;padding-inline:2.5rem;transition:.2s}.home[data-v-1b3bdba3]:hover{background:var(--primary);border:1.5px solid var(--primary);color:var(--gray600)}.home[data-v-1b3bdba3]:active{background:var(--primaryDark);border:1.5px solid var(--primaryDark);color:var(--gray600)}@media screen and (max-width:96rem){.wrapper[data-v-1b3bdba3]{padding:10rem 2rem 5rem}}@media screen and (max-width:80rem){.wrapper[data-v-1b3bdba3]{gap:1.5rem;padding:12rem 1rem 5rem}.h1[data-v-1b3bdba3]{font-size:2.75rem}.text[data-v-1b3bdba3]{width:100%}}";
-
-const ThankYouPageStyles_DyJz4nFp = [
-  ThankYouPage_vue_vue_type_style_index_0_scoped_1b3bdba3_lang
-];
-
-export { ThankYouPageStyles_DyJz4nFp as default };
-//# sourceMappingURL=ThankYouPage-styles.DyJz4nFp.mjs.map

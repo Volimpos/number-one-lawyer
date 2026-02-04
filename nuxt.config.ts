@@ -14,8 +14,7 @@ export default defineNuxtConfig({
       title: "Бесплатная консультация  юриста в Челябинске | Юридическая компания №1",
       script: [
         {
-          src: 'cdn.callibri.ru/callibri.js',
-          type: 'text/javascript',
+          src: '//cdn.callibri.ru/callibri.js',
           defer: true
         }
       ]
