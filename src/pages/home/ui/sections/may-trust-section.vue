@@ -13,7 +13,7 @@
     </div>
 
     <div class="cards-trust__container">
-      <AnimatedCards :cards="cards" :threshold-perc="0.3"/>
+      <AnimatedCards :cards="cards"/>
     </div>
    
   </article>

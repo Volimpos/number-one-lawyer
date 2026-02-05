@@ -31,11 +31,15 @@
           title?: string | null;
           description?: string | null;
       }>;
-      thresholdPerc?: number;
   }>();
   
+  const getThreshold = () => {
+    if (typeof window === 'undefined') return 0.5;
+    return window.matchMedia('(max-width: 64rem)').matches ? 0.2 : 0.5;
+  };
+
   const { isVisible } = useIntersectionObserver(animatedCardsRef, {
-    threshold: props.thresholdPerc || 0.5,
+    threshold: getThreshold(),
     once: true,
   });
   

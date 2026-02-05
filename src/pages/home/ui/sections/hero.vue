@@ -27,26 +27,6 @@
         >
       </div>
 
-      <!-- <div
-        ref="cardsRef"
-        class="hero__cards"
-        :class="{ 'hero__cards--visible': isCardsVisible }"
-      >
-        <div class="hero__cards-grid">
-          <div
-            v-for="{ item: card, style } in staggeredCards"
-            :key="card.key"
-            class="hero-card__wrapper"
-            :style="style"
-          >
-            <img
-              :class="['hero-card__image', card.class]"
-              :src="card.src"
-              :alt="card.alt"
-            />
-          </div>
-        </div>
-      </div> -->
       <div class="animated-card-wrapper">
         <AnimatedCards :cards="cards"/>
       </div>
