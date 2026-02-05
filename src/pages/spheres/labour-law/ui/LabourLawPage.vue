@@ -35,6 +35,12 @@ useSeoMeta({
   robots: "index, follow",
   author: "Юридическая компания №1",
 });
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
 </script>
 
 <style scoped></style>

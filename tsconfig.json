@@ -1,31 +1,13 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "include": [
-    "app.vue",
-    "env.d.ts",
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "src/shims-assets.d.ts"
-  ],
-  "references": [
-    {
-      "path": "./.nuxt/tsconfig.app.json"
-    },
-    {
-      "path": "./.nuxt/tsconfig.server.json"
-    },
-    {
-      "path": "./.nuxt/tsconfig.shared.json"
-    },
-    {
-      "path": "./.nuxt/tsconfig.node.json"
-    }
-  ],
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "composite": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "#imports": ["./.nuxt/imports"],
+      "#components": ["./.nuxt/components"],
+      "#build": ["./.nuxt"],
+      "#build/*": ["./.nuxt/*"]
     }
   }
 }

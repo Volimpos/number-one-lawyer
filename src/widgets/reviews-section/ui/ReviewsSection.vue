@@ -1,5 +1,9 @@
 <template>
-  <article class="reviews-section">
+  <article
+    ref="sectionRef"
+    class="reviews-section"
+    :class="{ 'reviews-section--visible': isSectionVisible }"
+  >
     <a href="https://go.2gis.com/XAbrT" target="_blank" class="badge">
       <span>Отзывы в 2ГИС.</span>
       <span class="badge-btn">Изучить →</span>
@@ -56,8 +60,22 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { ReviewCard } from "~/src/shared/ui/review-card";
 import { StarsRating } from "~/src/shared/ui/stars-rating";
+import { useIntersectionObserver } from "~/src/shared/lib/useIntersectionObserver";
+
+const sectionRef = ref<HTMLElement | null>(null);
+
+const isMobile = typeof window !== "undefined" 
+  ? window.matchMedia("(max-width: 64rem)").matches 
+  : false;
+
+const { isVisible: isSectionVisible } = useIntersectionObserver(sectionRef, {
+  threshold: isMobile ? 0 : 0.5,
+  rootMargin: isMobile ? "0px 0px -30% 0px" : "0px",
+  once: true,
+});
 const reviews = [
   {
     text: "Отличная работа! Спасибо за подробные консультации, внимательное отношение и реальную помощь в решении моего вопроса от первого обращения и до окончательного результата.",
@@ -142,6 +160,60 @@ const reviews = [
   text-align: center;
   max-width: 32rem;
   margin-top: 1rem;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reviews-section__title,
+.reviews-section__subtitle,
+.reviews-section__grid > * {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+.reviews-section--visible .reviews-section__title {
+  animation: slide-up 0.6s ease-out 0.2s forwards;
+}
+
+.reviews-section--visible .reviews-section__subtitle {
+  animation: slide-up 0.6s ease-out 0.6s forwards;
+}
+
+.reviews-section--visible .reviews-section__grid > * {
+  animation: slide-up 0.6s ease-out 0.9s forwards;
+}
+
+.reviews-section--visible .reviews-section__grid > *:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.reviews-section--visible .reviews-section__grid > *:nth-child(3) {
+  animation-delay: 1.1s;
+}
+
+.reviews-section--visible .reviews-section__grid > *:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+.reviews-section--visible .reviews-section__grid > *:nth-child(5) {
+  animation-delay: 1.3s;
+}
+
+.reviews-section--visible .reviews-section__grid > *:nth-child(6) {
+  animation-delay: 1.4s;
+}
+
+.reviews-section--visible .reviews-section__grid > *:nth-child(7) {
+  animation-delay: 1.5s;
 }
 .reviews-section__grid {
   display: grid;

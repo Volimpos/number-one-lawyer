@@ -9,31 +9,36 @@
         <span class="hero__badge-btn">Читать →</span>
       </a>
 
-      <h1 class="hero__title">Услуги юриста по наследственным спорам</h1>
+      <h1 class="hero__title hero__title--animate">
+        Услуги юриста по наследственным спорам
+      </h1>
 
-      <p class="hero__subtitle">
+      <p class="hero__subtitle hero__subtitle--animate">
         Решаем споры между наследниками, восстанавливаем пропущенные сроки,
         защищаем ваши интересы в суде. Более 10 лет успешной практики в
         наследственном праве.
       </p>
 
-      <div class="hero__actions">
+      <div class="hero__actions hero__actions--animate">
         <LeadButton />
         <NuxtLink to="/cases" class="hero__secondary-btn"
           >Наши кейсы →</NuxtLink
         >
       </div>
 
-      <div class="hero__cards">
-        <div
-          v-for="(card, index) in inheritanceServices"
-          :key="index"
-          class="hero-card__item"
-        >
-          <div class="hero-card__icon">{{ index + 1 }}</div>
-          <div class="hero-card__title">{{ card.title }}</div>
-          <div class="hero-card__text">{{ card.text }}</div>
-        </div>
+      <div ref="cardsRef" class="hero__cards">
+        <TransitionGroup name="slide-up-cards" tag="div" class="hero__cards-grid">
+          <div
+            v-for="(card, index) in visibleCards"
+            :key="index"
+            class="hero-card__item"
+            :style="{ '--stagger-delay': `${index * 0.35}s` }"
+          >
+            <div class="hero-card__icon">{{ index + 1 }}</div>
+            <div class="hero-card__title">{{ card.title }}</div>
+            <div class="hero-card__text">{{ card.text }}</div>
+          </div>
+        </TransitionGroup>
       </div>
     </div>
   </section>
@@ -41,6 +46,14 @@
 
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
+import { computed, ref } from "vue";
+import { useIntersectionObserver } from "~/src/shared/lib/useIntersectionObserver";
+
+const cardsRef = ref<HTMLElement | null>(null);
+const { isVisible: isCardsVisible } = useIntersectionObserver(cardsRef, {
+  threshold: 0.2,
+  rootMargin: "0px 0px -20% 0px",
+});
 
 interface InheritanceService {
   title: string;
@@ -61,6 +74,10 @@ const inheritanceServices: InheritanceService[] = [
     text: "Восстанавливаем пропущенный срок принятия наследства через суд, защищаем ваши права даже при существенных задержках.",
   },
 ];
+
+const visibleCards = computed(() =>
+  isCardsVisible.value ? inheritanceServices : []
+);
 </script>
 
 <style scoped>
@@ -101,6 +118,17 @@ const inheritanceServices: InheritanceService[] = [
   color: var(--primaryDark);
 }
 
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero__title {
   max-width: 58rem;
   font-size: 4rem;
@@ -109,9 +137,19 @@ const inheritanceServices: InheritanceService[] = [
   color: var(--gray600);
 }
 
+.hero__title--animate {
+  opacity: 0;
+  animation: slide-up 0.6s ease-out 1.1s forwards;
+}
+
 .hero__subtitle {
   max-width: 36rem;
   color: var(--gray400);
+}
+
+.hero__subtitle--animate {
+  opacity: 0;
+  animation: slide-up 0.6s ease-out 1.6s forwards;
 }
 
 .hero__actions {
@@ -123,17 +161,27 @@ const inheritanceServices: InheritanceService[] = [
   width: 30rem;
 }
 
+.hero__actions--animate {
+  opacity: 0;
+  animation: slide-up 0.6s ease-out 2s forwards;
+}
+
 .hero__secondary-btn {
   color: var(--gray500);
   font-weight: 500;
 }
 
 .hero__cards {
+  width: 100%;
+  margin-top: 2rem;
+  min-height: 12rem;
+}
+
+.hero__cards-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   width: 100%;
-  margin-top: 2rem;
 }
 
 .hero-card__item {
@@ -167,6 +215,19 @@ const inheritanceServices: InheritanceService[] = [
   font-weight: 500;
 }
 
+/* Карточки поднимаются из-за невидимого барьера (нижняя граница контейнера) */
+.slide-up-cards-enter-active {
+  transition:
+    transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      var(--stagger-delay, 0s),
+    opacity 0.6s ease-out var(--stagger-delay, 0s);
+}
+
+.slide-up-cards-enter-from {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
 @media screen and (max-width: 96rem) {
   .hero__inner {
     padding-inline: 2rem;
@@ -181,7 +242,7 @@ const inheritanceServices: InheritanceService[] = [
     font-size: 3rem;
     max-width: 44rem;
   }
-  .hero__cards {
+  .hero__cards-grid {
     gap: 1rem;
   }
   .hero-card__item {
@@ -218,10 +279,9 @@ const inheritanceServices: InheritanceService[] = [
     width: 100%;
   }
 
-  .hero__cards {
+  .hero__cards-grid {
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
   }
   .hero-card__item {
     padding: 1.75rem 2rem;

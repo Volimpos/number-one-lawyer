@@ -1,16 +1,18 @@
 <template>
-  <article class="stats-section">
+  <article ref="sectionRef" class="stats-section">
     <div>
-      <h2 class="stats-section__title">Наши успехи</h2>
-      <p class="stats-section__subtitle">
+      <h2 :class="['stats-section__title', { 'stats-section__title--animate': isVisible }]">
+        Наши успехи
+      </h2>
+      <p :class="['stats-section__subtitle', { 'stats-section__subtitle--animate': isVisible }]">
         Мы очень давно помогаем людям сохранять деньги и другие активы. Если все
         достижения посчитать математически, то получается следующее.
       </p>
     </div>
 
     <div class="stats-section__grid">
-      <div v-for="stat in stats" :key="stat.title" class="stats-section__item">
-        <h3 class="stats-section__item-title">{{ stat.title }}</h3>
+      <div v-for="(stat, index) in stats" :key="stat.description" class="stats-section__item">
+        <h3 class="stats-section__item-title">{{ formatNumber(animatedValues[index] ?? 0, stat) }}</h3>
         <p class="stats-section__item-description">{{ stat.description }}</p>
       </div>
     </div>
@@ -18,27 +20,84 @@
 </template>
 
 <script setup lang="ts">
-const stats = [
+import { useIntersectionObserver } from "../../../../shared/lib/useIntersectionObserver";
+import { useCountAnimation } from "../../../../shared/lib/useCountAnimation";
+
+interface StatItem {
+  value: number;
+  suffix: string;
+  prefix: string;
+  description: string;
+  useSpaces: boolean;
+}
+
+const stats: StatItem[] = [
   {
-    title: "20 000 +",
+    value: 20000,
+    suffix: " +",
+    prefix: "",
     description: "Консультаций проведено",
+    useSpaces: true,
   },
   {
-    title: "96%",
+    value: 96,
+    suffix: "%",
+    prefix: "",
     description: "Побед в судебных процессах",
+    useSpaces: false,
   },
   {
-    title: "210 млн. ₽",
+    value: 210,
+    suffix: " млн. ₽",
+    prefix: "",
     description: "Выбили для клиентов",
+    useSpaces: false,
   },
   {
-    title: "4 000 +",
+    value: 4000,
+    suffix: " +",
+    prefix: "",
     description: "Дел в работе сейчас",
+    useSpaces: true,
   },
 ];
+
+const sectionRef = ref<HTMLElement | null>(null);
+
+const { isVisible } = useIntersectionObserver(sectionRef, { threshold: 0.3 });
+
+const { animatedValues } = useCountAnimation(
+  stats.map((stat) => stat.value),
+  isVisible,
+  { duration: 1500, startPercent: 0.7 }
+);
+
+function formatNumber(value: number, stat: StatItem): string {
+  const roundedValue = Math.round(value);
+  let formatted: string;
+
+  if (stat.useSpaces) {
+    formatted = roundedValue.toLocaleString("ru-RU").replace(/,/g, " ");
+  } else {
+    formatted = roundedValue.toString();
+  }
+
+  return `${stat.prefix}${formatted}${stat.suffix}`;
+}
 </script>
 
 <style scoped>
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .stats-section {
   padding: 4rem 0;
   display: flex;
@@ -53,6 +112,12 @@ const stats = [
   font-weight: 700;
   color: var(--gray600);
   text-align: center;
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+.stats-section__title--animate {
+  animation: slide-up 0.6s ease-out forwards;
 }
 
 .stats-section__subtitle {
@@ -61,6 +126,12 @@ const stats = [
   text-align: center;
   max-width: 36rem;
   margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+.stats-section__subtitle--animate {
+  animation: slide-up 0.6s ease-out 0.3s forwards;
 }
 .stats-section__grid {
   display: grid;
