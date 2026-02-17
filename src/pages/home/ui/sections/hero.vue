@@ -142,6 +142,13 @@ const { isVisible: isCardsVisible, staggeredItems: staggeredCards } =
   align-items: center;
   gap: 1rem;
   width: 30rem;
+  position: relative;
+  z-index: 20;
+}
+
+.animated-card-wrapper {
+  position: relative;
+  z-index: 1;
 }
 
 .hero__actions--animate {

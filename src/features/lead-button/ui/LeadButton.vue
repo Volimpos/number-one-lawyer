@@ -97,6 +97,7 @@ onBeforeUnmount(() => {
 .lead-button {
   position: relative;
   display: inline-block;
+  z-index: 30;
 }
 
 .btn-primary {
@@ -124,7 +125,7 @@ onBeforeUnmount(() => {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .variant-list--down {
