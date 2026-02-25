@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" class="cases" :class="{ 'cases--visible': isSectionVisible }">
+  <section class="cases">
     <div class="cases__inner">
       <NuxtLink to="/cases" class="cases__badge">
         <span
@@ -20,15 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { CasesSection } from "~/src/widgets/cases-section";
-import { useIntersectionObserver } from "~/src/shared/lib/useIntersectionObserver";
-
-const sectionRef = ref<HTMLElement | null>(null);
-const { isVisible: isSectionVisible } = useIntersectionObserver(sectionRef, {
-  threshold: 0.2,
-  rootMargin: "0px 0px -15% 0px",
-});
 </script>
 
 <style scoped>
@@ -69,17 +61,6 @@ const { isVisible: isSectionVisible } = useIntersectionObserver(sectionRef, {
   color: var(--primaryDark);
 }
 
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .cases__title {
   font-size: 3rem;
   line-height: 110%;
@@ -87,27 +68,9 @@ const { isVisible: isSectionVisible } = useIntersectionObserver(sectionRef, {
   color: var(--gray600);
 }
 
-.cases__title {
-  opacity: 0;
-  transform: translateY(1.5rem);
-}
-
 .cases__subtitle {
   max-width: 40rem;
   color: var(--gray400);
-}
-
-.cases__subtitle {
-  opacity: 0;
-  transform: translateY(1.5rem);
-}
-
-.cases--visible .cases__title {
-  animation: slide-up 0.6s ease-out 0.2s forwards;
-}
-
-.cases--visible .cases__subtitle {
-  animation: slide-up 0.6s ease-out 0.6s forwards;
 }
 
 @media screen and (max-width: 96rem) {

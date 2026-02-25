@@ -1,18 +1,22 @@
 <template>
-  <article ref="sectionRef" class="stats-section">
+  <article class="stats-section">
     <div>
-      <h2 :class="['stats-section__title', { 'stats-section__title--animate': isVisible }]">
-        Наши успехи
-      </h2>
-      <p :class="['stats-section__subtitle', { 'stats-section__subtitle--animate': isVisible }]">
+      <h2 class="stats-section__title">Наши успехи</h2>
+      <p class="stats-section__subtitle">
         Мы очень давно помогаем людям сохранять деньги и другие активы. Если все
         достижения посчитать математически, то получается следующее.
       </p>
     </div>
 
     <div class="stats-section__grid">
-      <div v-for="(stat, index) in stats" :key="stat.description" class="stats-section__item">
-        <h3 class="stats-section__item-title">{{ formatNumber(animatedValues[index] ?? 0, stat) }}</h3>
+      <div
+        v-for="stat in stats"
+        :key="stat.description"
+        class="stats-section__item"
+      >
+        <h3 class="stats-section__item-title">
+          {{ formatNumber(stat.value, stat) }}
+        </h3>
         <p class="stats-section__item-description">{{ stat.description }}</p>
       </div>
     </div>
@@ -20,9 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { useIntersectionObserver } from "../../../../shared/lib/useIntersectionObserver";
-import { useCountAnimation } from "../../../../shared/lib/useCountAnimation";
-
 interface StatItem {
   value: number;
   suffix: string;
@@ -62,16 +63,6 @@ const stats: StatItem[] = [
   },
 ];
 
-const sectionRef = ref<HTMLElement | null>(null);
-
-const { isVisible } = useIntersectionObserver(sectionRef, { threshold: 0.3 });
-
-const { animatedValues } = useCountAnimation(
-  stats.map((stat) => stat.value),
-  isVisible,
-  { duration: 1500, startPercent: 0.7 }
-);
-
 function formatNumber(value: number, stat: StatItem): string {
   const roundedValue = Math.round(value);
   let formatted: string;
@@ -87,17 +78,6 @@ function formatNumber(value: number, stat: StatItem): string {
 </script>
 
 <style scoped>
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .stats-section {
   padding: 4rem 0;
   display: flex;
@@ -112,12 +92,6 @@ function formatNumber(value: number, stat: StatItem): string {
   font-weight: 700;
   color: var(--gray600);
   text-align: center;
-  opacity: 0;
-  transform: translateY(1.5rem);
-}
-
-.stats-section__title--animate {
-  animation: slide-up 0.6s ease-out forwards;
 }
 
 .stats-section__subtitle {
@@ -126,12 +100,6 @@ function formatNumber(value: number, stat: StatItem): string {
   text-align: center;
   max-width: 36rem;
   margin-top: 1rem;
-  opacity: 0;
-  transform: translateY(1.5rem);
-}
-
-.stats-section__subtitle--animate {
-  animation: slide-up 0.6s ease-out 0.3s forwards;
 }
 .stats-section__grid {
   display: grid;

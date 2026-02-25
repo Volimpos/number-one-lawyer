@@ -9,11 +9,11 @@
         <span class="hero__badge-btn">Читать →</span>
       </a>
 
-      <h1 class="hero__title hero__title--animate">
+      <h1 class="hero__title">
         Услуги семейного юриста в Челябинске
       </h1>
 
-      <p class="hero__subtitle hero__subtitle--animate">
+      <p class="hero__subtitle">
         Решаем сложные вопросы деликатно и профессионально. Развод, раздел
         имущества, алименты, определение места жительства детей — поможем
         достичь справедливого решения с минимальным стрессом. Более 10 лет
@@ -27,19 +27,18 @@
         >
       </div>
 
-      <div ref="cardsRef" class="hero__cards">
-        <TransitionGroup name="slide-up-cards" tag="div" class="hero__cards-grid">
+      <div class="hero__cards">
+        <div class="hero__cards-grid">
           <div
             v-for="(service, index) in visibleCards"
             :key="index"
             class="hero-card__item"
-            :style="{ '--stagger-delay': `${index * 0.35}s` }"
           >
             <div class="hero-card__icon">{{ index + 1 }}</div>
             <div class="hero-card__title">{{ service.title }}</div>
             <div class="hero-card__text">{{ service.description }}</div>
           </div>
-        </TransitionGroup>
+        </div>
       </div>
     </div>
   </section>
@@ -48,13 +47,7 @@
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
 import { computed, ref } from "vue";
-import { useIntersectionObserver } from "~/src/shared/lib/useIntersectionObserver";
-
-const cardsRef = ref<HTMLElement | null>(null);
-const { isVisible: isCardsVisible } = useIntersectionObserver(cardsRef, {
-  threshold: 0.2,
-  rootMargin: "0px 0px -20% 0px",
-});
+const isCardsVisible = ref(true);
 
 const services = [
   {
@@ -134,19 +127,9 @@ const visibleCards = computed(() => (isCardsVisible.value ? services : []));
   color: var(--gray600);
 }
 
-.hero__title--animate {
-  opacity: 0;
-  animation: slide-up 0.6s ease-out 1.1s forwards;
-}
-
 .hero__subtitle {
   max-width: 36rem;
   color: var(--gray400);
-}
-
-.hero__subtitle--animate {
-  opacity: 0;
-  animation: slide-up 0.6s ease-out 1.6s forwards;
 }
 
 .hero__actions {
@@ -210,19 +193,6 @@ const visibleCards = computed(() => (isCardsVisible.value ? services : []));
 .hero-card__text {
   color: var(--gray400);
   font-weight: 500;
-}
-
-/* Карточки поднимаются из-за невидимого барьера (нижняя граница контейнера) */
-.slide-up-cards-enter-active {
-  transition:
-    transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-      var(--stagger-delay, 0s),
-    opacity 0.6s ease-out var(--stagger-delay, 0s);
-}
-
-.slide-up-cards-enter-from {
-  opacity: 0;
-  transform: translateY(2rem);
 }
 
 @media screen and (max-width: 96rem) {

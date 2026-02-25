@@ -1,9 +1,5 @@
 <template>
-  <section
-    ref="sectionRef"
-    class="you-get"
-    :class="{ 'you-get--visible': isSectionVisible }"
-  >
+  <section class="you-get">
     <div class="you-get__inner">
       <h2 class="you-get__title">Что Вы получаете</h2>
 
@@ -33,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useIntersectionObserver } from "~/src/shared/lib/useIntersectionObserver";
 
 interface YouGetSectionContent
   extends Array<{
@@ -46,12 +40,6 @@ const props = defineProps<{
   photo: string;
   content: YouGetSectionContent;
 }>();
-
-const sectionRef = ref<HTMLElement | null>(null);
-const { isVisible: isSectionVisible } = useIntersectionObserver(sectionRef, {
-  threshold: 0.2,
-  rootMargin: "0px 0px -15% 0px",
-});
 </script>
 
 <style scoped>
@@ -118,52 +106,6 @@ const { isVisible: isSectionVisible } = useIntersectionObserver(sectionRef, {
   color: var(--gray400);
   font-weight: 500;
   margin-top: 0.5rem;
-}
-
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.you-get__title,
-.you-get__image,
-.you-get__content-item {
-  opacity: 0;
-  transform: translateY(1.5rem);
-}
-
-.you-get--visible .you-get__title {
-  animation: slide-up 0.6s ease-out 0.2s forwards;
-}
-
-.you-get--visible .you-get__image {
-  animation: slide-up 0.6s ease-out 0.6s forwards;
-}
-
-.you-get--visible .you-get__content-item {
-  animation: slide-up 0.6s ease-out 0.9s forwards;
-}
-
-.you-get--visible .you-get__content-item:nth-child(2) {
-  animation-delay: 1s;
-}
-
-.you-get--visible .you-get__content-item:nth-child(3) {
-  animation-delay: 1.1s;
-}
-
-.you-get--visible .you-get__content-item:nth-child(4) {
-  animation-delay: 1.2s;
-}
-
-.you-get--visible .you-get__content-item:nth-child(5) {
-  animation-delay: 1.3s;
 }
 
 @media screen and (max-width: 96rem) {

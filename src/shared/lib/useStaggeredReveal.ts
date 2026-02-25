@@ -1,5 +1,4 @@
-import { computed, type Ref } from "vue";
-import { useIntersectionObserver } from "./useIntersectionObserver";
+import { computed, ref, type Ref } from "vue";
 
 interface UseStaggeredRevealOptions {
   threshold?: number;
@@ -36,16 +35,10 @@ interface StaggeredItem<T> {
  */
 const useStaggeredReveal = <T>(
   items: T[],
-  targetRef: Ref<HTMLElement | null>,
-  options: UseStaggeredRevealOptions = {}
+  _targetRef: Ref<HTMLElement | null>,
+  _options: UseStaggeredRevealOptions = {}
 ) => {
-  const { threshold = 0.3, rootMargin = "0px 0px -20% 0px" } = options;
-
-  const { isVisible } = useIntersectionObserver(targetRef, {
-    threshold,
-    rootMargin,
-    once: true,
-  });
+  const isVisible = ref(true);
 
   // Элементы всегда в DOM с индексом для CSS transition-delay
   const staggeredItems = computed<StaggeredItem<T>[]>(() => {

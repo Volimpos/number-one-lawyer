@@ -1,9 +1,5 @@
 <template>
-  <article
-    ref="sectionRef"
-    class="may-trust-section"
-    :class="{ 'may-trust-section--visible': isSectionVisible }"
-  >
+  <article class="may-trust-section">
     <div>
       <h2 class="may-trust-section__title">Почему нам стоит доверять</h2>
       <p class="may-trust-section__subtitle">
@@ -13,24 +9,17 @@
     </div>
 
     <div class="cards-trust__container">
-      <AnimatedCards :cards="cards"/>
+      <CardsGrid :cards="cards"/>
     </div>
    
   </article>
 </template>
 
 <script setup lang="ts">
-
-import { useIntersectionObserver } from "@/shared/lib/useIntersectionObserver";
 import mayTrust1 from "@/pages/home/assets/may-trust_1.webp";
 import mayTrust2 from "@/pages/home/assets/may-trust_2.webp";
 import mayTrust3 from "@/pages/home/assets/may-trust_3.webp";
-import { AnimatedCards } from "@/shared/ui/animated-cards";
-const sectionRef = ref<HTMLElement | null>(null);
-const { isVisible: isSectionVisible } = useIntersectionObserver(sectionRef, {
-  threshold: 0.2,
-  once: true,
-});
+import { CardsGrid } from "@/shared/ui/cards-grid/index";
 
 
 const cards = [
@@ -81,31 +70,6 @@ const cards = [
   color: var(--gray400);
   text-align: center;
   margin-top: 1rem;
-}
-
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.may-trust-section__title,
-.may-trust-section__subtitle {
-  opacity: 0;
-  transform: translateY(1.5rem);
-}
-
-.may-trust-section--visible .may-trust-section__title {
-  animation: slide-up 0.6s ease-out 0.2s forwards;
-}
-
-.may-trust-section--visible .may-trust-section__subtitle {
-  animation: slide-up 0.6s ease-out 0.6s forwards;
 }
 
 .cards-trust__container {

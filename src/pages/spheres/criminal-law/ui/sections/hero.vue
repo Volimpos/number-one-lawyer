@@ -9,11 +9,11 @@
         <span class="hero__badge-btn">Читать →</span>
       </a>
 
-      <h1 class="hero__title hero__title--animate">
+      <h1 class="hero__title">
         Команда адвокатов Челябинска по уголовным делам
       </h1>
 
-      <p class="hero__subtitle hero__subtitle--animate">
+      <p class="hero__subtitle">
         Профессиональная защита обвиняемых и восстановление прав потерпевших.
         Специализация: дела по наркотикам, финансовым преступлениям, хищению.
         Опыт ведения сложных дел, судебное и досудебное сопровождение.
@@ -26,8 +26,8 @@
         >
       </div>
 
-      <div ref="cardsRef" class="hero__cards">
-        <TransitionGroup name="slide-up-cards" tag="div" class="hero__cards-grid">
+      <div class="hero__cards">
+        <div class="hero__cards-grid">
           <div
             v-for="(card, index) in visibleCards"
             :key="index"
@@ -36,13 +36,12 @@
               'hero-card__item--right-aligned':
                 index === heroCards.length - 1 && heroCards.length % 3 !== 0,
             }"
-            :style="{ '--stagger-delay': `${index * 0.35}s` }"
           >
             <div class="hero-card__icon">{{ index + 1 }}</div>
             <div class="hero-card__title">{{ card.title }}</div>
             <div class="hero-card__text">{{ card.text }}</div>
           </div>
-        </TransitionGroup>
+        </div>
       </div>
     </div>
   </section>
@@ -51,13 +50,7 @@
 <script setup lang="ts">
 import { LeadButton } from "~/src/features/lead-button";
 import { computed, ref } from "vue";
-import { useIntersectionObserver } from "~/src/shared/lib/useIntersectionObserver";
-
-const cardsRef = ref<HTMLElement | null>(null);
-const { isVisible: isCardsVisible } = useIntersectionObserver(cardsRef, {
-  threshold: 0.2,
-  rootMargin: "0px 0px -20% 0px",
-});
+const isCardsVisible = ref(true);
 
 interface HeroCard {
   title: string;
@@ -147,19 +140,9 @@ const visibleCards = computed(() => (isCardsVisible.value ? heroCards : []));
   color: var(--gray600);
 }
 
-.hero__title--animate {
-  opacity: 0;
-  animation: slide-up 0.6s ease-out 1.1s forwards;
-}
-
 .hero__subtitle {
   max-width: 44rem;
   color: var(--gray400);
-}
-
-.hero__subtitle--animate {
-  opacity: 0;
-  animation: slide-up 0.6s ease-out 1.6s forwards;
 }
 
 .hero__actions {
@@ -231,19 +214,6 @@ const visibleCards = computed(() => (isCardsVisible.value ? heroCards : []));
 
 .hero-card__item--right-aligned {
   grid-column: 3 / 4;
-}
-
-/* Карточки поднимаются из-за невидимого барьера (нижняя граница контейнера) */
-.slide-up-cards-enter-active {
-  transition:
-    transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-      var(--stagger-delay, 0s),
-    opacity 0.6s ease-out var(--stagger-delay, 0s);
-}
-
-.slide-up-cards-enter-from {
-  opacity: 0;
-  transform: translateY(2rem);
 }
 
 @media screen and (max-width: 80rem) {

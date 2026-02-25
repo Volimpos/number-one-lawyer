@@ -9,17 +9,17 @@
         <span class="hero__badge-btn">Читать →</span>
       </a>
 
-      <h1 class="hero__title hero__title--animate">
+      <h1 class="hero__title">
         Работаем, чтобы сохранить Ваше время, деньги и нервы
       </h1>
 
-      <p class="hero__subtitle hero__subtitle--animate">
+      <p class="hero__subtitle">
         Доверьте решение своего вопроса профессионалам. Мы гарантируем
         индивидуальный подход к каждому делу, абсолютную конфиденциальность и
         прозрачность на всех этапах работы.
       </p>
 
-      <div class="hero__actions hero__actions--animate">
+      <div class="hero__actions">
         <LeadButton />
         <NuxtLink to="/cases" class="hero__secondary-btn">
           Наши кейсы →
@@ -28,7 +28,7 @@
       </div>
 
       <div class="animated-card-wrapper">
-        <AnimatedCards :cards="cards"/>
+        <CardsGrid :cards="cards"/>
       </div>
      
     </div>
@@ -37,11 +37,10 @@
 
 <script setup lang="ts">
 import { LeadButton } from "@/features/lead-button";
-import { useStaggeredReveal } from "@/shared/lib/useStaggeredReveal";
 import lawyer1 from "../../assets/lawyer_1.webp";
 import lawyer2 from "../../assets/lawyer_2.webp";
 import lawyer3 from "../../assets/lawyer_3.webp";
-import { AnimatedCards } from "@/shared/ui/animated-cards";
+import { CardsGrid } from "@/shared/ui/cards-grid/index";
 
 const cards = [
   {
@@ -57,10 +56,6 @@ const cards = [
     alt: "Юрист изучает документы",
   },
 ];
-
-const cardsRef = ref<HTMLElement | null>(null);
-const { isVisible: isCardsVisible, staggeredItems: staggeredCards } =
-  useStaggeredReveal(cards, cardsRef, { threshold: 0.3 });
 </script>
 
 <style scoped>
@@ -101,17 +96,6 @@ const { isVisible: isCardsVisible, staggeredItems: staggeredCards } =
   color: var(--primaryDark);
 }
 
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .hero__title {
   max-width: 64rem;
   font-size: 4rem;
@@ -120,19 +104,9 @@ const { isVisible: isCardsVisible, staggeredItems: staggeredCards } =
   color: var(--gray600);
 }
 
-.hero__title--animate {
-  opacity: 0;
-  animation: slide-up 0.6s ease-out 1.1s forwards;
-}
-
 .hero__subtitle {
   max-width: 48rem;
   color: var(--gray400);
-}
-
-.hero__subtitle--animate {
-  opacity: 0;
-  animation: slide-up 0.6s ease-out 1.6s forwards;
 }
 
 .hero__actions {
@@ -149,11 +123,6 @@ const { isVisible: isCardsVisible, staggeredItems: staggeredCards } =
 .animated-card-wrapper {
   position: relative;
   z-index: 1;
-}
-
-.hero__actions--animate {
-  opacity: 0;
-  animation: slide-up 0.6s ease-out 2s forwards;
 }
 
 .hero__secondary-btn {
@@ -227,15 +196,5 @@ const { isVisible: isCardsVisible, staggeredItems: staggeredCards } =
     height: 32rem;
   }
 
-  .hero-card__wrapper {
-    transform: none;
-    opacity: 0;
-    transition: opacity 0.8s ease-out;
-    transition-delay: calc(var(--stagger-index, 0) * 150ms);
-  }
-
-  .hero__cards--visible .hero-card__wrapper {
-    opacity: 1;
-  }
 }
 </style>
