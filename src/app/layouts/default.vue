@@ -33,13 +33,14 @@ let lenis: InstanceType<typeof import("lenis").default> | null = null;
 
 onMounted(async () => {
   const { default: Lenis } = await import("lenis");
+  const isSmartphone = window.matchMedia("(max-width: 48rem) and (pointer: coarse)").matches;
 
   lenis = new Lenis({
     lerp: 0.07, // меньше = больше задержка, плавнее (по умолчанию 0.1)
     wheelMultiplier: 0.85, // чуть медленнее, чем действия пользователя
     smoothWheel: true,
     autoRaf: true,
-    syncTouch: true, // плавный скролл на смартфонах (может быть нестабильно на iOS < 16)
+    syncTouch: !isSmartphone, // отключаем плавный touch-скролл на смартфонах
   });
 });
 
