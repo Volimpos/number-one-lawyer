@@ -1,6 +1,8 @@
 <template>
   <Form @submit="onSubmit" class="contact-form">
-    <p class="subtitle">Оставьте Ваш номер телефона и мы свяжемся с Вами в течение 15 минут</p>
+    <p class="subtitle">
+      Оставьте Ваш номер телефона и мы свяжемся с Вами в течение 15 минут
+    </p>
 
     <div class="w-full">
       <label class="form-label">Ваше имя</label>
@@ -9,18 +11,16 @@
     <div class="w-full">
       <label class="form-label">Контактный телефон</label>
       <InputPhone
-      @input="(phoneNum) => (formValues.phone = phoneNum)"
-      :error="formErrors?.phone?.errorText"
-    />
+        @input="(phoneNum) => (formValues.phone = phoneNum)"
+        :error="formErrors?.phone?.errorText"
+      />
     </div>
-    
+
     <AcceptPrivacy
       v-model:isAgree="formValues.acceptPrivacy"
       :error="formErrors?.acceptPrivacy?.errorText"
     />
-    <button 
-    class="submit-btn" :disabled="loading"
-      >
+    <button class="submit-btn" :disabled="loading">
       <i class="pi pi-spinner pi-spin mr-2" v-if="loading"></i>
       Заказать звонок
     </button>
@@ -40,7 +40,6 @@ import { ref } from "vue";
 const toast = useToast();
 const { addToast } = toast;
 
-
 const modalStore = useModal();
 const { closeModal } = modalStore;
 
@@ -59,7 +58,7 @@ const onSubmit = () => {
   if (!validate.result) {
     return (formErrors.value = { ...formErrors.value, ...validate.errors });
   }
-  sendContactsToServer()
+  sendContactsToServer();
 };
 
 const sendContactsToServer = async () => {
@@ -70,10 +69,10 @@ const sendContactsToServer = async () => {
     addToast({
       summary: "Спасибо за доверие",
       details: "Мы перезвоним в течение 15 минут",
-      severity: 'success',
+      severity: "success",
       life: 4000,
     });
-    window.location.assign('/thank_you')
+    window.location.assign("/thank_you");
   } else {
     addToast({
       severity: "error",
@@ -118,7 +117,9 @@ const emit = defineEmits<{
   font-size: 0.875rem;
 }
 
-.subtitle {color: var(--gray500);}
+.subtitle {
+  color: var(--gray500);
+}
 
 .form-label {
   font-size: 0.875rem;
@@ -142,20 +143,17 @@ const emit = defineEmits<{
 }
 
 .submit-btn:hover {
-background: var(--primaryDark);
+  background: var(--primaryDark);
 }
 
 .submit-btn:disabled {
-background: var(--primaryLight);
-color: var(--gray400);
+  background: var(--primaryLight);
+  color: var(--gray400);
 }
 
-
-
-@media screen and (max-width: 64rem){
+@media screen and (max-width: 64rem) {
   .contact-form {
     padding-top: 3rem;
   }
-  
 }
 </style>

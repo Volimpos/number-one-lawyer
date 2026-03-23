@@ -1,5 +1,5 @@
 <template>
-  <Hero />
+  <SphereHero :content="heroContent" />
   <YouGetSection />
   <CasesSection />
   <ReviewsSection />
@@ -8,7 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import Hero from "./sections/hero.vue";
+import { SphereHero } from "~/src/widgets/sphere-hero";
+import { heroContent } from "../model/hero";
 import YouGetSection from "./sections/you-get-section.vue";
 import CasesSection from "./sections/cases-section.vue";
 import FaqSection from "./sections/faq-section.vue";

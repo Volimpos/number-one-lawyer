@@ -23,26 +23,44 @@
         <LeadButton />
         <NuxtLink to="/cases" class="hero__secondary-btn">
           Наши кейсы →
-        </NuxtLink
-        >
+        </NuxtLink>
       </div>
 
-      <div class="animated-card-wrapper">
-        <CardsGrid :cards="cards"/>
+      <div class="hero__cards">
+        <div class="card__container">
+          <img
+            :src="cards[0]?.image"
+            :alt="cards[0]?.alt"
+            class="card__image"
+          />
+        </div>
+        <div class="card__container">
+          <AchievementsWidget />
+        </div>
+        <div class="card__container">
+          <img
+            :src="cards[1]?.image"
+            :alt="cards[1]?.alt"
+            class="card__image"
+          />
+        </div>
       </div>
-     
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { LeadButton } from "@/features/lead-button";
+import { LeadButton } from "~/src/features/lead-button";
+import { AchievementsWidget } from "~/src/features/achievements-widget";
 import lawyer1 from "../../assets/lawyer_1.webp";
 import lawyer2 from "../../assets/lawyer_2.webp";
-import lawyer3 from "../../assets/lawyer_3.webp";
-import { CardsGrid } from "@/shared/ui/cards-grid/index";
 
-const cards = [
+interface Card {
+  image: string;
+  alt: string;
+}
+
+const cards: Card[] = [
   {
     image: lawyer1,
     alt: "Юрист консультирует клиента",
@@ -50,10 +68,6 @@ const cards = [
   {
     image: lawyer2,
     alt: "Юрист за рабочим столом",
-  },
-  {
-    image: lawyer3,
-    alt: "Юрист изучает документы",
   },
 ];
 </script>
@@ -120,30 +134,50 @@ const cards = [
   z-index: 20;
 }
 
-.animated-card-wrapper {
-  position: relative;
-  z-index: 1;
-}
-
 .hero__secondary-btn {
   color: var(--gray500);
   font-weight: 500;
 }
 
+.hero__cards {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
 
-
-
-
+.card__container {
+  height: 80svh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+}
+.card__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
 
 @media screen and (max-width: 96rem) {
   .hero__inner {
     padding-inline: 2rem;
+  }
+
+  .card__container {
+    height: 70svh;
   }
 }
 
 @media screen and (max-width: 80rem) {
   .hero__inner {
     padding-inline: 1rem;
+  }
+  .hero__cards {
+    gap: 1rem;
   }
   .hero__title {
     font-size: 3rem;
@@ -159,6 +193,7 @@ const cards = [
     gap: 1.5rem;
     align-items: flex-start;
   }
+
   .hero__badge {
     padding: 0.5rem 1rem;
   }
@@ -182,6 +217,7 @@ const cards = [
 
   .hero__cards {
     margin-top: 1rem;
+    grid-template-columns: 1fr;
   }
 
   .hero__cards-grid {
@@ -191,10 +227,12 @@ const cards = [
   .hero__cards {
     min-height: 32rem;
   }
+  .card__container {
+    height: 90svh;
+  }
 
   .hero-card__image {
     height: 32rem;
   }
-
 }
 </style>

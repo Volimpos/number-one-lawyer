@@ -13,10 +13,16 @@
         ]"
       >
         <li>
-          <a href="https://wa.me/79227441323" target="_blank">Написать в WhatsApp</a>
+          <a
+            href="https://max.ru/u/f9LHodD0cOJsB4i_kuzVIzs0nqzYsxArngk5xgqcOON4H2ODSypmnWI7uFM"
+            target="_blank"
+            >Написать в MAX</a
+          >
         </li>
         <li>
-          <a href="https://t.me/urist_law1" target="_blank">Написать в Telegram</a>
+          <a href="https://t.me/urist_law1" target="_blank"
+            >Написать в Telegram</a
+          >
         </li>
         <li @click="openModalForm">Заказать звонок</li>
         <li><a href="tel:+7 (905) 830-30-62">+7 (905) 830-30-62</a></li>
@@ -29,15 +35,15 @@
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { useModal } from "../model/store";
 import { ContactForm } from "../../contact-form";
-const { openModal } = useModal()
+const { openModal } = useModal();
 const optionsOpen = ref<boolean>(false);
 const root = ref<HTMLElement | null>(null);
 const listEl = ref<HTMLElement | null>(null);
 const direction = ref<"up" | "down">("down");
 
 const openModalForm = () => {
-  openModal(ContactForm, 'Заявка на обратный звонок')
-}
+  openModal(ContactForm, "Заявка на обратный звонок");
+};
 
 const updateDirection = () => {
   if (!root.value || !listEl.value) return;
