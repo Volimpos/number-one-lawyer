@@ -5,11 +5,13 @@
         title="ТОП-5"
         text="лучших юридических компаний Челябинска"
         variant="primary"
+        link="https://chel.dk.ru/news/237236993"
       />
       <Flag
-        title="ТОП-20"
-        text="лучших юридических компаний России"
+        :icon="yandexMapsIcon"
+        text="Хорошее место Яндекс.Карты"
         variant="secondary"
+        link="https://yandex.ru/maps/-/CPRw50~X"
       />
     </div>
 
@@ -42,7 +44,7 @@ import { Flag } from "~/src/shared/ui/flag";
 import { StarsRating } from "~/src/shared/ui/stars-rating";
 import yandexLogo from "~/src/shared/assets/yandex.png";
 import gisLogo from "~/src/shared/assets/2GIS_logo.svg";
-
+import yandexMapsIcon from "~/src/shared/assets/yandex-maps-logo.svg";
 interface RateData {
   logo: string;
   rate: number;
