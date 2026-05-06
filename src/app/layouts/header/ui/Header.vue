@@ -1,12 +1,13 @@
 <template>
   <div class="header-container">
     <header class="header">
-    <NuxtLink to="/" class="logo">
-      <img
-        class="logo__image"
-        :src="logoMain"
-        alt="Юридическая компания №1 лого"
-      />
+      <NuxtLink to="/" class="logo">
+        <img
+          class="logo__image"
+          :src="logoMain"
+          alt="Юридическая компания №1 лого"
+        />
+        <p class="logo__text">ЮК №1</p>
       </NuxtLink>
       <nav class="nav">
         <div
@@ -84,7 +85,7 @@ watch(
   () => route.fullPath,
   () => {
     isServicesOpen.value = false;
-  }
+  },
 );
 </script>
 
@@ -112,6 +113,8 @@ watch(
   width: 50px;
   height: 50px;
   display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
   justify-content: flex-start;
   align-items: center;
 }
@@ -120,6 +123,13 @@ watch(
   height: 50px;
   display: block;
   object-fit: contain;
+}
+
+.logo__text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray600);
+  white-space: nowrap;
 }
 .nav {
   gap: 0.75rem;

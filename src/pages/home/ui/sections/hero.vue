@@ -130,8 +130,6 @@ const cards: Card[] = [
   align-items: center;
   gap: 1rem;
   width: 30rem;
-  position: relative;
-  z-index: 20;
 }
 
 .hero__secondary-btn {

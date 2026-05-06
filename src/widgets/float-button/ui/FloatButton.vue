@@ -1,17 +1,19 @@
 <template>
 
 
-    <div class="float-button" :class="{ 'float-button--visible': isVisible }">
+    <div class="float-button" :class="{ 'float-button--visible': isVisible && !isBurgerMenuOpen }">
         <LeadButton/>
     </div>
   
 </template>
 
 <script setup lang="ts">
-import { LeadButton } from '~/src/features/lead-button';
+import { LeadButton } from '../../../features/lead-button';
 import { useFloatButtonScroll } from '../lib/useFloatButtonScroll';
+import { useBurgerMenu } from '../../../features/burger-menu/model/useBurgerMenu';
 
 const { isVisible } = useFloatButtonScroll(300);
+const { isBurgerMenuOpen } = useBurgerMenu();
 
 </script>
 

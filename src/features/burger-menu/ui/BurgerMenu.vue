@@ -1,13 +1,15 @@
 <template>
   <ClientOnly>
-    <Transition name="slide-up">
-      <div class="burger-menu-container" v-if="isBurgerMenuOpen">
-        <Menu class="w-full" />
-        <div class="px-4 w-full">
-          <LeadButton class="w-full" />
+    <Teleport to="body">
+      <Transition name="slide-up">
+        <div class="burger-menu-container" v-if="isBurgerMenuOpen">
+          <Menu class="w-full" />
+          <div class="px-4 w-full">
+            <LeadButton class="w-full" />
+          </div>
         </div>
-      </div>
-    </Transition>
+      </Transition>
+    </Teleport>
   </ClientOnly>
 </template>
 
@@ -25,7 +27,7 @@ watch(
   () => route.fullPath,
   () => {
     closeBurgerMenu();
-  }
+  },
 );
 </script>
 
@@ -44,6 +46,7 @@ watch(
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  z-index: 998;
 }
 .slide-up-enter-active {
   transition: all 200ms ease-out;

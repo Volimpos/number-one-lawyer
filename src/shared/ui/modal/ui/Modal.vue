@@ -2,17 +2,14 @@
   <ClientOnly>
     <Teleport to="body">
       <Transition name="fade">
-        <div class="modal-overlay" v-if="isMaskOpen" >
+        <div class="modal-overlay" v-if="isMaskOpen">
           <Transition name="slide-up">
-            <div class="modal" v-if="isModalOpen" >
+            <div class="modal" v-if="isModalOpen">
               <div class="modal-header">
                 <div class="header-title">
                   {{ title }}
                 </div>
-                <button
-                class="close-modal"
-                  @click="toggleModal"
-                >
+                <button class="close-modal" @click="toggleModal">
                   <i class="pi pi-times"></i>
                 </button>
               </div>
@@ -34,7 +31,7 @@
 
 <script setup lang="ts">
 import { useModal } from "~/src/shared/model/modal/store";
-import { Button } from "~/src/shared/ui/button";
+
 const modalStore = useModal();
 
 const { isModalOpen, isMaskOpen, component, props, title } =
@@ -56,6 +53,7 @@ const { toggleModal } = modalStore;
   justify-content: center;
   backdrop-filter: blur(0.25rem);
   overflow: hidden;
+  z-index: 999;
 }
 
 .modal {

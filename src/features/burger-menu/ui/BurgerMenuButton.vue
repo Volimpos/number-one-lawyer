@@ -1,18 +1,22 @@
 <template>
-  <button
-    @click="toggleBurgerMenu"
-    class="burger-menu-button"
-    :class="{ 'burger-button-accent': isBurgerButtonAccent }"
-  >
-    <span class="burger-icon-wrapper">
-      <Transition name="burger-icon">
-        <i
-          :key="isBurgerMenuOpen ? 'close' : 'open'"
-          :class="['pi', isBurgerMenuOpen ? 'pi-times' : 'pi-bars']"
-        ></i>
-      </Transition>
-    </span>
-  </button>
+  <ClientOnly>
+    <Teleport to="body">
+      <button
+        @click="toggleBurgerMenu"
+        class="burger-menu-button"
+        :class="{ 'burger-button-accent': isBurgerButtonAccent }"
+      >
+        <span class="burger-icon-wrapper">
+          <Transition name="burger-icon">
+            <i
+              :key="isBurgerMenuOpen ? 'close' : 'open'"
+              :class="['pi', isBurgerMenuOpen ? 'pi-times' : 'pi-bars']"
+            ></i>
+          </Transition>
+        </span>
+      </button>
+    </Teleport>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
@@ -31,7 +35,7 @@ const { isBurgerButtonAccent } = useBurgerButtonAccent();
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.25rem;
-  z-index: 100;
+  z-index: 999;
   display: none;
   align-items: center;
   justify-content: center;
