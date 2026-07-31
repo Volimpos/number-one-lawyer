@@ -2,7 +2,7 @@
   <SphereHero :content="heroContent" />
   <ServicesSection />
   <YouGetSection />
-  <CasesSection />
+  <!-- <CasesSection /> -->
   <ReviewsSection />
   <FaqSection />
   <CtaSection />
@@ -75,8 +75,8 @@ useHead({
 });
 
 onMounted(() => {
-  if (typeof window !== 'undefined') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 });
 </script>

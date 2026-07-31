@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="cases__grid"
-  >
-  <template v-if="!casesToDisplay || isLoading">
+  <div class="cases__grid">
+    <!-- <template v-if="!casesToDisplay || isLoading">
     <CaseCardSkeleton v-for="item in 4" :key="item"/>
   </template>
   <template v-else>
@@ -17,7 +15,7 @@
       :description="caseItem.description"
       :link="`/cases/${caseItem.id}`"
     />
-  </template>
+  </template> -->
   </div>
 </template>
 
@@ -29,24 +27,24 @@ import type { CaseItem } from "~/src/entities/case/model/interfaces";
 import CaseCardSkeleton from "~/src/entities/case/ui/CaseCardSkeleton.vue";
 import { formatDate } from "~/src/shared/lib/formatDate";
 
-const casesStore = useCases()
-const { loadAllCases } = casesStore
-const { cases } = storeToRefs(casesStore)
-const casesToDisplay = ref<CaseItem[] | null>(null)
+const casesStore = useCases();
+const { loadAllCases } = casesStore;
+const { cases } = storeToRefs(casesStore);
+const casesToDisplay = ref<CaseItem[] | null>(null);
 
-const isLoading = ref<boolean>(false)
+const isLoading = ref<boolean>(false);
 const loadSection = async () => {
-  isLoading.value = true
-  await loadAllCases()
+  isLoading.value = true;
+  await loadAllCases();
   if (cases.value && cases.value?.length > 0) {
-    casesToDisplay.value = getLimitedCaseItems()
+    casesToDisplay.value = getLimitedCaseItems();
   }
-  isLoading.value = false
-}
+  isLoading.value = false;
+};
 
 onMounted(async () => {
-  await loadSection()
-})
+  await loadSection();
+});
 </script>
 
 <style scoped>

@@ -21,9 +21,9 @@
 
       <div class="hero__actions">
         <LeadButton />
-        <NuxtLink to="/cases" class="hero__secondary-btn">
+        <!-- <NuxtLink to="/cases" class="hero__secondary-btn">
           Наши кейсы →
-        </NuxtLink>
+        </NuxtLink> -->
       </div>
 
       <div class="hero__cards">

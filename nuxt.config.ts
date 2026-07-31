@@ -11,13 +11,14 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "icon", type: "image/png", href: "/favicon.png" },
       ],
-      title: "Бесплатная консультация  юриста в Челябинске | Юридическая компания №1",
+      title:
+        "Бесплатная консультация  юриста в Челябинске | Юридическая компания №1",
       script: [
         {
-          src: '//cdn.callibri.ru/callibri.js',
-          defer: true
-        }
-      ]
+          src: "//cdn.callibri.ru/callibri.js",
+          defer: true,
+        },
+      ],
     },
   },
   alias: {
@@ -65,7 +66,7 @@ export default defineNuxtConfig({
         "/labour_law",
         "/land_law",
         "/migration_law",
-        "/cases",
+        // "/cases",
       ],
       crawlLinks: true,
     },

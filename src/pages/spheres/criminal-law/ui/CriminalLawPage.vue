@@ -2,7 +2,7 @@
   <SphereHero :content="heroContent" />
   <ServicesSection />
   <YouGetSection />
-  <CasesSection />
+  <!-- <CasesSection /> -->
   <ReviewsSection />
   <FaqSection />
   <CtaSection />
@@ -12,7 +12,7 @@
 import { SphereHero } from "~/src/widgets/sphere-hero";
 import { heroContent } from "../model/hero";
 import YouGetSection from "./sections/you-get-section.vue";
-import CasesSection from "./sections/cases-section.vue";
+// import CasesSection from "./sections/cases-section.vue";
 import FaqSection from "./sections/faq-section.vue";
 import { ReviewsSection } from "~/src/widgets/reviews-section";
 import { CtaSection } from "~/src/widgets/cta-section";
@@ -39,8 +39,8 @@ useSeoMeta({
 });
 
 onMounted(() => {
-  if (typeof window !== 'undefined') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 });
 </script>

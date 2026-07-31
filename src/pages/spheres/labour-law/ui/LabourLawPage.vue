@@ -1,7 +1,7 @@
 <template>
   <SphereHero :content="heroContent" />
   <YouGetSection />
-  <CasesSection />
+  <!-- <CasesSection /> -->
   <ReviewsSection />
   <FaqSection />
   <CtaSection />
@@ -38,8 +38,8 @@ useSeoMeta({
 });
 
 onMounted(() => {
-  if (typeof window !== 'undefined') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 });
 </script>

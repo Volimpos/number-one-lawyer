@@ -1,12 +1,12 @@
 <template>
   <section class="cases">
     <div class="cases__inner">
-      <NuxtLink to="/cases" class="cases__badge">
+      <!-- <NuxtLink to="/cases" class="cases__badge">
         <span
           >Больше кейсов <span class="max-lg:hidden">в нашем блоге.</span></span
         >
         <span class="cases__badge-btn">Смотреть →</span>
-      </NuxtLink>
+      </NuxtLink> -->
 
       <h2 class="cases__title">Успешные кейсы</h2>
 
