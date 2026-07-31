@@ -75,7 +75,7 @@
             <ul class="mt-6 flex flex-col gap-2">
               <NuxtLink to="/privacy">Политика конфиденциальности</NuxtLink>
               <NuxtLink to="/about">О компании</NuxtLink>
-              <NuxtLink to="/cases">Кейсы</NuxtLink>
+              <!-- <NuxtLink to="/cases">Кейсы</NuxtLink> -->
             </ul>
           </div>
         </div>

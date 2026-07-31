@@ -3,45 +3,45 @@
     <div class="loader" v-if="!caseItem">
       <i class="pi pi-spinner pi-spin text-2xl"></i>
     </div>
-  
+
     <div class="case-info" v-else>
-    <div class="case-text">
+      <div class="case-text">
         <p class="sphere">{{ caseItem.sphere }}</p>
         <p class="case-title">{{ caseItem.title }}</p>
         <p class="case-description">{{ caseItem.description }}</p>
         <a :href="caseItem.document" target="_blank" class="show-documents-btn">
-            Документы по делу
+          Документы по делу
         </a>
+      </div>
+      <img :src="caseItem.image" alt="Кейс" class="case-image" />
     </div>
-    <img :src="caseItem.image" alt="Кейс" class="case-image">
+    <div class="more-cases">
+      <p class="more-cases__subtitle">Другие кейсы</p>
+      <CasesSection />
+    </div>
   </div>
-  <div class="more-cases">
-    <p class="more-cases__subtitle">Другие кейсы</p>
-    <CasesSection/>
-  </div>
-  </div>
-  
 </template>
 
 <script setup lang="ts">
-import { CasesSection } from '~/src/widgets/cases-section';
-import type { CaseItem } from '~/src/entities/case/model/interfaces';
-import getCaseFromStore from '~/src/entities/case/model/getCaseFromStore';
-import { fetchCaseById } from '~/src/entities/case/api/fetchCaseById';
+import { CasesSection } from "~/src/widgets/cases-section";
+import type { CaseItem } from "~/src/entities/case/model/interfaces";
+import getCaseFromStore from "~/src/entities/case/model/getCaseFromStore";
+import { fetchCaseById } from "~/src/entities/case/api/fetchCaseById";
 import logo from "~/src/shared/assets/logo.png";
-import { useHead } from 'nuxt/app';
-import { ref } from 'vue';
+import { useHead } from "nuxt/app";
+
+import { ref } from "vue";
 
 const route = useRoute();
-const caseId = computed(() => String(route.params.id ?? ''));
+const caseId = computed(() => String(route.params.id ?? ""));
 const caseItem = ref<CaseItem | null>(null);
 
 const loadCase = async () => {
-  if (typeof window !== 'undefined') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
   const id = caseId.value;
-  if (!id || id === 'undefined') return;
+  if (!id || id === "undefined") return;
 
   const fromStore = getCaseFromStore(id);
   if (fromStore) {
@@ -63,48 +63,48 @@ watch(caseId, loadCase);
 // SEO и GEO оптимизация - вычисляемые значения для динамических мета-тегов
 const seoTitle = computed(() => {
   if (!caseItem.value) {
-    return 'Кейс | Юридическая компания №1 в Челябинске';
+    return "Кейс | Юридическая компания №1 в Челябинске";
   }
   return `${caseItem.value.title} | ${caseItem.value.sphere} в Челябинске | Юридическая компания №1`;
 });
 
 const seoDescription = computed(() => {
   if (!caseItem.value) {
-    return 'Успешные кейсы юридической компании №1 в Челябинске. Профессиональная помощь юристов и адвокатов по различным правовым вопросам.';
+    return "Успешные кейсы юридической компании №1 в Челябинске. Профессиональная помощь юристов и адвокатов по различным правовым вопросам.";
   }
-  const geoKeywords = 'в Челябинске, Челябинская область';
-  const shortDescription = caseItem.value.description.length > 120 
-    ? caseItem.value.description.substring(0, 120) + '...'
-    : caseItem.value.description;
+  const geoKeywords = "в Челябинске, Челябинская область";
+  const shortDescription =
+    caseItem.value.description.length > 120
+      ? caseItem.value.description.substring(0, 120) + "..."
+      : caseItem.value.description;
   return `${shortDescription} ${geoKeywords}. ${caseItem.value.sphere} - профессиональная юридическая помощь от компании №1 в Челябинске.`;
 });
 
 const seoKeywords = computed(() => {
   if (!caseItem.value) {
-    return 'юрист Челябинск, адвокат Челябинск, юридическая помощь Челябинск, юридические услуги Челябинск';
+    return "юрист Челябинск, адвокат Челябинск, юридическая помощь Челябинск, юридические услуги Челябинск";
   }
   const sphere = caseItem.value.sphere.toLowerCase();
   return `${sphere} Челябинск, ${sphere} Челябинская область, юрист по ${sphere} Челябинск, адвокат ${sphere} Челябинск, юридическая помощь ${sphere} Челябинск, кейс ${sphere}, успешное дело ${sphere}, юридическая компания №1 Челябинск`;
 });
 
-const seoImage = computed(() => 
-  caseItem.value?.image || logo
-);
+const seoImage = computed(() => caseItem.value?.image || logo);
 
 const twitterTitle = computed(() => {
   if (!caseItem.value) {
-    return 'Кейс | Юридическая компания №1 в Челябинске';
+    return "Кейс | Юридическая компания №1 в Челябинске";
   }
   return `${caseItem.value.title} | ${caseItem.value.sphere} в Челябинске`;
 });
 
 const twitterDescription = computed(() => {
   if (!caseItem.value) {
-    return 'Успешные кейсы юридической компании №1 в Челябинске.';
+    return "Успешные кейсы юридической компании №1 в Челябинске.";
   }
-  const shortDescription = caseItem.value.description.length > 100 
-    ? caseItem.value.description.substring(0, 100) + '...'
-    : caseItem.value.description;
+  const shortDescription =
+    caseItem.value.description.length > 100
+      ? caseItem.value.description.substring(0, 100) + "..."
+      : caseItem.value.description;
   return `${shortDescription} в Челябинске. ${caseItem.value.sphere}.`;
 });
 
@@ -114,32 +114,29 @@ useSeoMeta({
   description: seoDescription,
   ogDescription: seoDescription,
   ogImage: seoImage,
-  ogType: 'article',
-  ogSiteName: 'Юридическая компания №1',
-  ogLocale: 'ru_RU',
-  twitterCard: 'summary_large_image',
+  ogType: "article",
+  ogSiteName: "Юридическая компания №1",
+  ogLocale: "ru_RU",
+  twitterCard: "summary_large_image",
   twitterTitle: twitterTitle,
   twitterDescription: twitterDescription,
   twitterImage: seoImage,
   keywords: seoKeywords,
-  author: 'Юридическая компания №1',
+  author: "Юридическая компания №1",
 });
 
 // Статические GEO мета-теги для улучшения локального ранжирования
 useHead({
   meta: [
-    { name: 'geo.region', content: 'RU-CHE' },
-    { name: 'geo.placename', content: 'Челябинск' },
-    { name: 'geo.position', content: '55.1644;61.4368' },
-    { name: 'ICBM', content: '55.1644, 61.4368' },
-    { name: 'robots', content: 'index, follow' },
-    { name: 'googlebot', content: 'index, follow' },
+    { name: "geo.region", content: "RU-CHE" },
+    { name: "geo.placename", content: "Челябинск" },
+    { name: "geo.position", content: "55.1644;61.4368" },
+    { name: "ICBM", content: "55.1644, 61.4368" },
+    { name: "robots", content: "index, follow" },
+    { name: "googlebot", content: "index, follow" },
   ],
 });
-
-
 </script>
-
 <style scoped>
 .wrapper {
   padding: 10rem 5rem 1rem;
@@ -176,10 +173,10 @@ useHead({
   user-select: none;
 }
 .case-title {
-font-size: 2.75rem;
-line-height: 110%;
-font-weight: 700;
-color: var(--gray600);
+  font-size: 2.75rem;
+  line-height: 110%;
+  font-weight: 700;
+  color: var(--gray600);
 }
 
 .case-text {
@@ -200,13 +197,13 @@ color: var(--gray600);
 }
 
 .show-documents-btn:hover {
-background: var(--primary);
-color: var(--gray600);
+  background: var(--primary);
+  color: var(--gray600);
 }
 .show-documents-btn:active {
   background: var(--primaryDark);
   border-color: var(--primaryDark);
-} 
+}
 
 .case-image {
   border-radius: 0.5rem;
@@ -231,33 +228,31 @@ color: var(--gray600);
 
 @media screen and (max-width: 96rem) {
   .wrapper {
-  padding: 10rem 2rem 1rem;
-}
+    padding: 10rem 2rem 1rem;
+  }
 }
 
 @media screen and (max-width: 80rem) {
   .wrapper {
-  padding: 10rem 1rem 1rem;
-}
-.case-info {
-  gap: 1rem;
-}
+    padding: 10rem 1rem 1rem;
+  }
+  .case-info {
+    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 64rem) {
   .case-info {
-  grid-template-columns: repeat(1, 1fr);
-  gap: 3rem;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3rem;
+  }
+  .case-title {
+    font-size: 2rem;
+    line-height: 100%;
+  }
+  .case-image {
+    aspect-ratio: 1/1;
+    height: auto;
+  }
 }
-.case-title {
-  font-size: 2rem;
-  line-height: 100%;
-}
-.case-image {
-  aspect-ratio: 1/1;
-  height: auto;
-}
-}
-
-
 </style>

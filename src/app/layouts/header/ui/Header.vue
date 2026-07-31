@@ -36,12 +36,12 @@
         >
           Отзывы
         </a>
-        <NuxtLink
+        <!-- <NuxtLink
           to="/cases"
           class="nav-item nav-item--cases"
           active-class="nav-item--active"
           >Кейсы</NuxtLink
-        >
+        > -->
       </nav>
       <div class="lead-btn-container">
         <LeadButton />

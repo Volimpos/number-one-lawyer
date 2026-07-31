@@ -1,6 +1,6 @@
 <template>
   <hero />
-  <cases-section />
+  <!-- <cases-section /> -->
   <ReviewsSection />
   <stats-section />
   <may-trust-section />
@@ -10,12 +10,12 @@
 
 <script setup lang="ts">
 import Hero from "./sections/hero.vue";
-import CasesSection from "./sections/cases-section.vue";
+// import CasesSection from "./sections/cases-section.vue";
 import { ReviewsSection } from "~/src/widgets/reviews-section";
 import StatsSection from "./sections/stats-section.vue";
 import MayTrustSection from "./sections/may-trust-section.vue";
 import LawSpheres from "./sections/law-spheres.vue";
-import { CtaSection } from "~/src/widgets/cta-section"
+import { CtaSection } from "~/src/widgets/cta-section";
 import logo from "~/src/shared/assets/logo.png";
 useSeoMeta({
   title:
