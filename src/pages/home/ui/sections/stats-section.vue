@@ -15,7 +15,7 @@
         class="stats-section__item"
       >
         <h3 class="stats-section__item-title">
-          {{ formatNumber(stat.value, stat) }}
+          {{ stat.prefix }}{{ stat.value }}{{ stat.suffix }}
         </h3>
         <p class="stats-section__item-description">{{ stat.description }}</p>
       </div>
@@ -25,56 +25,38 @@
 
 <script setup lang="ts">
 interface StatItem {
-  value: number;
+  value: number | string;
   suffix: string;
   prefix: string;
   description: string;
-  useSpaces: boolean;
 }
 
 const stats: StatItem[] = [
   {
-    value: 20000,
-    suffix: " +",
+    value: 15,
+    suffix: " лет+",
     prefix: "",
-    description: "Консультаций проведено",
-    useSpaces: true,
+    description: "Опыта в сфере юридических услуг",
   },
   {
-    value: 96,
-    suffix: "%",
+    value: "Топ 5",
+    suffix: "",
     prefix: "",
-    description: "Побед в судебных процессах",
-    useSpaces: false,
+    description: "Юридических компаний Челябинска",
   },
   {
     value: 210,
     suffix: " млн. ₽",
     prefix: "",
-    description: "Выбили для клиентов",
-    useSpaces: false,
+    description: "Взыскано в пользу клиентов",
   },
   {
-    value: 4000,
-    suffix: " +",
+    value: "4 000",
+    suffix: "+",
     prefix: "",
-    description: "Дел в работе сейчас",
-    useSpaces: true,
+    description: "Успешно завершённых дел",
   },
 ];
-
-function formatNumber(value: number, stat: StatItem): string {
-  const roundedValue = Math.round(value);
-  let formatted: string;
-
-  if (stat.useSpaces) {
-    formatted = roundedValue.toLocaleString("ru-RU").replace(/,/g, " ");
-  } else {
-    formatted = roundedValue.toString();
-  }
-
-  return `${stat.prefix}${formatted}${stat.suffix}`;
-}
 </script>
 
 <style scoped>
