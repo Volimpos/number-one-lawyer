@@ -36,7 +36,7 @@ const stats: StatItem[] = [
     value: 15,
     suffix: " лет+",
     prefix: "",
-    description: "Опыта в сфере юридических услуг",
+    description: "Опыта наших специалистов в юридической сфере",
   },
   {
     value: "Топ 5",
@@ -51,10 +51,10 @@ const stats: StatItem[] = [
     description: "Взыскано в пользу клиентов",
   },
   {
-    value: "4 000",
-    suffix: "+",
+    value: "Огромная",
+    suffix: "",
     prefix: "",
-    description: "Успешно завершённых дел",
+    description: "Судебная практика",
   },
 ];
 </script>
