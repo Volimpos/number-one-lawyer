@@ -45,10 +45,10 @@ const stats: StatItem[] = [
     description: "Юридических компаний Челябинска",
   },
   {
-    value: 210,
-    suffix: " млн. ₽",
+    value: 9,
+    suffix: "",
     prefix: "",
-    description: "Взыскано в пользу клиентов",
+    description: "Сфер правовой экспертизы",
   },
   {
     value: "Огромная",
