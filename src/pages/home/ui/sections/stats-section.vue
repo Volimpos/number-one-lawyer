@@ -48,7 +48,7 @@ const stats: StatItem[] = [
     value: 9,
     suffix: "",
     prefix: "",
-    description: "Сфер правовой экспертизы",
+    description: "Сфер правовой экспертности",
   },
   {
     value: "Огромная",
