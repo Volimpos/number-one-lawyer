@@ -1,10 +1,10 @@
 <template>
   <article class="stats-section">
     <div>
-      <h2 class="stats-section__title">Наши успехи</h2>
+      <h2 class="stats-section__title">Наш подход</h2>
       <p class="stats-section__subtitle">
-        Мы очень давно помогаем людям сохранять деньги и другие активы. Если все
-        достижения посчитать математически, то получается следующее.
+        Надёжность складывается из конкретных действий: внимательно изучаем
+        документы, заранее обозначаем план работы и остаёмся на связи.
       </p>
     </div>
 
@@ -24,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import spheres from "@/shared/model/menu/store";
 interface StatItem {
   value: number | string;
   suffix: string;
@@ -33,10 +34,10 @@ interface StatItem {
 
 const stats: StatItem[] = [
   {
-    value: 15,
-    suffix: " лет+",
+    value: "Понятный",
+    suffix: "",
     prefix: "",
-    description: "Опыта наших специалистов в юридической сфере",
+    description: "План действий по Вашей ситуации",
   },
   {
     value: "Топ 5",
@@ -45,16 +46,16 @@ const stats: StatItem[] = [
     description: "Юридических компаний Челябинска",
   },
   {
-    value: 9,
+    value: spheres.value.length,
     suffix: "",
     prefix: "",
     description: "Сфер правовой экспертности",
   },
   {
-    value: "Огромная",
+    value: "На связи",
     suffix: "",
     prefix: "",
-    description: "Судебная практика",
+    description: "По ключевым этапам Вашего дела",
   },
 ];
 </script>

@@ -10,7 +10,7 @@
       </a>
 
       <h1 class="hero__title">
-        Консультация и помощь опытных юристов в Челябинске
+        Юридическая помощь с понятным планом действий в Челябинске
       </h1>
 
       <p class="hero__subtitle">
@@ -21,9 +21,9 @@
 
       <div class="hero__actions">
         <LeadButton />
-        <!-- <NuxtLink to="/cases" class="hero__secondary-btn">
-          Наши кейсы →
-        </NuxtLink> -->
+        <NuxtLink to="/about" class="hero__secondary-btn">
+          О компании →
+        </NuxtLink>
       </div>
 
       <div class="hero__cards">
@@ -129,7 +129,7 @@ const cards: Card[] = [
   justify-content: start;
   align-items: center;
   gap: 1rem;
-  width: 30rem;
+  width: auto;
 }
 
 .hero__secondary-btn {

@@ -3,7 +3,7 @@
     <div class="flags-container">
       <Flag
         title="ТОП-5"
-        text="лучших юридических компаний Челябинска"
+        text="юридических компаний Челябинска по кол-ву клиентов"
         variant="primary"
         link="https://chel.dk.ru/news/237236993"
       />

@@ -7,7 +7,7 @@
           :src="logoMain"
           alt="Юридическая компания №1 лого"
         />
-        <p class="logo__text">ЮК №1</p>
+        <p class="logo__text">ЮК 1</p>
       </NuxtLink>
       <nav class="nav">
         <div
@@ -36,12 +36,12 @@
         >
           Отзывы
         </a>
-        <!-- <NuxtLink
-          to="/cases"
+        <NuxtLink
+          to="/about"
           class="nav-item nav-item--cases"
           active-class="nav-item--active"
-          >Кейсы</NuxtLink
-        > -->
+          >О компании</NuxtLink
+        >
       </nav>
       <div class="lead-btn-container">
         <LeadButton />

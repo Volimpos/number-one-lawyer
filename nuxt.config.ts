@@ -58,7 +58,6 @@ export default defineNuxtConfig({
         "/privacy",
         "/thank_you",
         "/autolawyer",
-        "/criminal_law",
         "/customer_law",
         "/family_law",
         "/housing_law",

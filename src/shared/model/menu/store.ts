@@ -38,10 +38,6 @@ const spheres = ref<Sphere[]>([
     label: "Трудовое право",
     link: "/labour_law",
   },
-  {
-    label: "Уголовное право",
-    link: "/criminal_law",
-  },
 ]);
 
 export default spheres;

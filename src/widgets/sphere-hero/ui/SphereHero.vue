@@ -27,9 +27,9 @@
 
       <div class="hero__actions hero__actions--animate">
         <LeadButton />
-        <!-- <NuxtLink to="/cases" class="hero__secondary-btn">
-          Наши кейсы →
-        </NuxtLink> -->
+        <NuxtLink to="/about" class="hero__secondary-btn">
+          О компании →
+        </NuxtLink>
       </div>
 
       <div class="hero__cards">
